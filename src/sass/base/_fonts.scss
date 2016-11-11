@@ -1,0 +1,34 @@
+/* DECLARE FONTS
+******************************/
+
+// Import Google Web Fonts
+//@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700italic,700,600italic,600,900);
+//@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic);
+
+
+@font-face {
+  font-family: 'captainicon';
+  src:url('fonts/captainicon/captainicon.eot?-1i2a56');
+  src:url('fonts/captainicon/captainicon.eot?#iefix-1i2a56') format('embedded-opentype'),
+  url('fonts/captainicon/captainicon.woff?-1i2a56') format('woff'),
+  url('fonts/captainicon/captainicon.ttf?-1i2a56') format('truetype'),
+  url('fonts/captainicon/captainicon.svg?-1i2a56#captainicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* VARIABLES
+******************************/
+// Font stacks.
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+// fonts
+$serif: 'Droid Serif', $georgia;
+$sans: 'Source Sans Pro', $helvetica;
+
+// Create some variables for the font stacks we want to use on this site.
+$base-font-family: $sans; // The font family set on the html element.
+$base-heading-font: $sans;
+$font-monospace:   $courier;

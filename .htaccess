@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Forcing dist folder as the base directory
+RewriteCond %{REQUEST_URI} !dist/
+RewriteRule (.*) /dist/$1 [L]

@@ -1,0 +1,44 @@
+//Define your custom font styles for selectors here
+h1 {
+  font-family: $base-heading-font;
+}
+// Heading style
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $base-heading-font;
+}
+.block h2 {
+  font-size: modular-scale(1, 1.082em);
+}
+.page-header {
+  h2 {
+
+  }
+}
+a {
+  color: $highlight;
+  text-decoration: none;
+}
+hr {
+  border-bottom: $border;
+  border-top: 0;
+}
+blockquote {
+  border-left: $border;
+  padding-left: $indent-amount;
+  font-size: modular-scale(1, .7725em);
+}
+
+.intro {
+  font-size: modular-scale(1, .755em);
+  line-height: 2em;
+}
+a.button-link {
+  @extend %button;
+}
+#logo img {
+  max-width: 160px;
+}
