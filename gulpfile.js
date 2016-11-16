@@ -30,7 +30,9 @@ var config = {
       trestle: [
         './src/js/init.js',
         './src/js/drupal.js'
-      ]
+      ],
+      carousel: './src/js/init-carousel.js',
+      fancybox: './src/js/init-fancybox.js'
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',

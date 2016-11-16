@@ -4,8 +4,7 @@
 **SCRIPTS**
 1. Skip links
 3. Sticky
-4. Viewport tracking - jquery.viewport?
-6. Lazyload - blazy?
+6. Lazyload - https://github.com/tuupola/jquery_lazyload?
 7. Parallax
 8. Tabs
 10. show more truncated text

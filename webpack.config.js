@@ -1,15 +1,22 @@
 var path = require('path');
 var webpack = require('webpack');
+var jQuery = require('jquery');
 
 module.exports = function(gulpConfig) {
  var config = {
    entry: {
      'js/script': gulpConfig.src.scripts.trestle,
+     'js/carousel': gulpConfig.src.scripts.carousel,
+     'js/fancybox': gulpConfig.src.scripts.fancybox,
      'fabricator/js/fabricator': gulpConfig.src.scripts.fabricator
    },
    output: {
      path: path.resolve(__dirname, gulpConfig.dest),
      filename: '[name].js'
+   },
+   externals: {
+     // Use Jquery as an externally loaded file
+     'jquery': 'jQuery'
    },
    module: {
      loaders: [
@@ -28,12 +35,12 @@ module.exports = function(gulpConfig) {
      ]
    },
    plugins: [
-     // loads jquery and provides it as a global variable for js files
-     new webpack.ProvidePlugin({
-       '$':'jquery',
-       'jQuery':'jquery',
-       'window.jQuery':'jquery'
-     })
+     // loads jquery within the context of the files and provides it as a global variable for files
+     // new webpack.ProvidePlugin({
+     //   '$':'jquery',
+     //   'jQuery':'jquery',
+     //   'window.jQuery':'jquery'
+     // })
   ]
  }
 

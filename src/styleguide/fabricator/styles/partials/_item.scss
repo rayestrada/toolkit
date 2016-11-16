@@ -31,6 +31,11 @@
 			padding-bottom: 0;
 		}
 	}
+  // transition for fadein effect from viewport
+  transition: opacity 300ms ease 50ms;
+  &.transparent {
+    opacity: 0;
+  }
 }
 
 .f-item-code {

@@ -45,11 +45,11 @@ input[type="radio"] {
       height: 24px;
       width: 24px;
       overflow: hidden;
-      background: tint($highlight, 50%);
+      border: 1px solid $highlight;
     }
   }
   &:checked + label:before {
-    background: $highlight;
+    background-color: $highlight;
   }
 }
 input[type="radio"] + label:before {

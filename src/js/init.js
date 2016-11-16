@@ -3,20 +3,22 @@ var eqheights = require('./includes/eqheights');
 var accordion = require('./includes/accordion');
 var table = require('./includes/table');
 var throttle = require('./includes/throttle');
-var fancybox = require('./includes/fancybox');
 var cookies = require('./includes/cookies');
-var carousel = require('./includes/carousel');
+var viewport = require('./includes/viewport');
+
 
 // import modernizr
 require('./includes/modernizr.min.js');
+
+// viewport
+new viewport();
 
 // DOC READY
 $(function (){
   new eqheights();
   new accordion();
-  new fancybox();
+  new table();
   new cookies();
-  new carousel();
 
   // Example of using throttle
   // $(window).on('resize', throttle(function () {
