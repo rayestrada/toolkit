@@ -71,7 +71,7 @@
 
 // Isolate a hover effect only for non-touch screens - requires Modernizr with touch detection
 @mixin notouchhover {
-  .no-touch & {
+  .no-touchevents & {
     &:hover,
     &:focus {
       @content;

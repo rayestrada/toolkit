@@ -27,17 +27,15 @@
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  */
-#skip-link {
-  margin: 0;
-
-  a,
-  a:visited {
-    display: block;
-    width: 100%;
-    padding: 2px 0 3px 0;
-    text-align: center;
-    background-color: #666;
-    color: #fff;
+.skip-link {
+  display: block;
+  background: #2d2d2d;
+  color: #ffffff;
+  text-align: center;
+  height: 0;
+  &:focus {
+    height: auto;
+    padding: 10px;
   }
 }
 

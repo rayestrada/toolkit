@@ -2,40 +2,43 @@
  * Navigation bar.
  */
 #navigation {
-  overflow: hidden;
   padding: 1em 0;
   font-family: $sans;
 
   /* Main menu and secondary menu links and menu block links. */
   .links,
   .menu {
-    margin: 0;
-    padding: 0;
-    text-align: left;
+    @include list-reset();
     li {
-      padding: 0 30px 0 0;
-      list-style-type: none;
-      list-style-image: none;
-      @include breakpoint($desktop){
-        float: left;
-        font-weight: 600;
-        &:last-child {
-          padding: 0;
+      position: relative;
+      > ul.menu {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 100;
+        min-width: 220px;
+      }
+      &.focus,
+      &:hover {
+        background: #eee;
+        > ul.menu {
+          left: 0;
+          top: 100%;
         }
       }
       a {
-        &:hover {
+        font-weight: 600;
+        padding: 10px 16px;
+        &.active {
+          border-bottom: 2px solid $highlight;
+        }
+        @include notouchhover {
           color: $medgray;
         }
       }
     }
   }
-
-  .menu {
-    @include breakpoint($desktop){
-      float: right;
-    }
-  }
+  
   @include breakpoint($all-devices){
     background-color: #f7f7f7;
     height: 100%;

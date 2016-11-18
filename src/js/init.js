@@ -5,6 +5,7 @@ var table = require('./includes/table');
 var throttle = require('./includes/throttle');
 var cookies = require('./includes/cookies');
 var viewport = require('./includes/viewport');
+var menu = require('./includes/menu');
 
 
 // import modernizr
@@ -19,6 +20,7 @@ $(function (){
   new accordion();
   new table();
   new cookies();
+  new menu();
 
   // Example of using throttle
   // $(window).on('resize', throttle(function () {

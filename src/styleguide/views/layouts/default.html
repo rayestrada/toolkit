@@ -16,32 +16,34 @@
 
 </head>
 <body>
+<a href="#main-content" class="visually-hidden element-focusable skip-link" id="top">Skip to main content</a>
 
-	{{#if fabricator}}
-		{{> f-icons}}
-		{{> f-menu}}
-		<div class="f-container">
-			{{> f-control-bar}}
-	{{/if}}
+{{#if fabricator}}
+{{> f-icons}}
+{{> f-menu}}
+<div class="f-container">
+  {{> f-control-bar}}
+  {{/if}}
+
+  <a id="main-content"></a>
+  {% body %}
 
 
-	{% body %}
+  {{#if fabricator}}
+</div>
+<a href="#top" class="visually-hidden element-focusable skip-link" id="bottom">Back to Top</a>
+<script src="{{baseurl}}/fabricator/js/fabricator.js"></script>
+{{/if}}
 
+<!-- vendor scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- /vendor scripts -->
 
-	{{#if fabricator}}
-		</div>
-	<script src="{{baseurl}}/fabricator/js/fabricator.js"></script>
-	{{/if}}
-
-	<!-- vendor scripts -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- /vendor scripts -->
-
-	<!-- trestle scripts -->
-	<script src="{{baseurl}}/js/script.js"></script>
-  <script src="{{baseurl}}/js/carousel.js"></script>
-  <script src="{{baseurl}}/js/fancybox.js"></script>
-	<!-- /trestle scripts -->
+<!-- trestle scripts -->
+<script src="{{baseurl}}/js/script.js"></script>
+<script src="{{baseurl}}/js/carousel.js"></script>
+<script src="{{baseurl}}/js/fancybox.js"></script>
+<!-- /trestle scripts -->
 
 </body>
 </html>
