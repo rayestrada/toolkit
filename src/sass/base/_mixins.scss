@@ -129,12 +129,15 @@
   -moz-border-radius: 0;
   border-radius: 0;
   cursor: pointer;
-  background: $highlight;
+  background-color: $highlight;
   color: #fff;
   font-family: $sans;
   line-height: 40px;
   height: 40px;
   padding: 0 20px;
+  @include notouchhover {
+    background-color: lighten($highlight, 10);
+  }
 }
 
 // Left floated inline menu with no margin, padding or border

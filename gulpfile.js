@@ -32,7 +32,7 @@ var config = {
         './src/js/drupal.js'
       ],
       carousel: './src/js/init-carousel.js',
-      fancybox: './src/js/init-fancybox.js'
+      modal: './src/js/init-modal.js'
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',

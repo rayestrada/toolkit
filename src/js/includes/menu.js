@@ -5,7 +5,7 @@ module.exports = function(){
    */
 
   var nav = $('#navigation > ul.menu'),
-    trig = $('#header .menu-trigger a'),
+    trig = $('#menu-trigger > a'),
     tomaincontentlink = $('#top'),
     backtotoplink = $('#bottom'),
     mobilemenuclass = 'show-menu',

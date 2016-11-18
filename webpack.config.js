@@ -7,7 +7,7 @@ module.exports = function(gulpConfig) {
    entry: {
      'js/script': gulpConfig.src.scripts.trestle,
      'js/carousel': gulpConfig.src.scripts.carousel,
-     'js/fancybox': gulpConfig.src.scripts.fancybox,
+     'js/modal': gulpConfig.src.scripts.modal,
      'fabricator/js/fabricator': gulpConfig.src.scripts.fabricator
    },
    output: {
