@@ -18,7 +18,7 @@ module.exports = function() {
   $(window).on('scroll resize', throttle(function(){
     $('.transparent:in-viewport').each(function(i){
       // show content in staggered fashion setting a delay for each one
-      $(this).delay(300*i).queue(function(){
+      $(this).delay(100*i).queue(function(){
         $(this).removeClass('transparent').dequeue();
       });
     });

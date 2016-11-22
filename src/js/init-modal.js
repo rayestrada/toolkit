@@ -4,11 +4,22 @@ require('fancybox/dist/css/jquery.fancybox.css');
 // http://fancyapps.com/fancybox/
 // DOC READY
 $(function (){
+
   $('.fancybox').fancybox({
     // Accessibility
     // Set focus to the modal on show
     afterShow: function() {
-      $(this.content).focus();
+      // add focus to first link in modal
+      $(this.wrap).queue(function(){
+        $(this).find('a').first().focus();
+      });
+
+      // trigger click of close buton if you tab out
+      $('a.fancybox-close').keydown(function(e){
+        if(e.which == 9 && !e.shiftKey) {
+          $(this).trigger('click');
+        }
+      });
     },
     // Set focus to the trigger on close
     afterClose : function() {
