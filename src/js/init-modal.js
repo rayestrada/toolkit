@@ -9,9 +9,8 @@ $(function (){
     // Accessibility
     // Set focus to the modal on show
     afterShow: function() {
-      // add focus to first link in modal
       $(this.wrap).queue(function(){
-        $(this).find('a').first().focus();
+        $(this).focus();
       });
 
       // trigger click of close buton if you tab out
