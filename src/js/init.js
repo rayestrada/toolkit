@@ -7,6 +7,7 @@ var cookies = require('./includes/cookies');
 var viewport = require('./includes/viewport');
 var menu = require('./includes/menu');
 var shorten = require('./includes/shorten');
+var skiplinks = require('./includes/skip-links');
 
 
 // import modernizr
@@ -23,6 +24,7 @@ $(function (){
   new cookies();
   new menu();
   new shorten();
+  new skiplinks();
 
   // Example of using throttle
   // $(window).on('resize', throttle(function () {

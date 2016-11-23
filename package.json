@@ -19,6 +19,7 @@
     "npm": ">=2.0.0"
   },
   "devDependencies": {
+    "anchor-scroll": "^2.0.0",
     "breakpoint-sass": "^2.7.0",
     "browser-sync": "^2.17.5",
     "css-loader": "^0.25.0",
