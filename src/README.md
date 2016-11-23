@@ -2,12 +2,11 @@
 ----------------------------------------------------
 
 **SCRIPTS**
-1. Skip links
-3. Sticky
+1. Skip links - https://www.npmjs.com/package/anchor-scroll
+3. Sticky - https://www.npmjs.com/package/sticky-js
 6. Lazyload - https://github.com/tuupola/jquery_lazyload
-7. Parallax
+7. Parallax - https://www.npmjs.com/package/parallaxify
 8. Tabs
-10. show more truncated text - http://jedfoster.com/Readmore.js/
 
 
 **TODO**
