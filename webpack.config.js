@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var jQuery = require('jquery');
 
+
 module.exports = function(gulpConfig) {
  var config = {
    entry: {
@@ -31,9 +32,19 @@ module.exports = function(gulpConfig) {
          test: /\.(png|jpg|svg|gif)$/,
          include: /node_modules/,
          loader: 'url-loader?limit=10000' // (10kb) Any file smaller than limit will use data uri instead
-       }
+       },
+       {
+         // For JSON option names: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
+        test: /\.modernizrrc$/,
+        loader: 'modernizr'
+      }
      ]
    },
+   resolve: {
+    alias: {
+      modernizr$: path.resolve(__dirname, '.modernizrrc')
+    }
+  },
    plugins: [
      // loads jquery within the context of the files and provides it as a global variable for files
      // new webpack.ProvidePlugin({

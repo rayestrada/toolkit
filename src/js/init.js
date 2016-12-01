@@ -10,8 +10,10 @@ var shorten = require('./includes/shorten');
 var skiplinks = require('./includes/skip-links');
 
 
+
 // import modernizr
-require('./includes/modernizr.min.js');
+require('!modernizr!./.modernizrrc');
+
 
 // viewport
 new viewport();
