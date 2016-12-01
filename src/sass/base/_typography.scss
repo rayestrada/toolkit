@@ -10,14 +10,6 @@ h5,
 h6 {
   font-family: $base-heading-font;
 }
-.block h2 {
-  font-size: modular-scale(1, 1.082em);
-}
-.page-header {
-  h2 {
-
-  }
-}
 a {
   color: $highlight;
   text-decoration: none;
@@ -29,11 +21,11 @@ hr {
 blockquote {
   border-left: $border;
   padding-left: $indent-amount;
-  font-size: modular-scale(1, .7725em);
+  font-size: 1.5em;
 }
 
 .intro {
-  font-size: modular-scale(1, .755em);
+  font-size: 1.5em;
   line-height: 2em;
 }
 a.button-link {
