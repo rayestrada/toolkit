@@ -152,15 +152,13 @@ $gutter-width: 60px;
 ********************************/
 @mixin tm-grid($number, $gutter: $gutter-width) {
   @include clearfix();
-  @if $gutter != 0 {
-    margin-left: -($gutter/2);
-    margin-right: -($gutter/2);
-  }
   position: relative;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  .column {
+  @if $gutter != 0 {
+    margin: -($gutter/2);
+  }
+  > .column {
     @include col(1, $number, $gutter);
+    padding: $gutter/2;
     &:nth-child(#{$number}n+1) {
       clear: left;
     }

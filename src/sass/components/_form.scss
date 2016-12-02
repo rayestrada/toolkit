@@ -42,14 +42,28 @@ input[type="radio"] {
       display: block;
       left: -($indent-amount + 6);
       top: 0;
-      height: 24px;
-      width: 24px;
+      height: 22px;
+      width: 22px;
       overflow: hidden;
       border: 1px solid $highlight;
     }
+    &.focused:before {
+      background: none;
+      border: 6px solid #aaa;
+      width: 10px;
+      height: 10px;
+    }
   }
-  &:checked + label:before {
-    background-color: $highlight;
+  &:checked + label{
+    &:before {
+      background-color: $highlight;
+    }
+    &.focused:before {
+      background: none;
+      border: 6px solid $highlight;
+      width: 10px;
+      height: 10px;
+    }
   }
 }
 input[type="radio"] + label:before {
