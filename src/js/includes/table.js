@@ -1,5 +1,4 @@
 // Responsive data tables with headers
-
 module.exports = function() {
   $('table.data').each(function () {
     var headertext = [],

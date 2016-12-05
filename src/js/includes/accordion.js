@@ -1,11 +1,5 @@
-// // Example of markup format
-// <div class="custom-accordion">
-//   <h3 class="accordion-trigger"><a href='#'>Accordion Trigger</a></h3>
-//   <div class="accordion-content">Accordion Content</div>
-// </div>
-
+// Accordion styling functionality and animation
 module.exports = function() {
-  // Accordion styling functionality and animation
   $('.custom-accordion').each(function(i){
     $(this).addClass('enabled');
     if (i > 0) {

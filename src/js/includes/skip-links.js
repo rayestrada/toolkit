@@ -1,5 +1,6 @@
-var scrollTo = require('jquery.scrollto');
+require('jquery.scrollto');
 
+// animated anchor links
 module.exports = function () {
   $('.skip-links').click(function () {
     var target = $(this).attr('href');

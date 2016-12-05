@@ -51,6 +51,7 @@
 }
 
 // A global setting that can be used for controlling container widths
+.inner-wrapper,
 %inner-wrapper {
   position: relative;
   @include clearfix;

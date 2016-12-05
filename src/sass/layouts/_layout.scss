@@ -14,9 +14,6 @@
  * For screen sizes larger than 1200px, prevent excessively long lines of text
  * by setting a max-width.
  */
-.inner-wrapper {
-  @extend %inner-wrapper;
-}
 
 /* LAYOUT FOR MOBILE MENU */
 @include breakpoint($all-devices){
@@ -97,7 +94,6 @@
       }
     }
   }
-
 }
 
 @import "regions/regions";
