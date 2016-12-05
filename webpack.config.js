@@ -31,10 +31,10 @@ module.exports = function(gulpConfig) {
          // required for loading images in css from modules using js
          test: /\.(png|jpg|svg|gif)$/,
          include: /node_modules/,
-         loader: 'url-loader?limit=10000' // (10kb) Any file smaller than limit will use data uri instead
+         loader: 'url-loader?limit=20000' // (20kb) Any file smaller than limit will use data uri instead
        },
        {
-         // For JSON option names: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
+         // For modernizr JSON option names: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
         test: /\.modernizrrc$/,
         loader: 'modernizr'
       }

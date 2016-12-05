@@ -38,7 +38,8 @@ var config = {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
       trestle: './src/sass/styles.scss'
     },
-    images: 'src/images/**/*'
+    images: 'src/images/**/*',
+    fonts: 'src/fonts/**/*'
   },
   dest: 'dist'
 };
@@ -103,6 +104,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest(config.dest + '/images'));
 });
 
+gulp.task('fonts', function() {
+  return gulp.src(config.src.fonts)
+    .pipe(gulp.dest(config.dest + '/fonts'));
+});
+
 // assemble
 gulp.task('assemble', function (done) {
   assemble({
@@ -163,6 +169,9 @@ gulp.task('serve', function () {
 
   gulp.task('images:watch', ['images'], reload);
   gulp.watch(config.src.images, ['images:watch']);
+
+  gulp.task('fonts:watch', ['fonts'], reload);
+  gulp.watch(config.src.fonts, ['fonts:watch']);
 });
 
 
@@ -174,6 +183,7 @@ gulp.task('default', ['clean'], function () {
     'styles',
     'scripts',
     'images',
+    'fonts',
     'assemble'
   ];
 
