@@ -34,6 +34,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
     "gulp-util": "^3.0.7",
+    "html-webpack-plugin": "^2.24.1",
     "jquery": "^1.12.4",
     "jquery-match-height": "^0.7.0",
     "jquery-shorten-plus": "git+https://github.com/rayestrada/jquery.shorten.git",
