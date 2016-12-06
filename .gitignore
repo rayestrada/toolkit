@@ -1,5 +1,6 @@
 *
 !src/
+!.gitignore/
 !.htaccess/
 !gulpfile.js/
 !npm-shrinkwrap.json/
