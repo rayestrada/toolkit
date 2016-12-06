@@ -1,5 +1,7 @@
-node_modules
-dist
-.sass-cache
-.DS_Store
-._.DS_Store
+*
+!src/
+!.htaccess/
+!gulpfile.js/
+!npm-shrinkwrap.json/
+!package.json/
+!webpack.config.js/
