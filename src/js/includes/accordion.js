@@ -1,15 +1,19 @@
 // Accordion styling functionality and animation
 module.exports = function() {
-  $('.custom-accordion').each(function(i){
-    $(this).addClass('enabled');
+  var accordioncontainer = '.custom-accordion',
+    accordioncontent = '.accordion-content',
+    accordiontrigger = '.accordion-trigger';
+  
+  $(accordioncontainer).each(function(i){
+    $(this).addClass('tm-accordion-enabled');
     if (i > 0) {
-      $(this).addClass('collapsed').find('.accordion-content').slideUp('fast');
+      $(this).addClass('collapsed').find(accordioncontent).slideUp('fast');
     }
   });
 
-  $('.custom-accordion h3.accordion-trigger a').click(function(e){
+  $(accordioncontainer + ' ' + accordiontrigger + ' a').click(function(e){
     e.preventDefault();
-    $(this).closest('.custom-accordion').toggleClass('collapsed');
-    $(this).parent().next('.accordion-content').slideToggle('fast');
+    $(this).closest(accordioncontainer).toggleClass('collapsed');
+    $(this).parent().next(accordioncontent).slideToggle('fast');
   });
 }

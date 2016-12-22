@@ -9,6 +9,7 @@ var menu = require('./includes/menu');
 var shorten = require('./includes/shorten');
 var skiplinks = require('./includes/skip-links');
 var form = require('./includes/form');
+var tabs = require('./includes/tabs');
 
 // import modernizr
 require('!modernizr!./.modernizrrc');
@@ -26,6 +27,7 @@ $(function (){
   new shorten();
   new skiplinks();
   new form();
+  new tabs();
 
   // Example of using throttle
   // $(window).on('resize', throttle(function () {

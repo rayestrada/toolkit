@@ -19,6 +19,13 @@ git clone https://github.com/rayestrada/toolkit.git
 npm build
 ```
 
+To remove git tracking on the toolkit so you can track your instance independently
+
+```shell
+rm -rf .git
+rm .gitignore
+```
+
 
 ## Compiling
 
@@ -58,3 +65,10 @@ gulp
 - Organization using the atomic css modal
 - Breakpoints
 - promote accesibility best practices
+
+
+## Node
+
+- how to install a new node module
+- how to uninstall a node module
+- how to shrinkwrap
