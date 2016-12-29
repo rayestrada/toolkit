@@ -14,8 +14,19 @@
 
 ## Quick Start
 
+To create standalone directory named toolkit inside your current folder
+
 ```shell
 git clone https://github.com/rayestrada/toolkit.git
+cd toolkit
+npm build
+```
+
+To add toolkit files to current folder
+```shell
+git init
+git remote add origin https://github.com/me/name.git
+git pull origin master
 npm build
 ```
 
