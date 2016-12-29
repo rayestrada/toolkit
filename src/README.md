@@ -2,7 +2,7 @@
 ----------------------------------------------------
 **STYLES**
 1. add cool mixins
-2. revisit necessity of normalize
+2. revisit necessity of normalize - santitize.css
 3. mobile menu
 4. css card flip animation
 5. button loader

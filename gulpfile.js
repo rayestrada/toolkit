@@ -132,7 +132,7 @@ gulp.task('serve', function () {
       baseDir: config.dest
     },
     //notify: false,
-    logPrefix: 'FABRICATOR'
+    logPrefix: 'TRESTLE'
   });
 
   /**

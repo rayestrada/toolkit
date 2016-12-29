@@ -10,6 +10,7 @@ var shorten = require('./includes/shorten');
 var skiplinks = require('./includes/skip-links');
 var form = require('./includes/form');
 var tabs = require('./includes/tabs');
+// var sticky = require('./includes/sticky');
 
 // import modernizr
 require('!modernizr!./.modernizrrc');

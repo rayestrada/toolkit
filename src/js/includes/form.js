@@ -1,6 +1,6 @@
 // form related js for accessibility
 module.exports = function(){
-  // Update Checkbox format with the input nested in the label
+  // Update Checkbox/Radios format: input nested in the label
   $('label > input').each(function(){
     $(this).parent().attr('for', $(this).attr('id')).before($(this).detach());
   });
