@@ -19,15 +19,15 @@ To create standalone directory named toolkit inside your current folder
 ```shell
 git clone https://github.com/rayestrada/toolkit.git
 cd toolkit
-npm build
+npm install
 ```
 
 To add toolkit files to current folder
 ```shell
 git init
-git remote add origin https://github.com/me/name.git
+git remote add origin https://github.com/rayestrada/toolkit.git
 git pull origin master
-npm build
+npm install
 ```
 
 To remove git tracking on the toolkit so you can track your instance independently
