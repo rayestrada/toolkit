@@ -15,14 +15,13 @@
 ## Quick Start
 
 To create standalone directory named toolkit inside your current folder
-
 ```shell
 git clone https://github.com/rayestrada/toolkit.git
 cd toolkit
 npm install
 ```
 
-To add toolkit files to current folder
+To add toolkit files to current folder (theme install)
 ```shell
 git init
 git remote add origin https://github.com/rayestrada/toolkit.git
