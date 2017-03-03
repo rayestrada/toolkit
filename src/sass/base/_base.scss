@@ -4,46 +4,5 @@
 @import "mixins";
 @import "accessibility";
 @import "grid";
-
-/* VARIABLES
-******************************/
-$base-font-size:   10px; // The font size set on the root html element.
-$lineheight: 1.6em;
-
-//Define your border
-$border: 1px solid #ccc;
-
-// The amount lists, blockquotes and comments are indented.
-$indent-amount: 30px;
-
-@import "normalize";
+@import "standardize";
 @import "typography";
-
-/* STYLES
-******************************/
-* {
-  box-sizing: border-box;
-}
-
-body{
-  @include font-size(18);
-  line-height: $lineheight;
-  font-family: $base-font-family;
-  min-width: $min-width;
-  color: $gray;
-  // crisper font aliasing
-  //-webkit-font-smoothing: antialiased;
-  //-moz-osx-font-smoothing: grayscale;
-  @include breakpoint($all-devices) {
-    &.noscroll {
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-      position: fixed;
-    }
-  }
-}
-
-.clearfix {
-  @include clearfix;
-}

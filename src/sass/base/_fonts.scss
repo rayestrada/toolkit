@@ -17,6 +17,24 @@
 //  font-style: normal;
 //}
 
+@mixin crisp() {
+  // crisper font aliasing
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon($name) {
+  content: $name;
+  font-family: 'captainicon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  @include crisp();
+}
+
 /* VARIABLES
 ******************************/
 // Font stacks.

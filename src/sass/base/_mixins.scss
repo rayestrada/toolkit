@@ -116,31 +116,6 @@
   }
 }
 
-// Global button styling
-%button {
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  border: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  -moz-appearance: none;
-  display: inline-block;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  cursor: pointer;
-  background-color: $highlight;
-  color: #fff;
-  font-family: $sans;
-  line-height: 40px;
-  height: 40px;
-  padding: 0 20px;
-  @include notouchhover {
-    background-color: lighten($highlight, 10);
-  }
-}
-
 // Left floated inline menu with no margin, padding or border
 @mixin list-reset($type: float) {
   list-style: none;
@@ -163,12 +138,6 @@
   }
 }
 
-// Rem with pixel fallback
-@mixin font-size($sizeValue: 16) {
-  font-size: $sizeValue + px;
-  font-size: ($sizeValue / 10) + rem;
-}
-
 
 // auto scroll with smooth scrolling on touch devices
 %scroll {
@@ -176,26 +145,20 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@mixin icon($name) {
-  content: $name;
-  font-family: 'captainicon';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@mixin trim() {
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
+@mixin trim($direction: v) {
+  @if $direction == v {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  } @else if $direction == h {
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }

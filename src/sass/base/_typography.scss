@@ -1,3 +1,33 @@
+$lineheight: 1.6em;
+
+//Define your border
+$border: 1px solid #ccc;
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 30px;
+
+// Rem with pixel fallback
+@mixin font-size($sizeValue: 16) {
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 10) + rem;
+}
+
+body{
+  @include font-size(18);
+  line-height: $lineheight;
+  font-family: $base-font-family;
+  min-width: $min-width;
+  color: $gray;
+  @include breakpoint($all-devices) {
+    &.noscroll {
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+    }
+  }
+}
+
 //Define your custom font styles for selectors here
 h1 {
   font-family: $base-heading-font;
@@ -16,20 +46,41 @@ a {
 }
 hr {
   border-bottom: $border;
-  border-top: 0;
 }
 blockquote {
   border-left: $border;
   padding-left: $indent-amount;
   font-size: 1.5em;
+  line-height: 1.25em;
 }
-
 .intro {
   font-size: 1.5em;
-  line-height: 2em;
+  line-height: 1.5em;
 }
-a.button-link {
-  @extend %button;
+// Global button styling
+.button-link,
+%button {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  cursor: pointer;
+  background-color: $highlight;
+  color: #fff;
+  font-family: $sans;
+  line-height: 40px;
+  height: 40px;
+  padding: 0 20px;
+  @include notouchhover {
+    background-color: lighten($highlight, 10);
+  }
 }
 #logo img {
   max-width: 160px;

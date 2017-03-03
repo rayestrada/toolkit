@@ -2,8 +2,9 @@
 ********************************/
 $grid-columns: 16;
 $gutter-width: 60px;
+$float-default: left;
 
-@mixin col($span: 1, $grid: $grid-columns, $gutter: $gutter-width, $offset: 0, $float: left) {
+@mixin col($span: 1, $grid: $grid-columns, $gutter: $gutter-width, $offset: 0, $float: $float-default) {
   @if $float != none {
     float: $float;
   }
@@ -35,6 +36,10 @@ $gutter-width: 60px;
     display: table;
     clear: both;
   }
+}
+
+.clearfix {
+  @include clearfix;
 }
 
 // Round a number to specified digits.
