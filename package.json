@@ -8,7 +8,7 @@
     "gulp": "gulp",
     "build": "npm install && gulp",
     "start": "gulp --dev",
-    "postinstall": "find node_modules -type f -name '*.info' | xargs rm"
+    "postinstall": "find node_modules -type f -name '*.info' | xargs -r rm"
   },
   "author": "Trestlemedia",
   "repository": {
@@ -38,7 +38,7 @@
     "html-webpack-plugin": "^2.24.1",
     "jquery": "^1.12.4",
     "jquery-match-height": "^0.7.0",
-    "jquery-shorten-plus": "git+https://github.com/rayestrada/jquery.shorten.git",
+    "jquery-shorten-plus": "git://github.com/rayestrada/jquery.shorten.git",
     "jquery.scrollto": "^2.1.2",
     "jquery.viewport": "^0.2.0",
     "js-cookie": "^2.1.3",
