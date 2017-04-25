@@ -9,7 +9,7 @@
 - Image minification
 - Browser Sync
 
-#### [Toolkit Demo](http://webpack.clientapp.com)
+#### [Toolkit Demo](http://toolkit.clientapp.com)
 
 
 ## Quick Start
