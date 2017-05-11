@@ -18,7 +18,7 @@ To create standalone directory named toolkit inside your current folder
 ```shell
 git clone https://github.com/rayestrada/toolkit.git
 cd toolkit
-npm install
+npm build
 ```
 
 To add toolkit files to current folder (theme install)
@@ -26,14 +26,7 @@ To add toolkit files to current folder (theme install)
 git init
 git remote add origin https://github.com/rayestrada/toolkit.git
 git pull origin master
-npm install
-```
-
-To remove git tracking on the toolkit so you can track your instance independently
-
-```shell
-rm -rf .git
-rm .gitignore
+npm build
 ```
 
 
@@ -41,7 +34,7 @@ rm .gitignore
 
 **Development**: Starts a watch of the toolkit files and initializes Browser Sync 
 ```shell
-gulp --dev
+npm start
 ```
 
 **Production**: Compiles and minifies files for packaging

@@ -116,6 +116,9 @@ $float-default: left;
       @include clearfix();
       .column {
         @include col(1, 4);
+        > * {
+          @include trim();
+        }
         &.span-2 {
           @include col(2, 4);
         }
@@ -128,6 +131,9 @@ $float-default: left;
       @include clearfix();
       .column {
         @include col(1, 3);
+        > * {
+          @include trim();
+        }
         &.span-2 {
           @include col(2, 3);
         }
@@ -137,6 +143,9 @@ $float-default: left;
       @include clearfix();
       .column {
         @include col(1, 2);
+        > * {
+          @include trim();
+        }
       }
     }
   }
@@ -164,6 +173,9 @@ $float-default: left;
   > .column {
     @include col(1, $number, $gutter);
     padding: $gutter/2;
+    > * {
+      @include trim();
+    }
     &:nth-child(#{$number}n+1) {
       clear: left;
     }
@@ -188,4 +200,19 @@ $float-default: left;
   .four-column-grid {
     @include tm-grid(2);
   }
+}
+
+/* CENTERING OFFSET
+********************************/
+.center-10 {
+  @include col(10, 12, 0, 1, none);
+}
+.center-8 {
+  @include col(8, 12, 0, 2, none);
+}
+.center-6 {
+  @include col(6, 12, 0, 3, none);
+}
+.center-4 {
+  @include col(4, 12, 0, 4, none);
 }

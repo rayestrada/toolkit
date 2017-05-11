@@ -34,35 +34,24 @@ input[type="radio"] {
     font-weight: normal;
     box-sizing: border-box;
     position: relative;
-    left: $indent-amount + 6;
     cursor: pointer;
     &:before {
       content: '';
-      position: absolute;
-      display: block;
-      left: -($indent-amount + 6);
-      top: 0;
-      height: 22px;
-      width: 22px;
+      display: inline-block;
+      height: 14px;
+      width: 14px;
+      margin-bottom: -2px;
+      margin-right: 8px;
       overflow: hidden;
       border: 1px solid $highlight;
     }
     &.focused:before {
-      background: none;
-      border: 6px solid #aaa;
-      width: 10px;
-      height: 10px;
+      box-shadow: 0 0 5px #444;
     }
   }
   &:checked + label{
     &:before {
       background-color: $highlight;
-    }
-    &.focused:before {
-      background: none;
-      border: 6px solid $highlight;
-      width: 10px;
-      height: 10px;
     }
   }
 }
@@ -72,25 +61,44 @@ input[type="radio"] + label:before {
   border-radius: 50%;
 }
 
+.selectlist {
+  position: relative;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  background-color: #eee;
+  border: 1px solid $ltgray;
+  display:inline-block;
+}
+
 select {
   box-sizing: border-box;
   position: relative;
-  z-index: 1;
-  border: 0;
+  display: block;
+  z-index: 2;
+  border: 1px solid $ltgray;
   -webkit-appearance: none;
   appearance: none;
   -moz-appearance: none;
-  line-height: 40px;
+  -moz-padding-end: 10px;
+  line-height: 1em;
   height: 40px;
-  padding: 0 14px;
+  padding: 8px 16px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
   cursor: pointer;
-  background: $highlight;
-  color: #fff;
   font-family: $sans;
   min-width: 200px;
+  background-color: #eee;
+  .selectlist & {
+    float: left;
+    background: transparent;
+    background-color: transparent;
+    margin: 0;
+    line-height: 14px;
+    border: none;
+  }
 }
 
 button,

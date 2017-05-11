@@ -1,10 +1,9 @@
 **WISH LIST**
 ----------------------------------------------------
 **STYLES**
-1. add cool mixins
-2. revisit necessity of normalize - santitize.css
-3. mobile menu
-4. css card flip animation
+1. add cool mixins like grid css
+2. mobile menu
+4. css card (with flip animation?)
 5. button loader
 
 

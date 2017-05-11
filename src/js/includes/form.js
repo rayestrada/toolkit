@@ -18,7 +18,7 @@
       }
     });
 
-    // Checkbox & Radios hover triggers focus/blur
+    //Checkbox & Radios hover triggers focus/blur
     $('input[type="checkbox"] + label, input[type="radio"] + label').on({
       mouseenter: function () {
         $(this).prev('input').focus();

@@ -6,7 +6,7 @@
   "main": "index.html",
   "scripts": {
     "gulp": "gulp",
-    "build": "npm install && gulp",
+    "build": "npm install && gulp && rm -rf .git && rm .gitignore",
     "start": "gulp --dev",
     "postinstall": "find node_modules -type f -name '*.info' | xargs -r rm"
   },

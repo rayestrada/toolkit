@@ -9,18 +9,55 @@
 			<a href="index.html" class="f-menu__heading">Overview</a>
 		</li>
 
-		{{#each materials}}
-		<li>
-			<a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
-			<ul>
-				{{#each items}}
-				<li>
-					<a href="{{@../key}}.html#{{@key}}">{{name}}</a>
-				</li>
-				{{/each}}
-			</ul>
-		</li>
-		{{/each}}
+    {{!-- Elements --}}
+    <li>
+      <a href="elements.html" class="f-menu__heading">Elements</a>
+      <ul>
+        {{#each materials.elements.items}}
+        <li>
+          <a href="elements.html#{{@key}}">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+
+    {{!-- Components --}}
+    <li>
+      <a href="components.html" class="f-menu__heading">Components</a>
+      <ul>
+        {{#each materials.components.items}}
+        <li>
+          <a href="components.html#{{@key}}">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+
+    {{!-- Structures --}}
+    <li>
+      <a href="structures.html" class="f-menu__heading">Structures</a>
+      <ul>
+        {{#each materials.structures.items}}
+        <li>
+          <a href="structures.html#{{@key}}">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+
+    {{!-- Original source printing by alpha
+    {{#each materials}}
+    <li>
+      <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+      <ul>
+        {{#each items}}
+        <li>
+          <a href="{{@../key}}.html#{{@key}}">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+    {{/each}} --}}
 
 		{{#each views}}
 		<li>

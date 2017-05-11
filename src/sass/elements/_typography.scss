@@ -52,6 +52,13 @@ blockquote {
   padding-left: $indent-amount;
   font-size: 1.5em;
   line-height: 1.25em;
+  p {
+    margin: 0.5em 0;
+  }
+}
+cite {
+  @include font-size(16);
+  display: block;
 }
 .intro {
   font-size: 1.5em;
