@@ -57,9 +57,9 @@ gulp
 
 **Some Notes on...**
 - Organization/location of files
-- how to add a new component or material
+- how to add a new material or page
 - uses [handlebars](http://handlebarsjs.com/expressions.html) syntax
-- Read full [documentation of Fabricator](http://fbrctr.github.io/docs/)  
+- Read full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble)  
 
 
 ## Sass
@@ -72,6 +72,24 @@ gulp
 
 ## Node
 
-- how to install a new node module
-- how to uninstall a node module
-- how to shrinkwrap
+#### Install a new node module
+Saves the files into the node_modules folder and adds them to the package.json file as a dev dependency
+```shell
+npm install module_name --save-dev
+```
+or from github
+```shell
+npm install git://github.com/USERNAME/PROJECT.git --save-dev
+```
+
+#### Uninstall a node module
+Removes the files from the node_modules folder and also removes the dev dependency from the package.json file
+```shell
+npm uninstall module_name --save-dev
+```
+
+#### Shrinkwrap
+Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command when you have added new devdependencies to your toolkit
+```shell
+npm shrinkwrap --dev
+```

@@ -13,7 +13,7 @@ require('./includes/shorten');
 require('./includes/skip-links');
 require('./includes/form');
 require('./includes/tabs');
-// require('./includes/sticky');
+require('./includes/sticky');
 
 (function ($) {
   // DOC READY

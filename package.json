@@ -13,7 +13,7 @@
   "author": "Trestlemedia",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fbrctr/fabricator.git"
+    "url": "https://github.com/rayestrada/toolkit"
   },
   "engines": {
     "node": ">=0.12.0",
@@ -46,6 +46,7 @@
     "modernizr-loader": "0.0.5",
     "owl.carousel": "^2.2.0",
     "run-sequence": "^1.2.2",
+    "sticky-kit": "git://github.com/leafo/sticky-kit.git",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2"
