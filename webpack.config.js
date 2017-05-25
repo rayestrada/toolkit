@@ -9,6 +9,7 @@ module.exports = function(gulpConfig) {
      'js/script': gulpConfig.src.scripts.trestle,
      'js/carousel': gulpConfig.src.scripts.carousel,
      'js/modal': gulpConfig.src.scripts.modal,
+     'js/map': gulpConfig.src.scripts.map,
      'fabricator/js/fabricator': gulpConfig.src.scripts.fabricator
    },
    output: {

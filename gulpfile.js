@@ -32,7 +32,8 @@ var config = {
         './src/js/drupal.js'
       ],
       carousel: './src/js/init-carousel.js',
-      modal: './src/js/init-modal.js'
+      modal: './src/js/init-modal.js',
+      map: './src/js/init-map.js',
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
