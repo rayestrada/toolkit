@@ -12,6 +12,11 @@ loadGoogleMapsApi().then(function (googleMaps) {
         position: latlng,
         map: map
     });
+    google.maps.event.addDomListener(window, "resize", function() {
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
+    });
 }).catch(function (err) {
     console.error(err);
 });
