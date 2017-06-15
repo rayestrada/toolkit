@@ -20,6 +20,7 @@ var prefix = require('gulp-autoprefixer');
 
 var imagemin = require('gulp-imagemin');
 
+var svgSprite				= require('gulp-svg-sprite');
 
 // configuration
 var config = {
@@ -39,8 +40,9 @@ var config = {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
       trestle: './src/sass/styles.scss'
     },
-    images: 'src/images/**/*',
-    fonts: 'src/fonts/**/*'
+    images: './src/images/**/*',
+    svg: './src/svg/*.svg',
+    fonts: './src/fonts/**/*'
   },
   dest: 'dist'
 };
@@ -100,13 +102,61 @@ gulp.task('scripts', function (done) {
 
 // images
 gulp.task('images', function () {
-  return gulp.src(config.src.images)
+  gulp.src(config.src.images)
     .pipe(imagemin())
     .pipe(gulp.dest(config.dest + '/images'));
 });
 
+// create svgs
+// for full configuration options see https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
+// This generates a 'build' folder inside the src/svg folder to be used for sass sprites and copied on output
+gulp.task('svg:create', function(){
+  gulp.src(config.src.svg)
+    .pipe(svgSprite({
+      dest: '.',
+      shape: {
+        dimension: {
+          maxWidth: 32, // scale down to 32 if larger
+          maxHeight: 32
+        },
+        spacing: {
+          padding: 4  // add padding between items
+        },
+        dest: 'svg/origin' // keep the origin files
+      },
+      mode: {
+        css: {
+          dest: 'sass',
+          sprite: '../svg/svg-sprite',  // this is specifically setting the path to the location of the svg as it will be in the output
+          bust: false,
+          render: {
+            scss: {
+              dest: '_svg-sprite.scss'  // location of the sass file relative to the css:dest setting
+            }
+          },
+          mixin: 'svg-sprite'
+        },
+        defs: {
+          dest: 'svg/defs',
+          sprite: 'svg-defs'
+        }
+      }
+    }))
+    .pipe(gulp.dest('./src/svg/build'));
+});
+
+// copy svgs
+gulp.task('svg:copy', function() {
+  gulp.src('./src/svg/build/**/*.svg')
+    .pipe(gulp.dest(config.dest));
+});
+
+
+gulp.task('svg', ['svg:create', 'svg:copy']);
+
+// fonts
 gulp.task('fonts', function() {
-  return gulp.src(config.src.fonts)
+  gulp.src(config.src.fonts)
     .pipe(gulp.dest(config.dest + '/fonts'));
 });
 
@@ -181,6 +231,7 @@ gulp.task('default', ['clean'], function () {
 
   // define build tasks
   var tasks = [
+    'svg',
     'styles',
     'scripts',
     'images',

@@ -14,6 +14,7 @@ require('./includes/skip-links');
 require('./includes/form');
 require('./includes/tabs');
 require('./includes/sticky');
+require('./includes/konami');
 
 (function ($) {
   // DOC READY

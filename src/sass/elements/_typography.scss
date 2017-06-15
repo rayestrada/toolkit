@@ -1,6 +1,7 @@
+// Define baseline lineheight
 $lineheight: 1.6em;
 
-//Define your border
+// Define a border style
 $border: 1px solid #ccc;
 
 // The amount lists, blockquotes and comments are indented.
@@ -10,6 +11,10 @@ $indent-amount: 30px;
 @mixin font-size($sizeValue: 16) {
   font-size: $sizeValue + px;
   font-size: ($sizeValue / 10) + rem;
+  // @TODO calculate lineheight using font-size, x-height and some type of ratio
+  // x-height and ratio would be variables
+  // provide a way to override or omit
+  // different ratio for headings?
 }
 
 body{

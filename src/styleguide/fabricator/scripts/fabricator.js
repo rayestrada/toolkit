@@ -337,6 +337,26 @@ fabricator.setInitialMenuState = function () {
 
 
 /**
+ * Accordion styles for materials that have lists longer than 5 items
+ */
+fabricator.menuAccordion = function() {
+  // Get all the materials lists length
+  // var x = document.querySelectorAll(".example");
+
+  // foreach material
+  // x.forEach(function(item, index){
+
+  // check if the list is longer than 5 items add a class to collapse
+
+  // });
+
+  // create a click method to toggle the class assigned above
+  // target using the classes inserted above
+
+};
+
+
+/**
  * Initialization
  */
 (function () {

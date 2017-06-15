@@ -8,5 +8,5 @@
 
 
 **SCRIPTS**
-1. Sticky - https://www.npmjs.com/package/sticky-js
-2. Parallax - https://www.npmjs.com/package/parallaxify
+1. Parallax - inline-images as background image
+2. SVG sprites - https://github.com/jkphl/gulp-svg-sprite
