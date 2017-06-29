@@ -11,14 +11,18 @@
 
 #### [Toolkit Demo](http://toolkit.clientapp.com)
 
+## Global Requirements
+- Node
+- npm
+- gulp
 
 ## Quick Start
 
 To create standalone directory named toolkit inside your current folder
 ```shell
-git clone https://github.com/rayestrada/toolkit.git
-cd toolkit
-npm build
+git clone https://github.com/rayestrada/toolkit.git yourtoolkit
+cd yourtoolkit
+npm install
 ```
 
 To add toolkit files to current folder (theme install)
@@ -89,7 +93,7 @@ npm uninstall module_name --save-dev
 ```
 
 #### Shrinkwrap
-Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command when you have added new devdependencies to your toolkit
+Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)
 ```shell
 npm shrinkwrap --dev
 ```
