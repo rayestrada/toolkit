@@ -30,7 +30,7 @@ To add toolkit files to current folder (theme install)
 git init
 git remote add origin https://github.com/rayestrada/toolkit.git
 git pull origin master
-npm build
+npm install
 ```
 
 
