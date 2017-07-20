@@ -1,4 +1,4 @@
-# Trestlemedia Toolkit
+# Chief Toolkit
 
 > A full featured toolkit for compiling js, sass and styleguide
 
@@ -31,6 +31,8 @@ git init
 git remote add origin https://github.com/rayestrada/toolkit.git
 git pull origin master
 npm install
+rm -rf .git
+rm .gitignore
 ```
 
 
