@@ -7,13 +7,13 @@
   "scripts": {
     "gulp": "gulp",
     "start": "gulp --dev",
-    "install": "gulp && rm -rf .git && rm .gitignore",
+    "install": "gulp",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
-  "author": "Trestlemedia",
+  "author": "Agency Chief",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rayestrada/toolkit"
+    "url": "https://github.com/agencychief/toolkit"
   },
   "engines": {
     "node": ">=0.12.0",

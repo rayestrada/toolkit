@@ -183,7 +183,7 @@ gulp.task('serve', function () {
       baseDir: config.dest
     },
     //notify: false,
-    logPrefix: 'TRESTLE'
+    logPrefix: 'CHIEF'
   });
 
   /**
