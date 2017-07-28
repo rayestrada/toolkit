@@ -28,7 +28,7 @@ var config = {
   src: {
     scripts: {
       fabricator: './src/styleguide/fabricator/scripts/fabricator.js',
-      trestle: [
+      chief: [
         './src/js/init.js',
         './src/js/drupal.js'
       ],
@@ -38,7 +38,7 @@ var config = {
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
-      trestle: './src/sass/styles.scss'
+      chief: './src/sass/styles.scss'
     },
     images: './src/images/**/*',
     svg: './src/svg/*.svg',
@@ -69,8 +69,8 @@ gulp.task('styles:fabricator', function () {
 });
 
 // Compile sass
-gulp.task('styles:trestle', function () {
-  gulp.src(config.src.styles.trestle)
+gulp.task('styles:chief', function () {
+  gulp.src(config.src.styles.chief)
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['node_modules/breakpoint-sass/stylesheets']
@@ -82,7 +82,7 @@ gulp.task('styles:trestle', function () {
     .pipe(gulpif(config.dev, reload({stream: true})));
 });
 
-gulp.task('styles', ['styles:fabricator', 'styles:trestle']);
+gulp.task('styles', ['styles:fabricator', 'styles:chief']);
 
 // scripts
 gulp.task('scripts', function (done) {
@@ -167,7 +167,7 @@ gulp.task('assemble', function (done) {
     layouts: ['src/styleguide/fabricator/templates/*'],
     layoutIncludes: ['src/styleguide/fabricator/templates/includes/*'],
     views: ['src/styleguide/fabricator/templates/layouts/*', 'src/styleguide/materials/pages/*'],
-    materials: ['src/styleguide/materials/**/*', '!src/styleguide/materials/+(pages)/**', '!src/styleguide/+(fabricator)/**'],
+    materials: ['src/styleguide/materials/**/*', '!src/styleguide/materials/+(pages)/**'],
     data: ['src/styleguide/data/**/*.{json,yml}'],
     docs: ['src/styleguide/docs/**/*.md'],
     keys: {
@@ -184,13 +184,13 @@ gulp.task('assemble', function (done) {
 // server
 gulp.task('serve', function () {
 
-  // browserSync({
-  //   server: {
-  //     baseDir: config.dest
-  //   },
-  //   //notify: false,
-  //   logPrefix: 'CHIEF'
-  // });
+  browserSync({
+    server: {
+      baseDir: config.dest
+    },
+    //notify: false,
+    logPrefix: 'CHIEF'
+  });
 
   /**
    * Because webpackCompiler.watch() isn't being used
@@ -217,8 +217,8 @@ gulp.task('serve', function () {
   gulp.task('styles:fabricator:watch', ['styles:fabricator']);
   gulp.watch('src/styleguide/fabricator/styles/**/*.scss', ['styles:fabricator:watch']);
 
-  gulp.task('styles:trestle:watch', ['styles:trestle']);
-  gulp.watch('src/sass/**/*.scss', ['styles:trestle:watch']);
+  gulp.task('styles:chief:watch', ['styles:chief']);
+  gulp.watch('src/sass/**/*.scss', ['styles:chief:watch']);
 
   gulp.task('scripts:watch', ['scripts'], reload);
   gulp.watch('src/styleguide/fabricator/scripts/**/*.js', ['scripts:watch']).on('change', webpackCache);

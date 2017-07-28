@@ -6,7 +6,7 @@ var jQuery = require('jquery');
 module.exports = function(gulpConfig) {
  var config = {
    entry: {
-     'js/script': gulpConfig.src.scripts.trestle,
+     'js/script': gulpConfig.src.scripts.chief,
      'js/carousel': gulpConfig.src.scripts.carousel,
      'js/modal': gulpConfig.src.scripts.modal,
      'js/map': gulpConfig.src.scripts.map,
