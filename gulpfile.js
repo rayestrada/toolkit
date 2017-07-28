@@ -163,13 +163,19 @@ gulp.task('fonts', function() {
 // assemble
 gulp.task('assemble', function (done) {
   assemble({
-    logErrors: config.dev,
-    layouts: ['src/styleguide/views/layouts/*'],
-    layoutIncludes: ['src/styleguide/views/layouts/includes/*'],
-    views: ['src/styleguide/views/**/*', '!src/styleguide/views/+(layouts)/**'],
-    materials: ['src/styleguide/materials/**/*'],
+    layout: 'default',
+    layouts: ['src/styleguide/fabricator/templates/*'],
+    layoutIncludes: ['src/styleguide/fabricator/templates/includes/*'],
+    views: ['src/styleguide/fabricator/templates/layouts/*', 'src/styleguide/materials/pages/*'],
+    materials: ['src/styleguide/materials/**/*', '!src/styleguide/materials/+(pages)/**', '!src/styleguide/+(fabricator)/**'],
     data: ['src/styleguide/data/**/*.{json,yml}'],
     docs: ['src/styleguide/docs/**/*.md'],
+    keys: {
+      materials: 'materials',
+      views: 'layouts',
+      docs: 'docs'
+    },
+    logErrors: config.dev,
     dest: config.dest
   });
   done();
@@ -178,13 +184,13 @@ gulp.task('assemble', function (done) {
 // server
 gulp.task('serve', function () {
 
-  browserSync({
-    server: {
-      baseDir: config.dest
-    },
-    //notify: false,
-    logPrefix: 'CHIEF'
-  });
+  // browserSync({
+  //   server: {
+  //     baseDir: config.dest
+  //   },
+  //   //notify: false,
+  //   logPrefix: 'CHIEF'
+  // });
 
   /**
    * Because webpackCompiler.watch() isn't being used
