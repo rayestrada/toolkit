@@ -95,7 +95,7 @@ npm uninstall module_name --save-dev
 ```
 
 #### Shrinkwrap
-Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)
+Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) when development is done to require specific version of modules for maintenance
 ```shell
 npm shrinkwrap --dev
 ```

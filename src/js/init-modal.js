@@ -1,4 +1,4 @@
-require('fancybox')($);
+require('fancybox')(jQuery);
 require('fancybox/dist/css/jquery.fancybox.css');
 
 // http://fancyapps.com/fancybox/
