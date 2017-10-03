@@ -52,6 +52,10 @@ loadGoogleMapsApi().then(function (googleMaps) {
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
+
+    // add marker cluster example map
+    require(['./includes/map-mc']);
+
 }).catch(function (err) {
     console.error(err);
 });
