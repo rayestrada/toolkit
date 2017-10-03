@@ -15,6 +15,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
         scrollwheel: false,
         zoomControl: true,
         zoom: 10,
+        // Google map custom styles: https://snazzymaps.com/explore
         // N/A - we are centering using bounds
         // center: new google.maps.LatLng(45.5506509, -122.6624718)
     });
