@@ -1,0 +1,17 @@
+---
+notes: |
+  You must use the "lazyload" class on any lazy-loading images
+---
+<h3>Image tag with single src</h3>
+<img class="lazyload" data-src="images/nashbridgeslogo.jpg"/>
+
+<h3>Picture tag with multiple srcs</h3>
+<picture>
+  <source media="(min-width: 1024px)" data-srcset="images/nashbridgeslogo.jpg">
+  <img data-src="images/nashbridgeslogo-small.jpg" class="lazyload"/>
+</picture>
+
+<h3>Image tag with srcset</h3>
+
+<img data-srcset="images/nashbridgeslogo-small.jpg 600w, images/nashbridgeslogo.jpg 1024w" sizes="100vw" data-src="images/nashbridgeslogo-small.jpg" class="lazyload"/>
+<!-- <img src="small.jpg" srcset="medium.jpg 1000w, large.jpg 2000w" alt="yah"> -->
