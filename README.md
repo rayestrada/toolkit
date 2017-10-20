@@ -20,7 +20,7 @@
 
 To create standalone directory named toolkit inside your current folder
 ```shell
-git clone https://github.com/rayestrada/toolkit.git yourtoolkit
+git clone https://github.com/agencychief/toolkit.git yourtoolkit
 cd yourtoolkit
 npm install
 ```
@@ -28,7 +28,7 @@ npm install
 To add toolkit files to current folder (theme install)
 ```shell
 git init
-git remote add origin https://github.com/rayestrada/toolkit.git
+git remote add origin https://github.com/agencychief/toolkit.git
 git pull origin master
 npm install
 rm -rf .git
