@@ -17,6 +17,8 @@ require('./includes/sticky');
 require('./includes/konami');
 require('lazysizes');
 
+//Lazysizes documentation: https://github.com/aFarkas/lazysizes
+
 (function ($) {
   // DOC READY
   $(function () {

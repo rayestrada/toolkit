@@ -1,0 +1,9 @@
+---
+notes: |
+  Replace src and srcset attributes with data-src and data-srcset.
+---
+<h3>Picture tag with multiple srcs</h3>
+<picture>
+  <source media="(min-width: 1024px)" data-srcset="images/nashbridgeslogo.jpg">
+  <img data-src="images/nashbridgeslogo-small.jpg" class="lazyload"/>
+</picture>
