@@ -15,9 +15,8 @@ require('./includes/form');
 require('./includes/tabs');
 require('./includes/sticky');
 require('./includes/konami');
-require('lazysizes');
-
 //Lazysizes documentation: https://github.com/aFarkas/lazysizes
+require('lazysizes');
 
 (function ($) {
   // DOC READY
