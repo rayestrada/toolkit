@@ -51,12 +51,38 @@ gulp
 
 ## Javascript
 
-**Some Notes on...**
-- how webpack is being used
-- how to add new plugins/modules
-- where to locate/write scripts
-- how jquery can be used or included
-- promote no script fallback best practices
+**Files location: src/js**
+
+The toolkit utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Webpack allows us to create a modular JavaScript project. 
+
+The toolkit comes packaged with 4 compiled JavaScript files: init-carousel, init-map, init-modal, and init.js. The purpose of having a separate file for carousel, map, and modal is so these files can be included only on pages where they are needed.  
+
+init.js imports all JS files from src/js/includes. Require functions can be removed if you are not using a particular functionality.
+
+All custom JS code should be written in init.js, or in the appropriate toolkit file (i.e. accordion.js can be updated to match your specific use case).
+
+**Adding a new module:**  
+
+- From NPM: 
+  - Follow steps outlined in **Node** section below
+  - Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code
+  - Add your new file as a dependency in init.js (e.g. ```require('./includes/my_new_file')```)
+  
+- Custom Library: 
+  - Add a new JavaScript file to src/js/includes, and add any custom code
+  - Add your new file as a dependency in init.js (e.g. ```require('./includes/my_new_file')```)
+
+**Adding a new JavaScript distribution file**
+
+1. Add new file to src/js
+2. Open gulpfile.js and find ```var config```. This is where you define files to be compiled.
+3. Add your new file to the scripts object (e.g. ```new_file : 'path/to/file'```)  
+4. Open webpack.config.js and find ```entry```. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
+5. Add an entry for your new file (e.g. ```'location/finalScriptName': gulpConfig.src.scripts.new_file```)
+
+**Including jQuery**  
+
+The toolkit can use jQuery from a WordPress or Drupal install, or it can be included using Webpack. To activate the jQuery Webpack plugin, uncomment lines 51-56 in webpack.config.js. This will load jQuery within the context of the files and provide it as a global variable.
 
 
 ## Styleguide
