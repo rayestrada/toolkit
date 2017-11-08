@@ -29,7 +29,7 @@ var config = {
     scripts: {
       fabricator: './src/styleguide/fabricator/scripts/fabricator.js',
       chief: [
-        './src/js/init.js',
+        './src/js/init-script.js',
         './src/js/drupal.js'
       ],
       carousel: './src/js/init-carousel.js',
