@@ -66,19 +66,31 @@ All custom JS code should be written in init-script.js, or in the appropriate to
 - From NPM: 
   - Follow steps outlined in **Node** section below
   - Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code
-  - Add your new file as a dependency in init-script.js (e.g. ```require('./includes/my_new_file')```)
+  - Add your new file as a dependency in init-script.js
+    ```shell
+    require('./includes/my_new_file')
+    ```
   
 - Custom Library: 
   - Add a new JavaScript file to src/js/includes, and add any custom code
-  - Add your new file as a dependency in init-script.js (e.g. ```require('./includes/my_new_file')```)
+  - Add your new file as a dependency in init-script.js
+    ```shell
+    require('./includes/my_new_file')
+    ```
 
 **Adding a new JavaScript distribution file**
 
 1. Add new file to src/js
 2. Open gulpfile.js and find ```var config```. This is where you define files to be compiled.
-3. Add your new file property to the scripts object (e.g. ```new_file : 'path/to/file'```)  
+3. Add your new file property to the scripts object
+    ```shell
+    new_file : 'path/to/file'
+    ```
 4. Open webpack.config.js and find ```entry```. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
-5. Add an entry for your new file (e.g. ```'location/finalScriptName': gulpConfig.src.scripts.new_file```)
+5. Add an entry for your new file
+    ```shell
+    'location/finalScriptName': gulpConfig.src.scripts.new_file
+    ```
 
 **Including jQuery**  
 
