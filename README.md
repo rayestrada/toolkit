@@ -2,6 +2,19 @@
 
 > A full featured toolkit for compiling js, sass and styleguide
 
+
+##### Table of Contents  
+[Features](#features)  
+[Requirements](#requirements)  
+[Quick Start](#quickstart)  
+[Compiling](#compiling)  
+[JavaScript](#javascript)  
+[Styleguide](#styleguide)  
+[Sass](#sass)  
+[Node](#node)  
+
+<a name="features"/>
+
 #### Features
 - Gulp
 - Webpack
@@ -11,10 +24,14 @@
 
 #### [Toolkit Demo](http://toolkit.clientapp.com)
 
+<a name="requirements"/>
+
 ## Global Requirements
 - Node
 - npm
 - gulp
+
+<a name="quickstart"/>
 
 ## Quick Start
 
@@ -35,6 +52,7 @@ rm -rf .git
 rm .gitignore
 ```
 
+<a name="compiling"/>
 
 ## Compiling
 
@@ -48,6 +66,7 @@ npm start
 gulp
 ```
 
+<a name="javascript"/>
 
 ## Javascript
 
@@ -96,6 +115,7 @@ All custom JS code should be written in init-script.js, or in the appropriate to
 
 The toolkit will use jQuery from an external source loaded from a WordPress or Drupal install, or CDN.
 
+<a name="styleguide"/>
 
 ## Styleguide
 
@@ -105,6 +125,7 @@ The toolkit will use jQuery from an external source loaded from a WordPress or D
 - uses [handlebars](http://handlebarsjs.com/expressions.html) syntax
 - Read full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble)  
 
+<a name="sass"/>
 
 ## Sass
 
@@ -169,6 +190,7 @@ Check src/sass/base/_breakpoint.scss for values
 
 When developing please keep accessibility in mind. Elements should be keyboard accessible and have focus states. Additionally, remember to check the color contrast when using a background color.
 
+<a name="node"/>
 
 ## Node
 
