@@ -19,14 +19,14 @@
 ## Quick Start
 
 To create standalone directory named toolkit inside your current folder
-```shell
+```
 git clone https://github.com/agencychief/toolkit.git yourtoolkit
 cd yourtoolkit
 npm install
 ```
 
 To add toolkit files to current folder (theme install)
-```shell
+```
 git init
 git remote add origin https://github.com/agencychief/toolkit.git
 git pull origin master
@@ -39,19 +39,19 @@ rm .gitignore
 ## Compiling
 
 **Development**: Starts a watch of the toolkit files and initializes Browser Sync 
-```shell
+```
 npm start
 ```
 
 **Production**: Compiles and minifies files for packaging
-```shell
+```
 gulp
 ```
 
 
 ## Javascript
 
-**Files location: src/js**
+**Files location:** src/js
 
 The toolkit utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Webpack allows us to create a modular JavaScript project. 
 
@@ -61,38 +61,38 @@ init-script.js is the main js file and is being used to import JS files from src
 
 All custom JS code should be written in init-script.js, or in the appropriate toolkit file (i.e. accordion.js can be updated to match your specific use case).
 
-**Adding a new module:**  
+### Adding a new module  
 
-- From NPM: 
-  - Follow steps outlined in **Node** section below
-  - Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code
-  - Add your new file as a dependency in init-script.js
-    ```shell
+#### From NPM 
+1. Follow steps outlined in **Node** section below
+2. Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code
+3. Add your new file as a dependency in init-script.js
+    ```
     require('./includes/my_new_file')
     ```
   
-- Custom Library: 
-  - Add a new JavaScript file to src/js/includes, and add any custom code
-  - Add your new file as a dependency in init-script.js
-    ```shell
+#### Custom Library 
+1. Add a new JavaScript file to src/js/includes, and add any custom code
+2. Add your new file as a dependency in init-script.js
+    ```
     require('./includes/my_new_file')
     ```
 
-**Adding a new JavaScript distribution file**
+### Adding a new JavaScript distribution file
 
 1. Add new file to src/js
-2. Open gulpfile.js and find ```var config```. This is where you define files to be compiled.
+2. Open gulpfile.js and find `var config`. This is where you define files to be compiled.
 3. Add your new file property to the scripts object
-    ```shell
+    ```
     new_file : 'path/to/file'
     ```
-4. Open webpack.config.js and find ```entry```. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
+4. Open webpack.config.js and find `entry`. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
 5. Add an entry for your new file
-    ```shell
+    ```
     'location/finalScriptName': gulpConfig.src.scripts.new_file
     ```
 
-**Including jQuery**  
+### jQuery  
 
 The toolkit will use jQuery from an external source loaded from a WordPress or Drupal install, or CDN.
 
@@ -108,63 +108,64 @@ The toolkit will use jQuery from an external source loaded from a WordPress or D
 
 ## Sass
 
-**Files location: src/sass**
+**Files location:** src/sass
 
-**File Organization**
+### File Organization
+Sass files are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/)  
 
-Sass files are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/). Atomic Design outlines 5 stages:
-1. **Atoms:** UI elements that can’t be broken down any further and serve as the elemental building blocks of an interface
-2. **Molecules:** Collections of atoms that form relatively simple UI components
-3. **Organisms:** Complex components that form discrete sections of an interface
-4. **Templates:** Components within a layout and demonstrate the design’s underlying content structure
-5. **Pages:** Articulate variations to demonstrate the final UI and test the resilience of the design system.
+Atomic Design outlines 5 stages:  
+* **Atoms:** UI elements that can’t be broken down any further and serve as the elemental building blocks of an interface  
+* **Molecules:** Collections of atoms that form relatively simple UI components  
+* **Organisms:** Complex components that form discrete sections of an interface  
+* **Templates:** Components within a layout and demonstrate the design’s underlying content structure  
+* **Pages:** Articulate variations to demonstrate the final UI and test the resilience of the design system.  
 
-The Sass structure mirrors these stages to a certain extent:
-* **base** one level removed: primarily variables and mixins which can be used to build components, elements, etc 
-* **components** to atom
-* **elements** to molecules
-* **layouts** to organisms
-* **structures** to templates
+The toolkit sass structure aligns with these stages to a certain extent:
+* **base** one level removed: primarily variables and mixins which can be used in building components, elements, etc 
+* **elements** to atoms
+* **components** to molecules
+* **structures** to organisms
+* **layouts** to templates
 
 
-**Breakpoints**
+### Breakpoints
+We encourage mobile-first best practices for media queries, but include some other beneficial breakpoints declarations.
 
-The toolkit has 9 breakpoints defined out of the box:
-1. $min-width (320px)
-2. $mobile (max-width: 500px)
-3. $lg-mobile (501px - 760px)
-4. $tablet (min-width: 761px)
-5. $tablet-only (761px - 1023px)
-6. $all-devices (max-width: 1023px)
-7. $desktop (min-width: 1024px)
-8. $desktop-only (1024px - 1440px)
-9. $lg-desktop (min-width: 1440px)
-
-The toolkit includes [breakpoint-sass](https://www.npmjs.com/package/breakpoint-sass) to handle the writing of media queries. Call it using the ```breakpoint``` mixin:
-
-```shell
-@include breakpoint($variable){}
+The toolkit includes [breakpoint-sass](https://www.npmjs.com/package/breakpoint-sass) to handle the writing of media queries. Call it using the `breakpoint` mixin:
+```
+@include breakpoint($variable){
+  // Your styles here
+}
 ```
 
-**Including a third party library**
+**The toolkit has 9 breakpoint variables defined out of the box:**  
+$min-width  
+$mobile  
+$lg-mobile  
+$tablet  
+$tablet-only  
+$all-devices  
+$desktop  
+$desktop-only  
+$lg-desktop
 
-1. Install the node module and save it as a dev dependency
-    ```shell
-    npm install --save-dev name_of_library
+Check src/sass/base/_breakpoint.scss for values
+
+### Including a third party library
+
+1. Follow steps outlined in **Node** section below
+2. Open gulpfile.js, find `includePaths`, and add the path to the library's stylesheet directory to this array
     ```
-
-2. Open gulpfile.js, find ```includePaths```, and add the path to the library's stylesheet directory to this array
-    ```shell
     'node_modules/name_of_library/path/to/stylesheets'
     ```
-
 3. Open styles.scss and import the library at the top of the file
-    ```shell
+    ```
+    // Add third party library
     @import name_of_library
     ```
 
 
-**Promoting Accessibility**
+### Promoting Accessibility
 
 When developing please keep accessibility in mind. Elements should be keyboard accessible and have focus states. Additionally, remember to check the color contrast when using a background color.
 
@@ -173,22 +174,22 @@ When developing please keep accessibility in mind. Elements should be keyboard a
 
 #### Install a new node module
 Saves the files into the node_modules folder and adds them to the package.json file as a dev dependency
-```shell
+```
 npm install module_name --save-dev
 ```
 or from github
-```shell
+```
 npm install git://github.com/USERNAME/PROJECT.git --save-dev
 ```
 
 #### Uninstall a node module
 Removes the files from the node_modules folder and also removes the dev dependency from the package.json file
-```shell
+```
 npm uninstall module_name --save-dev
 ```
 
 #### Shrinkwrap
-Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) when development is done to require specific version of modules for maintenance
-```shell
+Use this [shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) when development is done to lock specific versions of modules for maintenance
+```
 npm shrinkwrap --dev
 ```
