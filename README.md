@@ -83,30 +83,30 @@ All custom JS code should be written in init-script.js, or in the appropriate to
 ### Adding a new module  
 
 #### From NPM 
-1. Follow steps outlined in **Node** section below
-2. Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code
-3. Add your new file as a dependency in init-script.js
+1. Follow steps outlined in **Node** section below.
+2. Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code.
+3. Add your new file as a dependency in init-script.js:
     ```
     require('./includes/my_new_file')
     ```
   
 #### Custom Library 
-1. Add a new JavaScript file to src/js/includes, and add any custom code
-2. Add your new file as a dependency in init-script.js
+1. Add a new JavaScript file to src/js/includes, and add any custom code.
+2. Add your new file as a dependency in init-script.js:
     ```
     require('./includes/my_new_file')
     ```
 
 ### Adding a new JavaScript distribution file
 
-1. Add new file to src/js
+1. Add new file to src/js.
 2. Open gulpfile.js and find `var config`. This is where you define files to be compiled.
-3. Add your new file property to the scripts object
+3. Add your new file property to the scripts object:
     ```
     new_file : 'path/to/file'
     ```
 4. Open webpack.config.js and find `entry`. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
-5. Add an entry for your new file
+5. Add an entry for your new file:
     ```
     'location/finalScriptName': gulpConfig.src.scripts.new_file
     ```
@@ -119,11 +119,44 @@ The toolkit will use jQuery from an external source loaded from a WordPress or D
 
 ## Styleguide
 
-**Some Notes on...**
-- Organization/location of files
-- how to add a new material or page
-- uses [handlebars](http://handlebarsjs.com/expressions.html) syntax
-- Read full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble)  
+**Files location:** src/styleguide
+
+### Docs
+
+This directory contains documentation related to the Toolkit. Documentation can be added for any new or existing functionality. 
+
+#### Adding documentation
+
+Create a markdown file within the docs directory. A link to the documentation file will be added to the styleguide menu under Docs.  
+
+### Fabricator
+
+This directory contains everything needed to generate the styleguide. The only reason you'd need to edit a file in this directory is if you add a new JavaScript distribution file and it needs to be available in the styleguide.
+
+To add a reference to a new JS file, open `templates/default.html`, and add your reference to the bottom of the page.
+
+Fabricator uses [handlebars](http://handlebarsjs.com/expressions.html) syntax in its HTML files. Read the full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble).  
+
+### Materials
+
+This directory contains the files used to build out the styleguide. Materials are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/). 
+
+#### Adding new materials
+
+##### Single file
+1. Add a new HTML file to the appropriate directory.
+2. Write the necessary markup in the new file.
+
+##### Multiple related files
+1. Create a new directory within one of the top level directories.
+2. Add HTML files with necessary markup into your new directory. All HTML files will be grouped together in the styleguide. See `elements/button` for an example.
+
+#### Adding new pages
+Pages are a collection of components, elements, and structures. New pages should be added in `/pages` directory. You can add any HTML you'd like, and include existing components/elements/structures using [handlebars](http://handlebarsjs.com/expressions.html) syntax. 
+
+See `pages/home.html` for an example.
+
+New components/elements/pages/structures will be added to the styleguide once the `assemble` task is run. 
 
 <a name="sass"/>
 
@@ -174,12 +207,12 @@ Check src/sass/base/_breakpoint.scss for values
 
 ### Including a third party library
 
-1. Follow steps outlined in **Node** section below
-2. Open gulpfile.js, find `includePaths`, and add the path to the library's stylesheet directory to this array
+1. Follow steps outlined in **Node** section below.
+2. Open gulpfile.js, find `includePaths`, and add the path to the library's stylesheet directory to this array.
     ```
     'node_modules/name_of_library/path/to/stylesheets'
     ```
-3. Open styles.scss and import the library at the top of the file
+3. Open styles.scss and import the library at the top of the file.
     ```
     // Add third party library
     @import name_of_library
