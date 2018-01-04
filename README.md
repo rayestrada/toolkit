@@ -121,42 +121,49 @@ The toolkit will use jQuery from an external source loaded from a WordPress or D
 
 **Files location:** src/styleguide
 
+**New components/elements/pages/structures will be added to the styleguide on compile.** 
+
 ### Docs
-
-This directory contains documentation related to the Toolkit. Documentation can be added for any new or existing functionality. 
-
-#### Adding documentation
-
-Create a markdown file within the docs directory. A link to the documentation file will be added to the styleguide menu under Docs.  
+This directory contains documentation in [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) format.   
+Edit existing files or create a new ones related to your unique build.  
+Each document will add a section and print the content on the docs page in your styleguide.  
 
 ### Fabricator
-
-This directory contains everything needed to generate the styleguide. The only reason you'd need to edit a file in this directory is if you add a new JavaScript distribution file and it needs to be available in the styleguide.
-
-To add a reference to a new JS file, open `templates/default.html`, and add your reference to the bottom of the page.
+This directory contains core functionality to generate the styleguide.  
+**Reasons you would need to edit these files:**  
+1. Add/Change styleguide menu sections  
+To update styleguide menu, edit `styleguide/templates/includes/f-menu.html`.
+2. Add/Change default wrapper markup for 'Pages'  
+To update 'Pages' wrapper markup, edit `styleguide/templates/pages-layout.html`.
+3. Add/Change links to resources  
+To update reference to resource, edit `styleguide/templates/default.html`.
 
 Fabricator uses [handlebars](http://handlebarsjs.com/expressions.html) syntax in its HTML files. Read the full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble).  
 
 ### Materials
 
-This directory contains the files used to build out the styleguide. Materials are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/). 
+This directory contains the component files used to build out the styleguide.  
+**This is the location where most if not all work in the styleguide is done**  
+
+Materials are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/) and correspond with sass organization. 
 
 #### Adding new materials
 
 ##### Single file
-1. Add a new HTML file to the appropriate directory.
-2. Write the necessary markup in the new file.
+1. Add HTML file to the material subdirectory.
 
-##### Multiple related files
-1. Create a new directory within one of the top level directories.
-2. Add HTML files with necessary markup into your new directory. All HTML files will be grouped together in the styleguide. See `elements/button` for an example.
+##### Multiple related/grouped files
+1. Create a new directory within one of the material subdirectories.
+2. Add HTML files into your new directory.  
+All HTML files will be grouped together in a styleguide section labeled with the name of the directory. See `styleguide/materials/elements/button` for an example.
 
 #### Adding new pages
-Pages are a collection of components, elements, and structures. New pages should be added in `/pages` directory. You can add any HTML you'd like, and include existing components/elements/structures using [handlebars](http://handlebarsjs.com/expressions.html) syntax. 
+'Pages' are used to prototype pages using a collection of components, elements, and structures.  
+New pages should be added in `styleguide/materials/pages` directory. 
 
-See `pages/home.html` for an example.
+1. Add HTML you'd like, and include existing components/elements/structures using [handlebars](http://handlebarsjs.com/expressions.html) syntax. 
 
-New components/elements/pages/structures will be added to the styleguide once the `assemble` task is run. 
+See `styleguide/materials/pages/home.html` for an example.
 
 <a name="sass"/>
 
