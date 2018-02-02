@@ -1,17 +1,25 @@
 var path = require('path');
 var webpack = require('webpack');
 var jQuery = require('jquery');
+var glob = require('glob');
 
+var glob_entries = function (globs) {
+    var entries = {};
+    Object.keys(globs).forEach(function(key) {
+        var globPath = globs[key];
+        var files = glob.sync(globPath);
+
+        for (var i = 0; i < files.length; i++) {
+            var entry = files[i];
+            entries[key + '/' + path.basename(entry, path.extname(entry))] = entry;
+        }
+    });
+    return entries;
+};
 
 module.exports = function(gulpConfig) {
  var config = {
-   entry: {
-     'js/script': gulpConfig.src.scripts.chief,
-     'js/carousel': gulpConfig.src.scripts.carousel,
-     'js/modal': gulpConfig.src.scripts.modal,
-     'js/map': gulpConfig.src.scripts.map,
-     'fabricator/js/fabricator': gulpConfig.src.scripts.fabricator
-   },
+   entry: glob_entries(gulpConfig.src.scripts),
    output: {
      path: path.resolve(__dirname, gulpConfig.dest),
      filename: '[name].js'
