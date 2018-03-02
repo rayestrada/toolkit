@@ -1,0 +1,24 @@
+// Inline Background Image
+.inline-background-image {
+  position: relative;
+  > .image {
+    @extend %fill;
+    overflow: hidden;
+    img {
+      display: block;
+      width: auto;
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: none;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  > .content {
+    // For content to be positioning on top of image
+    position: relative;
+  }
+}

@@ -20,21 +20,15 @@ var prefix = require('gulp-autoprefixer');
 
 var imagemin = require('gulp-imagemin');
 
-var svgSprite				= require('gulp-svg-sprite');
+var svgSprite = require('gulp-svg-sprite');
 
 // configuration
 var config = {
   dev: gutil.env.dev,
   src: {
     scripts: {
-      fabricator: './src/styleguide/fabricator/scripts/fabricator.js',
-      chief: [
-        './src/js/init-script.js',
-        './src/js/drupal.js'
-      ],
-      carousel: './src/js/init-carousel.js',
-      modal: './src/js/init-modal.js',
-      map: './src/js/init-map.js',
+      'js' : './src/js/*.js',
+      'fabricator/js' : './src/styleguide/fabricator/scripts/fabricator.js'
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
@@ -110,7 +104,7 @@ gulp.task('images', function () {
 // create svgs
 // for full configuration options see https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
 // This generates a 'build' folder inside the src/svg folder to be used for sass sprites and copied on output
-gulp.task('svg:create', function(){
+gulp.task('svg:create', function () {
   gulp.src(config.src.svg)
     .pipe(svgSprite({
       dest: '.',
@@ -146,7 +140,7 @@ gulp.task('svg:create', function(){
 });
 
 // copy svgs
-gulp.task('svg:copy', function() {
+gulp.task('svg:copy', function () {
   gulp.src('./src/svg/build/**/*.svg')
     .pipe(gulp.dest(config.dest));
 });
@@ -155,7 +149,7 @@ gulp.task('svg:copy', function() {
 gulp.task('svg', ['svg:create', 'svg:copy']);
 
 // fonts
-gulp.task('fonts', function() {
+gulp.task('fonts', function () {
   gulp.src(config.src.fonts)
     .pipe(gulp.dest(config.dest + '/fonts'));
 });

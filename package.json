@@ -1,7 +1,7 @@
 {
-  "name": "gulp_webpack_jquery",
-  "version": "1.0.0",
-  "description": "Working boilerplate with Gulp, Webpack and Jquery Plugins",
+  "name": "chief_toolkit",
+  "version": "1.0.1",
+  "description": "CHIEF boilerplate with Gulp, Webpack and Jquery Plugins",
   "license": "ISC",
   "main": "index.html",
   "scripts": {
@@ -27,6 +27,7 @@
     "fabricator-assemble": "^1.2.0",
     "fancybox": "^3.0.0",
     "file-loader": "^0.9.0",
+    "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-csso": "^2.0.0",
@@ -48,6 +49,7 @@
     "modernizr": "^3.3.1",
     "modernizr-loader": "0.0.5",
     "owl.carousel": "^2.2.0",
+    "path": "^0.12.7",
     "run-sequence": "^1.2.2",
     "sticky-kit": "git://github.com/leafo/sticky-kit.git",
     "style-loader": "^0.13.1",
