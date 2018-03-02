@@ -74,11 +74,9 @@ gulp
 
 The toolkit utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Webpack allows us to create a modular JavaScript project. 
 
-The toolkit comes packaged with 4 compiled JavaScript files: carousel.js, map.js, modal.js, and script.js. The purpose of having a separate file for carousel, map, and modal is so these files can be included only on pages where they are needed.  
+All js files that are added to the main js folder will be output as a standalone file in the output folder. All js files in subdirectories will not be output as standalone files. The toolkit comes packaged with 4 example standalone JavaScript files: init-carousel.js, init-map.js, init-modal.js, and init-script.js.  
 
-init-script.js is the main js file and is being used to import JS files from src/js/includes. Require functions can be removed if you are not using a particular functionality.
-
-All custom JS code should be written in init-script.js, or in the appropriate toolkit file (i.e. accordion.js can be updated to match your specific use case).
+init-script.js is the main js file and is an example which includes component JS files from a subdirectory `includes`. Require functions can be removed or commented out safely if you are not using these components functionality.
 
 ### Adding a new module  
 
@@ -99,17 +97,12 @@ All custom JS code should be written in init-script.js, or in the appropriate to
 
 ### Adding a new JavaScript distribution file
 
-1. Add new file to src/js.
-2. Open gulpfile.js and find `var config`. This is where you define files to be compiled.
-3. Add your new file property to the scripts object:
-    ```
-    new_file : 'path/to/file'
-    ```
-4. Open webpack.config.js and find `entry`. This is where you define where in the dist directory the new file will be placed, and the name of the output file itself.
-5. Add an entry for your new file:
-    ```
-    'location/finalScriptName': gulpConfig.src.scripts.new_file
-    ```
+1. Add new file to src/js. This will be output into the dist/js folder when compiled.
+
+If you want to add additional folders to output standalone JavaScript files you can modify the `config.src.scripts` settings in the `gulpfile.js` using this pattern
+```
+'output_folder_name' : 'path_to_the_file',
+```
 
 ### jQuery  
 
