@@ -1,7 +1,7 @@
 {
-  "name": "gulp_webpack_jquery",
-  "version": "1.0.0",
-  "description": "Working boilerplate with Gulp, Webpack and Jquery Plugins",
+  "name": "chief_toolkit",
+  "version": "1.0.1",
+  "description": "CHIEF boilerplate with Gulp, Webpack and Jquery Plugins",
   "license": "ISC",
   "main": "index.html",
   "scripts": {
