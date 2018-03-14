@@ -55,7 +55,10 @@ gulp.task('styles:fabricator', function () {
   gulp.src(config.src.styles.fabricator)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(prefix('last 2 versions'))
+      .pipe(prefix({
+          browsers: ['last 2 versions'],
+          grid: false
+      }))
     .pipe(gulpif(!config.dev, csso()))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest + '/fabricator/css'))
@@ -69,7 +72,10 @@ gulp.task('styles:chief', function () {
     .pipe(sass({
       includePaths: ['node_modules/breakpoint-sass/stylesheets']
     }).on('error', sass.logError))
-    .pipe(prefix('last 2 versions'))
+      .pipe(prefix({
+          browsers: ['last 2 versions'],
+          grid: false
+      }))
     .pipe(gulpif(!config.dev, csso()))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest + '/css'))
