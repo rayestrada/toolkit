@@ -2,12 +2,12 @@
 fabricator: true
 ---
 
-<h1 data-f-toggle="labels">Docs</h1>
+<div class="f-page-title" data-f-toggle="labels">Docs</div>
 
 {{#each docs}}
 
 <div class="f-item-group">
-  <h2 id="{{@key}}"><a href="#{{@key}}">{{name}}</a></h2>
+  <div class="f-item-heading" id="{{@key}}"><a href="#{{@key}}">{{name}}</a></div>
   {{{content}}}
 </div>
 
