@@ -22,10 +22,12 @@
 h3.message__title {
   margin: 0;
 }
+
 .messages--status {
   @extend .messages;
   @extend %ok;
 }
+
 .messages--warning {
   @extend .messages;
   @extend %warning;
@@ -35,6 +37,7 @@ h3.message__title {
     color: #ed5;
   }
 }
+
 .messages--error {
   @extend .messages;
   @extend %error;
@@ -45,15 +48,17 @@ h3.message__title {
   }
 
 }
+
 .messages__list {
   margin: 0;
 }
+
 .messages__item {
   list-style-image: none;
 }
 
 /* Core/module installation error messages. */
-.messages--error  p.error {
+.messages--error p.error {
   color: #333;
 }
 
@@ -63,11 +68,13 @@ h3.message__title {
   background-color: #f8fff0;
   color: #234600;
 }
+
 .warning,
 %warning {
   background-color: #fffce5;
   color: #840;
 }
+
 .error,
 %error {
   background-color: #fef5f1;

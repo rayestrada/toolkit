@@ -25,7 +25,6 @@ body {
   padding: 0;
 }
 
-
 /**
  * Links
  */
@@ -89,7 +88,6 @@ blockquote,
 p {
   margin: 1em 0;
 }
-
 
 /* Address styling not present in IE 8/9, Safari 5, and Chrome. */
 abbr[title] {
@@ -178,6 +176,7 @@ ul {
   /* Address margins set differently in IE 6/7. */
   margin: 1em 0;
 }
+
 ol,
 ul {
   ol,
@@ -186,6 +185,7 @@ ul {
     margin: 0;
   }
 }
+
 dd {
   margin: 0 0 0 30px; /* LTR */
 }

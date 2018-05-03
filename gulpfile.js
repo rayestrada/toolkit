@@ -27,8 +27,8 @@ var config = {
   dev: gutil.env.dev,
   src: {
     scripts: {
-      'js' : './src/js/*.js',
-      'fabricator/js' : './src/styleguide/fabricator/scripts/fabricator.js'
+      'js': './src/js/*.js',
+      'fabricator/js': './src/styleguide/fabricator/scripts/fabricator.js'
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',

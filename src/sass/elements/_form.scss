@@ -5,14 +5,17 @@ form {
     @include trim();
   }
 }
+
 .form-item,
 .form-actions {
   margin: 20px 0;
 }
+
 label {
   font-family: $sans;
   margin-bottom: 5px;
 }
+
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -49,12 +52,13 @@ input[type="radio"] {
       box-shadow: 0 0 5px #444;
     }
   }
-  &:checked + label{
+  &:checked + label {
     &:before {
       background-color: $highlight;
     }
   }
 }
+
 input[type="radio"] + label:before {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -68,7 +72,7 @@ input[type="radio"] + label:before {
   background-clip: padding-box;
   background-color: #eee;
   border: 1px solid $ltgray;
-  display:inline-block;
+  display: inline-block;
 }
 
 select {

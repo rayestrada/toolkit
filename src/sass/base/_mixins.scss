@@ -60,7 +60,7 @@
   @include breakpoint($tablet-only) {
     margin: 0 auto;
   }
-  @include breakpoint($desktop){
+  @include breakpoint($desktop) {
     max-width: $screen-max - 120px;
     margin: 0 60px;
   }
@@ -68,7 +68,6 @@
     margin: 0 auto;
   }
 }
-
 
 // Isolate a hover effect only for non-touch screens - requires Modernizr with touch detection
 @mixin notouchhover {
@@ -128,16 +127,13 @@
     @if $type == float {
       float: left;
       display: block;
-    }
-    @else if $type == inline {
+    } @else if $type == inline {
       display: inline;
-    }
-    @else if $type == inline-block {
+    } @else if $type == inline-block {
       display: inline-block;
     }
   }
 }
-
 
 // auto scroll with smooth scrolling on touch devices
 %scroll {

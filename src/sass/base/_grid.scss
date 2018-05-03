@@ -4,14 +4,12 @@ $grid-columns: 16;
 $grid-column-gap: 20px;
 $grid-row-gap: $grid-column-gap;
 
-
 /* FUNCTIONS
 ********************************/
 @function negative ($number) {
   @if type-of($number) != number {
     @return $number;
-  }
-  @else if $number != 0 {
+  } @else if $number != 0 {
     @return -$number;
   }
 }
@@ -28,8 +26,8 @@ $grid-row-gap: $grid-column-gap;
 
 // column
 @mixin col($columns: 1, $grid: $grid-columns, $column-gap: $grid-column-gap, $offset: 0, $float: left) {
-  width: calc((#{$columns}/#{$grid})*100% - #{$column-gap});
-  margin-left: calc((#{$offset}/#{$grid})*100% + #{$column-gap});
+  width: calc((#{$columns} / #{$grid}) * 100% - #{$column-gap});
+  margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
   @if $float != none {
     float: $float;
   }
@@ -37,13 +35,13 @@ $grid-row-gap: $grid-column-gap;
 
 // offset
 @mixin offset($offset: 1, $grid: $grid-columns, $column-gap: $grid-column-gap) {
-  margin-left: calc((#{$offset}/#{$grid})*100% + #{$column-gap});
+  margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
 }
 
 // change column width
 @mixin changecol($original_columns, $add_columns_left, $add_columns_right, $column-gap: $grid-column-gap) {
-  margin-left: calc((100%/#{$original_columns}) * #{$add_columns_left} - #{$column-gap});
-  margin-right: calc((100%/#{$original_columns}) * #{$add_columns_right} - #{$column-gap});
+  margin-left: calc((100% / #{$original_columns}) * #{$add_columns_left} - #{$column-gap});
+  margin-right: calc((100% / #{$original_columns}) * #{$add_columns_right} - #{$column-gap});
   width: auto;
   position: relative;
 }
@@ -95,7 +93,7 @@ $grid-row-gap: $grid-column-gap;
 
 // Generation grid span classes for 12 column grid
 @include breakpoint($desktop) {
-  .column-wrapper{
+  .column-wrapper {
     &.twelve {
       @include colwrapper(null);
       @include generate-grid-span(12);
@@ -115,6 +113,7 @@ $grid-row-gap: $grid-column-gap;
     @include tm-grid(4);
   }
 }
+
 @include breakpoint($tablet-only) {
   .two-column-grid,
   .three-column-grid,
@@ -136,12 +135,15 @@ $grid-row-gap: $grid-column-gap;
 .center-10 {
   @include col(10, 12, 0, 1, none);
 }
+
 .center-8 {
   @include col(8, 12, 0, 2, none);
 }
+
 .center-6 {
   @include col(6, 12, 0, 3, none);
 }
+
 .center-4 {
   @include col(4, 12, 0, 4, none);
 }

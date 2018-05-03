@@ -11,13 +11,9 @@ $indent-amount: 30px;
 @mixin font-size($sizeValue: 16) {
   font-size: $sizeValue + px;
   font-size: ($sizeValue / 10) + rem;
-  // @TODO calculate lineheight using font-size, x-height and some type of ratio
-  // x-height and ratio would be variables
-  // provide a way to override or omit
-  // different ratio for headings?
 }
 
-body{
+body {
   @include font-size(18);
   line-height: $lineheight;
   font-family: $base-font-family;
@@ -37,6 +33,7 @@ body{
 h1 {
   font-family: $base-heading-font;
 }
+
 // Heading style
 h2,
 h3,
@@ -45,13 +42,16 @@ h5,
 h6 {
   font-family: $base-heading-font;
 }
+
 a {
   color: $highlight;
   text-decoration: none;
 }
+
 hr {
   border-bottom: $border;
 }
+
 blockquote {
   border-left: $border;
   padding-left: $indent-amount;
@@ -61,14 +61,17 @@ blockquote {
     margin: 0.5em 0;
   }
 }
+
 cite {
   @include font-size(16);
   display: block;
 }
+
 .intro {
   font-size: 1.5em;
   line-height: 1.5em;
 }
+
 // Global button styling
 .button-link,
 %button {
@@ -94,6 +97,7 @@ cite {
     background-color: lighten($highlight, 10);
   }
 }
+
 #logo img {
   max-width: 160px;
 }

@@ -8,6 +8,7 @@
   padding: 0;
   text-align: center;
 }
+
 %pager__item {
   display: inline;
   padding: 0 0.5em;
@@ -15,11 +16,11 @@
   background-image: none;
 }
 
-.pager-item,      /* A list item containing a page number in the list of pages. */
-.pager-first,     /* The first page's list item. */
-.pager-previous,  /* The previous page's list item. */
-.pager-next,      /* The next page's list item. */
-.pager-last,      /* The last page's list item. */
+.pager-item, /* A list item containing a page number in the list of pages. */
+.pager-first, /* The first page's list item. */
+.pager-previous, /* The previous page's list item. */
+.pager-next, /* The next page's list item. */
+.pager-last, /* The last page's list item. */
 .pager-ellipsis { /* A concatenation of several list items using an ellipsis. */
   @extend %pager__item;
 }

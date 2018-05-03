@@ -1,13 +1,10 @@
 <!-- fabricator menu -->
 <div class="f-menu">
-
-	{{> f-controls}}
-
-	<ul>
-
-		<li>
-			<a href="index.html" class="f-menu__heading">Overview</a>
-		</li>
+  {{> f-controls}}
+  <ul>
+    <li>
+      <a href="index.html" class="f-menu__heading">Overview</a>
+    </li>
 
     {{!-- Elements --}}
     <li>
@@ -59,19 +56,19 @@
     </li>
     {{/each}} --}}
 
-		{{#each layouts}}
-		<li>
-			<a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
-			<ul>
-				{{#each items}}
-				<li>
-					<a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
-				</li>
-				{{/each}}
-			</ul>
-		</li>
-		{{/each}}
-	</ul>
+    {{#each layouts}}
+    <li>
+      <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+      <ul>
+        {{#each items}}
+        <li>
+          <a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+    {{/each}}
+  </ul>
 
 
   <li>
@@ -84,7 +81,5 @@
       {{/each}}
     </ul>
   </li>
-
-
 </div>
 <!-- /fabricator menu -->

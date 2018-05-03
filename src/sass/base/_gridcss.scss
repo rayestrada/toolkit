@@ -6,7 +6,7 @@
   #{$grid-type}: #{$args};
   grid-column-gap: $column-gap;
   grid-row-gap: $row-gap;
-  grid-auto-flow:#{$flow};
+  grid-auto-flow: #{$flow};
 }
 
 // Semantic grid
@@ -18,13 +18,13 @@
 }
 
 // Grid item spanning
-@mixin gridcss-item-span($columns: null, $rows: null){
+@mixin gridcss-item-span($columns: null, $rows: null) {
   grid-column-end: span $columns;
   grid-row-end: span $rows;
 }
 
 // Grid item explicit placement/sizing
-@mixin gridcss-item-placement($column: null, $row: null){
+@mixin gridcss-item-placement($column: null, $row: null) {
   grid-row: #{$row};
   grid-column: #{$column};
 }
@@ -41,6 +41,7 @@
 .example-larger {
   @include gridcss-item-span(2, 3);
 }
+
 // example reposition and enlarge grid item
 .example-position {
   /* autoprefixer: off */

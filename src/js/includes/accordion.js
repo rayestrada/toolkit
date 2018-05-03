@@ -2,7 +2,7 @@
 (function ($) {
   // DOC READY
   $(function () {
-    
+
     var accordioncontainer = '.custom-accordion',
       accordioncontent = '.accordion-content',
       accordiontrigger = '.accordion-trigger';

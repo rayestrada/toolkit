@@ -7,7 +7,6 @@
  *
  */
 
-
 /**
  * Center the page.
  *
@@ -16,7 +15,7 @@
  */
 
 /* LAYOUT FOR MOBILE MENU */
-@include breakpoint($all-devices){
+@include breakpoint($all-devices) {
   #main,
   #footer,
   #region-bottom {
@@ -34,7 +33,6 @@
 #main {
   @include clearfix();
 }
-
 
 @include breakpoint($desktop) {
   //The layout when there are no sidebars.
