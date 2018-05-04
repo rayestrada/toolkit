@@ -185,10 +185,20 @@ gulp.task('assemble', function (done) {
 gulp.task('serve', function () {
 
   browserSync({
-    server: {
-      baseDir: config.dest
-    },
-    //notify: false,
+    // Add your vhost as the proxy for local development
+    // Avoid using .local address because it's super slow to load
+    // Disable caching from your browser to see the display update
+    // Uncomment line below to work on your site install
+    // proxy: 'toolkit.dev',
+
+    // Uncomment lines below to work on the styleguide directly
+    // server: {
+    //   baseDir: config.dest
+    // },
+
+    // Uncomment lines below to work from multiple browsers
+    // browser: ['google chrome', 'firefox', 'safari'],
+    
     logPrefix: 'CHIEF'
   });
 
