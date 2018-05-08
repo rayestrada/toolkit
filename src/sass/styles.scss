@@ -1,23 +1,21 @@
 /**
  * @file
  * Styles are loosely organized using the SMACSS technique.
+ *
+ * Import Sass mixins, variables, modules, etc.
  */
-/* Import Sass mixins, variables, modules, etc. */
-// Add the Breakpoint mixins
+
+// Add breakpoint mixins.
 @import "breakpoint";
-// Custom settings.
+// Add base settings.
 @import "base/base";
-// Elements
+// Add elements.
 @import "elements/elements";
-// Components
+// Add components.
 @import "components/components";
-// Structures
+// Add structure styles.
 @import "structures/structures";
-// Layout rules
+// Add layout styles.
 @import "layouts/layout";
-// Drupal Specific components
-@import "drupal/drupal";
-// WordPress Specific components
-@import "wordpress/wordpress";
-// Print
+// Add print stylesheets
 @import "print";
