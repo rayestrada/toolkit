@@ -70,7 +70,7 @@ gulp.task('styles:chief', function () {
   gulp.src(config.src.styles.chief)
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: ['node_modules/breakpoint-sass/stylesheets']
+      includePaths: ['node_modules/breakpoint-sass/stylesheets', 'node_modules/standardize-sass/stylesheet']
     }).on('error', sass.logError))
       .pipe(prefix({
           browsers: ['last 2 versions'],

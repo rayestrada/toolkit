@@ -51,6 +51,7 @@
     "owl.carousel": "^2.2.0",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
+    "standardize-sass": "^1.0.0",
     "sticky-kit": "git://github.com/leafo/sticky-kit.git",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

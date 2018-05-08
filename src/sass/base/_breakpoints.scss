@@ -1,11 +1,19 @@
-// Screen widths
+/**
+ * @file
+ * Breakpoint variables.
+ *
+ * Provide some default breakpoints.
+ *
+ */
+
+// Define screen width variables.
 $screen-min: 320px;
 $screen-mobile: 500px;
 $screen-tablet: 760px;
 $screen-desktop: 1024px;
 $screen-max: 1440px;
 
-// Breakpoints
+// Define breakpoint variables using screen widths.
 $min-width: $screen-min;
 $mobile: max-width $screen-mobile;
 $lg-mobile: $screen-mobile + 1 $screen-tablet;

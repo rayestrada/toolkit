@@ -1,11 +1,17 @@
-/* GRID VARIABLES
-********************************/
+/**
+ * @file
+ * A column based grid solution using floats.
+ *
+ * Define variables and mixins to generate a grid.
+ *
+ */
+
+// Define grid variables.
 $grid-columns: 16;
 $grid-column-gap: 20px;
 $grid-row-gap: $grid-column-gap;
 
-/* FUNCTIONS
-********************************/
+// Convert a number into a negative value.
 @function negative ($number) {
   @if type-of($number) != number {
     @return $number;
@@ -14,9 +20,10 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-/* MIXINS
-********************************/
-// column wrapper
+// Define a column wrapper.
+//
+// $row-gap: Vertical space between rows.
+// $column-gap: Horizontal space between columns.
 @mixin colwrapper($row-gap: $grid-row-gap, $column-gap: $grid-column-gap) {
   margin-top: negative($row-gap);
   margin-left: negative($column-gap);
@@ -24,7 +31,13 @@ $grid-row-gap: $grid-column-gap;
   position: relative;
 }
 
-// column
+// Define a column item.
+//
+// $columns: Number of columns this should span.
+// $grid: Context of how many columns the container spans.
+// $column-gap: Horizontal space between columns.
+// $offset: Number of columns this should be offset.
+// $float: left or none.
 @mixin col($columns: 1, $grid: $grid-columns, $column-gap: $grid-column-gap, $offset: 0, $float: left) {
   width: calc((#{$columns} / #{$grid}) * 100% - #{$column-gap});
   margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
@@ -33,12 +46,21 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-// offset
+// Define a standalone offset based on the grid.
+//
+// $offset: Number of columns this should be offset.
+// $grid: Context of how many columns the container spans.
+// $column-gap: Horizontal space between columns.
 @mixin offset($offset: 1, $grid: $grid-columns, $column-gap: $grid-column-gap) {
   margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
 }
 
-// change column width
+// Change the column width of an item.
+//
+// $original_columns: Number of original columns that this spans.
+// $add_columns_left: Number of columns to add to left.
+// $add_columns_right: Number of columns to add to right.
+// $column-gap: Horizontal space between columns.
 @mixin changecol($original_columns, $add_columns_left, $add_columns_right, $column-gap: $grid-column-gap) {
   margin-left: calc((100% / #{$original_columns}) * #{$add_columns_left} - #{$column-gap});
   margin-right: calc((100% / #{$original_columns}) * #{$add_columns_right} - #{$column-gap});
@@ -46,17 +68,10 @@ $grid-row-gap: $grid-column-gap;
   position: relative;
 }
 
-//Preferred version of clearfix
-@mixin clearfix() {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-// generation column spans
-@mixin generate-grid-span($grid: $grid-columns) {
+// Generate column span classes based on grid size.
+//
+// $grid: Number of grid column span classes to generate.
+@mixin generate-grid-classes($grid: $grid-columns) {
   @for $i from 1 through $grid {
     .span-#{$i} {
       @include col($i, $grid);
@@ -69,7 +84,37 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-// grid
+// Generate grid span classes for 12 column grid.
+@include breakpoint($desktop) {
+  .column-wrapper {
+    &.twelve {
+      @include colwrapper(null);
+      @include generate-grid-classes(12);
+    }
+  }
+}
+
+// Generate centering classes based on grid size.
+//
+// $grid: Number of grid center classes to generate.
+@mixin generate-center-classes($grid: $grid-columns) {
+  @for $i from 1 through $grid {
+    .center-#{$i} {
+      @include col($i, $grid, 0, ((#{$grid} - #{$i}) / 2), none);
+    }
+  }
+}
+
+// Generate center classes for 12 column grid.
+@include breakpoint($desktop) {
+  @include generate-center-classes(12);
+}
+
+// Style a uniform grid.
+//
+// $number: Number of columns for grid
+// $row-gap: Vertical space between rows.
+// $column-gap: Horizontal space between columns.
 @mixin tm-grid($number, $row-gap: $grid-row-gap, $column-gap: $grid-column-gap) {
   @include colwrapper($row-gap, $column-gap);
   > * {
@@ -85,23 +130,7 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-/* DISPLAY
-********************************/
-.clearfix {
-  @include clearfix;
-}
-
-// Generation grid span classes for 12 column grid
-@include breakpoint($desktop) {
-  .column-wrapper {
-    &.twelve {
-      @include colwrapper(null);
-      @include generate-grid-span(12);
-    }
-  }
-}
-
-// create default classes for frequently used grids
+// Create generic classes for frequently used grids.
 @include breakpoint($desktop) {
   .two-column-grid {
     @include tm-grid(2);
@@ -113,7 +142,6 @@ $grid-row-gap: $grid-column-gap;
     @include tm-grid(4);
   }
 }
-
 @include breakpoint($tablet-only) {
   .two-column-grid,
   .three-column-grid,
@@ -122,28 +150,10 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-// example breakout column grid item
+// Example: breakout column grid item using changecol().
 .example-breakout {
   background-color: $highlight;
   @include breakpoint($desktop) {
     @include changecol(1, -1, -1);
   }
-}
-
-/* CENTERING OFFSET
-********************************/
-.center-10 {
-  @include col(10, 12, 0, 1, none);
-}
-
-.center-8 {
-  @include col(8, 12, 0, 2, none);
-}
-
-.center-6 {
-  @include col(6, 12, 0, 3, none);
-}
-
-.center-4 {
-  @include col(4, 12, 0, 4, none);
 }
