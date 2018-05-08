@@ -1,15 +1,14 @@
 /**
- * Breadcrumb navigation.
- */
+* @file
+* Breadcrumb styles.
+*
+* Define some global breadcrumb styles.
+*
+*/
+
 .breadcrumb {
+  ul,
   ol {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    @include list-reset(inline);
   }
 }

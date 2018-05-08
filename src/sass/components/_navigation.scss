@@ -1,6 +1,11 @@
 /**
- * Navigation bar.
- */
+* @file
+* Navigation styles.
+*
+* Define some global navigation styles.
+*
+*/
+
 #navigation {
   padding: 1em 0;
   font-family: $sans;
@@ -19,8 +24,7 @@
           white-space: nowrap;
         }
       }
-      &.focus,
-      &:hover {
+      @include hover {
         background-color: $owhite;
         > ul.menu {
           left: 0;
@@ -34,13 +38,14 @@
         &.active {
           border-bottom: 2px solid $highlight;
         }
-        @include notouchhover {
+        @include hover {
           color: $medgray;
         }
       }
     }
   }
 
+  // Mobile navigation styles.
   @include breakpoint($all-devices) {
     background-color: #f7f7f7;
     height: 100%;
@@ -51,14 +56,7 @@
     top: 76px;
     width: 255px;
     z-index: 99999;
-    -webkit-transition-property: right;
-    -moz-transition-property: right;
-    -o-transition-property: right;
-    transition-property: right;
-    -webkit-transition-duration: 300ms;
-    -moz-transition-duration: 300ms;
-    -o-transition-duration: 300ms;
-    transition-duration: 300ms;
+    transition: right 300ms;
     .menu-active & {
       right: 0;
       transition: all 500ms ease;
