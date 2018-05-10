@@ -21,7 +21,7 @@
   <!-- /vendor scripts -->
 </head>
 <body>
-<a href="#main-content" class="visually-hidden element-focusable skip-link" id="top">Skip to main content</a>
+<a href="#main" class="visually-hidden element-focusable skip-link" id="top">Skip to main content</a>
 
 {{#if fabricator}}
 {{> f-icons}}
@@ -30,9 +30,9 @@
   {{> f-control-bar}}
   {{/if}}
 
-  <a id="main-content"></a>
-  {% body %}
-
+  <div id="main">
+    {% body %}
+  </div>
 
   {{#if fabricator}}
 </div>
