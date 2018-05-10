@@ -47,8 +47,8 @@
     // add class on focus
     nav.find('a').on({
       focus: function () {
-        $(this).closest('.top-level-menu-item').addClass('focus')
-          .siblings().removeClass('focus');
+        $(this).closest('.top-level-menu-item').addClass('js-focus')
+          .siblings().removeClass('js-focus');
       },
       mouseenter: function () {
         // let normal hovers override
@@ -59,48 +59,10 @@
     // removes focus class and focus from all menu items
     function outofmenu() {
       kids.each(function () {
-        $(this).removeClass('focus');
+        $(this).removeClass('js-focus');
         nav.find('a').blur();
       });
     }
-
-    /**
-     * Menu mobile trigger
-     */
-
-    // Menu trigger functionality
-    // trig.click(function(e){
-    //   e.preventDefault();
-    //   $('body').toggleClass('no-scroll menu-open');
-    //   $('#header nav, #header .menu-trigger').toggleClass('show-menu');
-    // });
-    //
-    // trig.keydown(function(e){
-    //   if (!trig.parent().hasClass(mobilemenuclass)) {
-    //     if(e.which == 9 && !e.shiftKey) {
-    //       $(this).trigger('click');
-    //     }
-    //   }
-    // });
-    // nav.find('a.first-menu-item').keydown(function(e){
-    //   // shift tabbed out
-    //   if(e.which == 9 && e.shiftKey) {
-    //     trig.trigger('click');
-    //   }
-    // });
-    // nav.find('a.last-menu-item').keydown(function(e){
-    //   // shift tabbed out
-    //   if(e.which == 9 && !e.shiftKey) {
-    //     trig.trigger('click').addClass('return-check');
-    //   }
-    // }).on('focus', function(){
-    //   if(trig.hasClass('return-check')) {
-    //     trig.removeClass('return-check')
-    //       .trigger('click');
-    //     $(this).focus();
-    //   }
-    // });
-
 
     /**
      * Skip links
@@ -113,7 +75,7 @@
         trig.addClass('return-check');
       }
     });
-    backtotoplink.on('focus', function () {
+    backtotoplink.on('js-focus', function () {
       // scroll back to top link into view
       window.scrollTo(0, document.body.scrollHeight);
     });
