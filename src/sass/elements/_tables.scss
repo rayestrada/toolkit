@@ -1,12 +1,14 @@
 /**
- * Global Tables
- */
+* @file
+* Table styles.
+*
+*/
+
 table {
-  border-color: lightgray;
-  border: 0;
+  border: 0 solid lightgray;
   width: 100% !important;
   tr {
-    border: 0px solid lightgray;
+    border: 0 solid lightgray;
     &:nth-child(even) {
       background: #f7f7f7;
     }
@@ -37,9 +39,7 @@ table {
   }
 }
 
-/**
- * Responsive data tables with headers
- */
+// Responsive data tables with headers.
 @include breakpoint($all-devices) {
   table.data {
     overflow: hidden;

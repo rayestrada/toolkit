@@ -1,3 +1,26 @@
+/**
+* @file
+* Form element styles.
+*
+*/
+
+// Fully prefixed placeholder styling.
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// Global form styles
 form {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -5,17 +28,18 @@ form {
     @include trim();
   }
 }
-
 .form-item,
 .form-actions {
   margin: 20px 0;
 }
 
+// Global label styles.
 label {
   font-family: $sans;
   margin-bottom: 5px;
 }
 
+// Global input styles.
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -28,7 +52,6 @@ textarea {
   box-sizing: border-box;
   border: $border;
 }
-
 input[type="checkbox"],
 input[type="radio"] {
   @extend %element-invisible;
@@ -58,38 +81,31 @@ input[type="radio"] {
     }
   }
 }
-
 input[type="radio"] + label:before {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
 
+// Global select box styles.
 .selectlist {
   position: relative;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
   background-clip: padding-box;
   background-color: #eee;
   border: 1px solid $ltgray;
   display: inline-block;
 }
-
 select {
   box-sizing: border-box;
   position: relative;
   display: block;
   z-index: 2;
   border: 1px solid $ltgray;
-  -webkit-appearance: none;
   appearance: none;
-  -moz-appearance: none;
   -moz-padding-end: 10px;
   line-height: 1em;
   height: 40px;
   padding: 8px 16px;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
   border-radius: 0;
   cursor: pointer;
   font-family: $sans;
@@ -105,6 +121,7 @@ select {
   }
 }
 
+// Global button styles.
 button,
 input[type="submit"],
 input[type="button"] {
