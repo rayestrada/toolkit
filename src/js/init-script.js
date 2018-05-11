@@ -1,6 +1,3 @@
-// import modernizr
-require('!modernizr!./.modernizrrc');
-
 // import toolkit scripts
 require('./includes/eqheights');
 require('./includes/accordion');

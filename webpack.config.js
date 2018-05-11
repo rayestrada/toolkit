@@ -41,18 +41,8 @@ module.exports = function (gulpConfig) {
           test: /\.(png|jpg|svg|gif)$/,
           include: /node_modules/,
           loader: 'url-loader?limit=20000' // (20kb) Any file smaller than limit will use data uri instead
-        },
-        {
-          // For modernizr JSON option names: https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json
-          test: /\.modernizrrc$/,
-          loader: 'modernizr'
         }
       ]
-    },
-    resolve: {
-      alias: {
-        modernizr$: path.resolve(__dirname, '.modernizrrc')
-      }
     },
     plugins: [
       // loads jquery within the context of the files and provides it as a global variable for files
