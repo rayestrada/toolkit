@@ -21,16 +21,16 @@ $indent-amount: 30px;
 // Set global styles for the document.
 body {
   @include font-size(18);
-  line-height: $lineheight;
-  font-family: $base-font-family;
   min-width: $min-width;
   color: $gray;
+  font-family: $base-font-family;
+  line-height: $lineheight;
   @include breakpoint($all-devices) {
     &.noscroll {
+      position: fixed;
       overflow: hidden;
       height: 100%;
       width: 100%;
-      position: fixed;
     }
   }
 }
@@ -82,24 +82,20 @@ cite {
 // Global button style.
 .button-link,
 %button {
-  box-sizing: border-box;
   position: relative;
   z-index: 1;
-  border: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  -moz-appearance: none;
   display: inline-block;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 0;
   border-radius: 0;
-  cursor: pointer;
   background-color: $highlight;
   color: #fff;
   font-family: $sans;
   line-height: 40px;
-  height: 40px;
-  padding: 0 20px;
+  appearance: none;
+  cursor: pointer;
   @include hover {
     background-color: lighten($highlight, 10);
   }

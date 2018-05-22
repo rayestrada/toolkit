@@ -26,9 +26,9 @@
 
       // Add visible URL after links.
       &[href]:after {
-        content: " (" attr(href) ")";
         font-weight: normal;
         font-size: 10px;
+        content: " (" attr(href) ")";
       }
 
       // Only display useful links.
@@ -51,9 +51,9 @@
   #page,
   #main,
   #content {
-    color: #000;
     background-color: transparent !important;
     background-image: none !important;
+    color: #000;
   }
 
   // Un-float the content.
@@ -72,8 +72,8 @@
   .breadcrumb,
   .pager,
   .feed-icons {
-    visibility: hidden;
     display: none;
+    visibility: hidden;
   }
 
   // Alter the space around a printed page

@@ -25,20 +25,20 @@
 
 // System message styling.
 .messages {
+  position: relative;
   margin: 10px 0;
   padding: 10px 10px 10px 50px; /* LTR */
   border: 1px solid #be7;
-  position: relative;
   &:before {
-    content: "✓";
     position: absolute;
     top: 20px;
     left: 8px;
+    width: 1.5em;
     color: #be7;
     font-size: 1.5em;
     font-weight: bold;
-    width: 1.5em;
     text-align: center;
+    content: "✓";
   }
   &--status {
     @extend %ok;
@@ -47,8 +47,8 @@
     @extend %warning;
     border-color: #ed5;
     &:before {
-      content: "!";
       color: #ed5;
+      content: "!";
     }
   }
   &--error {
@@ -56,8 +56,8 @@
     @extend %error;
     border-color: #ed541d;
     &:before {
-      content: "×";
       color: #ed541d;
+      content: "×";
     }
     p.error {
       color: #333;

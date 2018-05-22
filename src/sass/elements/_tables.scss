@@ -5,8 +5,8 @@
 */
 
 table {
-  border: 0 solid lightgray;
   width: 100% !important;
+  border: 0 solid lightgray;
   tr {
     border: 0 solid lightgray;
     &:nth-child(even) {
@@ -15,8 +15,8 @@ table {
   }
   td,
   th {
-    border-color: lightgray;
     padding: 0.5em 1em;
+    border-color: lightgray;
     text-align: left;
     > * {
       &:first-child {
@@ -29,10 +29,10 @@ table {
   }
   thead th,
   tbody th {
+    background: #e7e7e7;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.92em;
-    background: #e7e7e7;
   }
   th.empty-header-cell {
     visibility: hidden;
@@ -42,8 +42,8 @@ table {
 // Responsive data tables with headers.
 @include breakpoint($all-devices) {
   table.data {
-    overflow: hidden;
     display: block;
+    overflow: hidden;
   }
   table.data thead,
   table.data th {
@@ -54,13 +54,13 @@ table {
   table.data tr,
   table.data td,
   table.data caption {
+    float: left;
     display: block;
     width: 100%;
-    float: left;
   }
   table.data tr {
-    border-width: 1px;
     padding: 20px 10px;
+    border-width: 1px;
     + tr {
       border-top-width: 0;
     }
@@ -70,13 +70,13 @@ table {
     }
   }
   table.data td.labeled:before {
-    content: attr(data-th);
     display: block;
-    font-weight: bold;
-    font-size: 0.92em;
-    color: #555;
-    border-bottom: 1px solid lightgray;
     margin-bottom: 0.5em;
     padding-bottom: 0.5em;
+    border-bottom: 1px solid lightgray;
+    color: #555;
+    font-weight: bold;
+    font-size: 0.92em;
+    content: attr(data-th);
   }
 }

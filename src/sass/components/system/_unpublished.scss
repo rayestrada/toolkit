@@ -7,14 +7,14 @@
  */
 
 .unpublished {
-  height: 0;
   overflow: visible;
+  height: 0;
   background-color: transparent;
   color: #d8d8d8;
-  font-size: 75px;
-  line-height: 1;
-  font-weight: bold;
   text-transform: uppercase;
   text-align: center;
   word-wrap: break-word;
+  font-size: 75px;
+  line-height: 1;
+  font-weight: bold;
 }

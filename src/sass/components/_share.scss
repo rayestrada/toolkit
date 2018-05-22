@@ -8,19 +8,19 @@
 
 .share-buttons {
   top: 30%;
-  width: 5rem;
   z-index: 10000;
+  width: 5rem;
   @include breakpoint($tablet) {
-    bottom: 0;
     top: auto;
+    bottom: 0;
     width: 100%;
   }
   .social-share {
-    cursor: pointer;
     display: block;
+    width: 5rem;
     padding: 12px 0;
     transition: 0.15s ease-out;
-    width: 5rem;
+    cursor: pointer;
     @include breakpoint($tablet) {
       float: left;
     }
@@ -67,11 +67,11 @@
     }
     svg {
       display: block;
-      fill: #fff;
+      width: 1.5em;
       height: 1.5em;
       margin: 0 auto;
+      fill: #fff;
       stroke: none;
-      width: 1.5em;
     }
   }
 }

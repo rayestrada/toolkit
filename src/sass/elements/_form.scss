@@ -35,8 +35,8 @@ form {
 
 // Global label styles.
 label {
-  font-family: $sans;
   margin-bottom: 5px;
+  font-family: $sans;
 }
 
 // Global input styles.
@@ -46,30 +46,30 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 textarea {
-  padding: 6px 12px;
-  font-family: $sans;
   min-width: 280px;
-  box-sizing: border-box;
+  padding: 6px 12px;
   border: $border;
+  box-sizing: border-box;
+  font-family: $sans;
 }
 input[type="checkbox"],
 input[type="radio"] {
   @extend %element-invisible;
   + label {
-    display: inline;
-    font-weight: normal;
-    box-sizing: border-box;
     position: relative;
+    display: inline;
+    box-sizing: border-box;
+    font-weight: normal;
     cursor: pointer;
     &:before {
-      content: '';
       display: inline-block;
-      height: 14px;
       width: 14px;
+      height: 14px;
       margin-bottom: -2px;
       margin-right: 8px;
       overflow: hidden;
       border: 1px solid $highlight;
+      content: '';
     }
     &.focused:before {
       box-shadow: 0 0 5px #444;
@@ -82,42 +82,40 @@ input[type="radio"] {
   }
 }
 input[type="radio"] + label:before {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
 }
 
 // Global select box styles.
 .selectlist {
   position: relative;
+  display: inline-block;
+  border: 1px solid $ltgray;
   background-clip: padding-box;
   background-color: #eee;
-  border: 1px solid $ltgray;
-  display: inline-block;
 }
 select {
-  box-sizing: border-box;
   position: relative;
-  display: block;
   z-index: 2;
-  border: 1px solid $ltgray;
-  appearance: none;
-  -moz-padding-end: 10px;
-  line-height: 1em;
+  display: block;
   height: 40px;
+  box-sizing: border-box;
   padding: 8px 16px;
-  border-radius: 0;
-  cursor: pointer;
-  font-family: $sans;
+  -moz-padding-end: 10px;
   min-width: 200px;
+  border: 1px solid $ltgray;
+  border-radius: 0;
   background-color: #eee;
+  font-family: $sans;
+  line-height: 1em;
+  appearance: none;
+  cursor: pointer;
   .selectlist & {
     float: left;
+    margin: 0;
+    border: none;
     background: transparent;
     background-color: transparent;
-    margin: 0;
     line-height: 14px;
-    border: none;
   }
 }
 

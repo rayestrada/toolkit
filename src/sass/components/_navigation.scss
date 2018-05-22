@@ -15,8 +15,8 @@
       position: relative;
       > ul.menu {
         position: absolute;
-        left: -9999px;
         top: 0;
+        left: -9999px;
         z-index: 100;
         padding: 0;
         background-color: $owhite;
@@ -27,14 +27,14 @@
       @include hover {
         background-color: $owhite;
         > ul.menu {
-          left: 0;
           top: 100%;
+          left: 0;
         }
       }
       a {
-        font-weight: 600;
-        padding: 10px 16px;
         display: block;
+        padding: 10px 16px;
+        font-weight: 600;
         &.active {
           border-bottom: 2px solid $highlight;
         }
@@ -47,15 +47,15 @@
 
   // Mobile navigation styles.
   @include breakpoint($all-devices) {
-    background-color: #f7f7f7;
-    height: 100%;
-    overflow-y: auto;
-    padding: 0 0 50px;
     position: fixed;
-    right: -255px;
     top: 76px;
-    width: 255px;
+    right: -255px;
     z-index: 99999;
+    overflow-y: auto;
+    width: 255px;
+    height: 100%;
+    padding: 0 0 50px;
+    background-color: #f7f7f7;
     transition: right 300ms;
     .menu-active & {
       right: 0;
@@ -63,14 +63,14 @@
     }
     .menu {
       > li {
-        border-bottom: 1px solid $ltgray;
-        cursor: pointer;
-        display: block;
         float: none;
-        list-style: none;
+        display: block;
         padding: 12px 16px;
+        border-bottom: 1px solid $ltgray;
+        list-style: none;
         text-decoration: none;
         font-size: 20px;
+        cursor: pointer;
       }
     }
   }

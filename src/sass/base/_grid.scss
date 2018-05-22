@@ -25,10 +25,10 @@ $grid-row-gap: $grid-column-gap;
 // $row-gap: Vertical space between rows.
 // $column-gap: Horizontal space between columns.
 @mixin colwrapper($row-gap: $grid-row-gap, $column-gap: $grid-column-gap) {
+  position: relative;
   margin-top: negative($row-gap);
   margin-left: negative($column-gap);
   @include clearfix();
-  position: relative;
 }
 
 // Define a column item.
@@ -39,11 +39,11 @@ $grid-row-gap: $grid-column-gap;
 // $offset: Number of columns this should be offset.
 // $float: left or none.
 @mixin col($columns: 1, $grid: $grid-columns, $column-gap: $grid-column-gap, $offset: 0, $float: left) {
-  width: calc((#{$columns} / #{$grid}) * 100% - #{$column-gap});
-  margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
   @if $float != none {
     float: $float;
   }
+  width: calc((#{$columns} / #{$grid}) * 100% - #{$column-gap});
+  margin-left: calc((#{$offset} / #{$grid}) * 100% + #{$column-gap});
 }
 
 // Define a standalone offset based on the grid.
@@ -62,10 +62,10 @@ $grid-row-gap: $grid-column-gap;
 // $add_columns_right: Number of columns to add to right.
 // $column-gap: Horizontal space between columns.
 @mixin changecol($original_columns, $add_columns_left, $add_columns_right, $column-gap: $grid-column-gap) {
+  position: relative;
+  width: auto;
   margin-left: calc((100% / #{$original_columns}) * #{$add_columns_left} - #{$column-gap});
   margin-right: calc((100% / #{$original_columns}) * #{$add_columns_right} - #{$column-gap});
-  width: auto;
-  position: relative;
 }
 
 // Generate column span classes based on grid size.
