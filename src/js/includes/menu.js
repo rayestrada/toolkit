@@ -1,82 +1,83 @@
+/**
+ * @file
+ * Menu accessibility enhancements and skip links.
+ *
+ */
+
 (function ($) {
   // DOC READY
   $(function () {
 
-    /**
-     * ACCESSIBILITY
-     * Menu and skip links
-     */
+    // Assign target selectors.
+    var $nav = $('#navigation > ul.menu'),
+      $trig = $('#menu-trigger > a'),
+      $toMainContentLink = $('#top'),
+      $backToTopLink = $('#bottom'),
+      $mobileMenuClass = 'js-show-menu',
+      $kids = $nav.children();
 
-    var nav = $('#navigation > ul.menu'),
-      trig = $('#menu-trigger > a'),
-      tomaincontentlink = $('#top'),
-      backtotoplink = $('#bottom'),
-      mobilemenuclass = 'show-menu',
-      kids = nav.children();
+    // Add class for top level menu items.
+    $kids.addClass('js-top-level-menu-item');
 
-    // add class for top level menu items
-    kids.addClass('top-level-menu-item');
-
-
-    // add class to first and last links in the menu
-    nav.each(function () {
-      $(this).find('a').first().addClass('first-menu-item');
-      $(this).find('a').last().addClass('last-menu-item');
+    // Add class to first and last links in the menu.
+    $nav.each(function () {
+      $(this).find('a').first().addClass('js-first-menu-item');
+      $(this).find('a').last().addClass('js-last-menu-item');
     });
 
-    // tabbing out of the end menu items
-    nav.find('a.last-menu-item').keydown(function (e) {
-      // tabbed out no shift
+    // Tabbing out of the end menu items.
+    $nav.find('a.js-last-menu-item').keydown(function (e) {
+      // Tabbed out no shift.
       if (e.which == 9 && !e.shiftKey) {
         outofmenu();
       }
     });
-    nav.find('a.first-menu-item').keydown(function (e) {
-      // shift tabbed out
+    $nav.find('a.js-first-menu-item').keydown(function (e) {
+      // Shift tabbed out.
       if (e.which == 9 && e.shiftKey) {
         outofmenu();
       }
     });
 
-    // remove focus from menu when you are clicking outside of it
+    // Remove focus from menu when you are clicking outside of it.
     $(document).on('click', outofmenu());
-    nav.click(function (e) {
+    $nav.click(function (e) {
       e.stopPropagation();
     });
 
-    // add class on focus
-    nav.find('a').on({
+    // Add class on focus.
+    $nav.find('a').on({
       focus: function () {
-        $(this).closest('.top-level-menu-item').addClass('js-focus')
+        $(this).closest('.js-top-level-menu-item').addClass('js-focus')
           .siblings().removeClass('js-focus');
       },
       mouseenter: function () {
-        // let normal hovers override
+        // Let normal hovers override.
         outofmenu();
       }
     });
 
-    // removes focus class and focus from all menu items
+    // Removes focus class and focus from all menu items.
     function outofmenu() {
-      kids.each(function () {
+      $kids.each(function () {
         $(this).removeClass('js-focus');
-        nav.find('a').blur();
+        $nav.find('a').blur();
       });
     }
 
     /**
      * Skip links
      */
-    tomaincontentlink.on({
+    $toMainContentLink.on({
       focus: function () {
-        trig.removeClass('return-check');
+        $trig.removeClass('js-return-check');
       },
       click: function () {
-        trig.addClass('return-check');
+        $trig.addClass('js-return-check');
       }
     });
-    backtotoplink.on('js-focus', function () {
-      // scroll back to top link into view
+    $backToTopLink.on('focus', function () {
+      // Scroll back to top link into view.
       window.scrollTo(0, document.body.scrollHeight);
     });
 

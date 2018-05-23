@@ -1,23 +1,36 @@
-// Accordion styling functionality and animation
+/**
+ * @file
+ * Intializing javascript accordions.
+ *
+ */
+
 (function ($) {
   // DOC READY
   $(function () {
 
+    // Set the selectors to target.
     var accordioncontainer = '.custom-accordion',
       accordioncontent = '.accordion-content',
       accordiontrigger = '.accordion-trigger';
 
+    // Initialize the accordions.
     $(accordioncontainer).each(function (i) {
-      $(this).addClass('tm-accordion-enabled');
+      $(this).addClass('js-tm-accordion-enabled');
       if (i > 0) {
-        $(this).addClass('collapsed').find(accordioncontent).slideUp('fast');
+        $(this).addClass('js-collapsed')
+          .find(accordioncontent)
+          .slideUp('fast');
       }
     });
 
-    $(accordioncontainer + ' ' + accordiontrigger + ' a').click(function (e) {
+    // Initialize onclick behavior.
+    $(accordioncontainer + ' ' + accordiontrigger + ' a').on('click', function (e) {
       e.preventDefault();
-      $(this).closest(accordioncontainer).toggleClass('collapsed');
-      $(this).parent().next(accordioncontent).slideToggle('fast');
+      $(this).closest(accordioncontainer)
+        .toggleClass('js-collapsed');
+      $(this).parent()
+        .next(accordioncontent)
+        .slideToggle('fast');
     });
 
   });

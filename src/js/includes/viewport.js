@@ -1,28 +1,35 @@
+/**
+ * @file
+ * Loading and Intializing javascript viewport tracking.
+ *
+ * Docs: https://github.com/1337/jquery_viewport
+ */
+
+// Load the viewport library.
 require('jquery.viewport');
 var throttle = require('./throttle');
 
-// Viewport options https://github.com/1337/jquery_viewport
 (function ($) {
   // DOC READY
   $(function () {
 
-    // REVEALING CONTENT ON LOAD IN VIEWPORT
+    // Revealing content on load in viewport.
     $(window).on('load', function () {
-      // hide blocks by default
-      $('.f-item-group').addClass('transparent');
+      // Hide blocks by default.
+      $('.f-item-group').addClass('js-transparent');
 
-      // show blocks that are in the viewport
-      $('.transparent:in-viewport').each(function () {
-        $(this).removeClass('transparent');
+      // Show blocks that are in the viewport.
+      $('.js-transparent:in-viewport').each(function () {
+        $(this).removeClass('js-transparent');
       });
     });
 
-    // REVEALING CONTENT ON SCROLL/RESIZE VIEWPORT
+    // Revealing content on scroll/review viewport.
     $(window).on('scroll resize', throttle(function () {
-      $('.transparent:in-viewport').each(function (i) {
-        // show content in staggered fashion setting a delay for each one
+      $('.js-transparent:in-viewport').each(function (i) {
+        // Show content in staggered fashion setting a delay for each one.
         $(this).delay(100 * i).queue(function () {
-          $(this).removeClass('transparent').dequeue();
+          $(this).removeClass('js-transparent').dequeue();
         });
       });
     }));

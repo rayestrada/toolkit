@@ -1,10 +1,14 @@
-// A lightweight throttle Function
-// https://remysharp.com/2010/07/21/throttling-function-calls
-
-// // Resize using throttle
-//  $(window).on('resize', throttle(function () {
-//   console.log('resized');
-// }));
+/**
+ * @file
+ * A lightweight throttle Function.
+ *
+ * Docs: https://remysharp.com/2010/07/21/throttling-function-calls
+ *
+ * $(window).on('resize', throttle(function () {
+ *   console.log('resized');
+ * }));
+ *
+ */
 
 module.exports = function throttle(fn, threshhold, scope) {
   threshhold || (threshhold = 100);

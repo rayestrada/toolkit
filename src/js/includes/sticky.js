@@ -1,16 +1,22 @@
+/**
+ * @file
+ * Loading and Intializing javascript to make element sticky.
+ *
+ * Docs: https://github.com/leafo/sticky-kit/
+ */
+
+// Load sticky kit library.
 require('sticky-kit');
 
-// Sticky Kit
-// Config options here https://github.com/leafo/sticky-kit/
 (function ($) {
   // DOC READY
   $(function () {
 
-    // sticky elements within a container scope
+    // Initialize sticky item within a parent.
     $('.make-sticky h2').stick_in_parent({
       parent: '.f-container'
     }).on("sticky_kit:stick", function (e) {
-      // add z-index value to be on top
+      // Add z-index value to be on top.
       $(this).css({
         'z-index': 1
       })
