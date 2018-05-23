@@ -71,7 +71,7 @@ input[type="radio"] {
       border: 1px solid $highlight;
       content: '';
     }
-    &.focused:before {
+    &.js-focus:before {
       box-shadow: 0 0 5px #444;
     }
   }
