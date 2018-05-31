@@ -24,7 +24,7 @@
 
       $(".social-share.pinterest").on("click", function (e) {
         e.preventDefault();
-        url = "http://pinterest.com/pin/create/link/?url=" + pageUrl + "&media=" + metaImg + "&description=" + metaName;
+        url = "https://pinterest.com/pin/create/link/?url=" + pageUrl + "&media=" + metaImg + "&description=" + metaName;
         socialWindow(url);
       });
 

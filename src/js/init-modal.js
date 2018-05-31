@@ -3,7 +3,7 @@
  * Fancybox
  * Loading and intializing a javascript modal library.
  *
- * Docs: http://fancyapps.com/fancybox/
+ * Docs: https://fancyapps.com/fancybox/
  */
 
 // Load fancybox library.

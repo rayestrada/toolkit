@@ -3,7 +3,7 @@
  * Owl Carousel
  * Loading and intializing a carousel library.
  *
- * Docs: http://www.owlcarousel.owlgraphic.com/docs/api-options.html
+ * Docs: https://www.owlcarousel.owlgraphic.com/docs/api-options.html
  */
 
 // Load owl carousel library.
