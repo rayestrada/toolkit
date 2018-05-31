@@ -22,7 +22,7 @@
 - Image minification
 - Browser Sync
 
-#### [Toolkit Demo](http://toolkit.clientapp.com)
+#### [Toolkit Demo](https://toolkit.clientapp.com)
 
 <a name="requirements"/>
 
@@ -131,14 +131,14 @@ To update 'Pages' wrapper markup, edit `styleguide/templates/pages-layout.html`.
 3. Add/Change links to resources  
 To update reference to resource, edit `styleguide/templates/default.html`.
 
-Fabricator uses [handlebars](http://handlebarsjs.com/expressions.html) syntax in its HTML files. Read the full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble).  
+Fabricator uses [handlebars](https://handlebarsjs.com/expressions.html) syntax in its HTML files. Read the full [documentation of Fabricator](https://github.com/fbrctr/fabricator-assemble).  
 
 ### Materials
 
 This directory contains the component files used to build out the styleguide.  
 **This is the location where most if not all work in the styleguide is done**  
 
-Materials are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/) and correspond with sass organization. 
+Materials are organized using [Atomic Design methodology](https://bradfrost.com/blog/post/atomic-web-design/) and correspond with sass organization. 
 
 #### Adding new materials
 
@@ -154,7 +154,7 @@ All HTML files will be grouped together in a styleguide section labeled with the
 'Pages' are used to prototype pages using a collection of components, elements, and structures.  
 New pages should be added in `styleguide/materials/pages` directory. 
 
-1. Add HTML you'd like, and include existing components/elements/structures using [handlebars](http://handlebarsjs.com/expressions.html) syntax. 
+1. Add HTML you'd like, and include existing components/elements/structures using [handlebars](https://handlebarsjs.com/expressions.html) syntax. 
 
 See `styleguide/materials/pages/home.html` for an example.
 
@@ -165,7 +165,7 @@ See `styleguide/materials/pages/home.html` for an example.
 **Files location:** src/sass
 
 ### File Organization
-Sass files are organized using [Atomic Design methodology](http://bradfrost.com/blog/post/atomic-web-design/)  
+Sass files are organized using [Atomic Design methodology](https://bradfrost.com/blog/post/atomic-web-design/)  
 
 Atomic Design outlines 5 stages:  
 * **Atoms:** UI elements that can’t be broken down any further and serve as the elemental building blocks of an interface  
