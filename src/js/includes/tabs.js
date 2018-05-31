@@ -9,53 +9,53 @@
   $(function () {
 
     // Assign target selectors.
-    var tabcontainer = '.tm-tabs',
-      tabcontent = '.tab-content',
-      tablabel = '.tab-label';
+    var tabContainer = '.tm-tabs';
+    var tabContent = '.tab-content';
+    var tabLabel = '.tab-label';
 
     // Prepare the tabs for interaction.
-    $(tabcontainer).each(function () {
+    $(tabContainer).each(function () {
       // add class to provide default state
       $(this).addClass('js-tab-enabled');
 
-      $(this).find(tablabel).addClass('js-tab-label');
+      $(this).find(tabLabel).addClass('js-tab-label');
 
       // Empty string to append tab links.
-      var tablinks = '';
+      var tabLinks = '';
 
       // Loop through tab content.
-      $(this).find(tabcontent).each(function (i) {
-        var tablink = '<a href="#" data-tab="js-tab-number-' + i + '">' + $(this).find(tablabel).text() + '</a>';
+      $(this).find(tabContent).each(function (i) {
+        var tabLink = '<a href="#" data-tab="js-tab-number-' + i + '">' + $(this).find(tabLabel).text() + '</a>';
 
         if (i > 0) {
           // Hide the tab content that is not the first one.
           $(this).addClass('js-tab-hide');
-          tablink = '<li>' + tablink + '</li>';
+          tabLink = '<li>' + tabLink + '</li>';
         }
         else {
           // Make the first tab link active.
-          tablink = '<li class="js-active">' + tablink + '</li>';
+          tabLink = '<li class="js-active">' + tabLink + '</li>';
         }
 
-        tablinks += tablink;
+        tabLinks += tabLink;
 
         // Add an index specific class to content.
         $(this).addClass('js-tab-content').addClass('js-tab-number-' + i);
       });
 
-      // Add the tablinks to the markup.
-      $(this).prepend('<ul class="js-tab-links">' + tablinks + '</ul>');
+      // Add the tabLinks to the markup.
+      $(this).prepend('<ul class="js-tab-links">' + tabLinks + '</ul>');
     });
 
 
     // Trigger click events on the tabs we created.
-    $('.js-tab-links a').click(function (e) {
+    $('.js-tab-links a').on('click', function (e) {
       e.preventDefault();
       var $tab = $(this).data('tab');
 
-      // Track active state of the tabcontent.
-      $(this).closest(tabcontainer).find(tabcontent).addClass('js-tab-hide');
-      $(this).closest(tabcontainer).find('.' + $tab).removeClass('js-tab-hide');
+      // Track active state of the tabContent.
+      $(this).closest(tabContainer).find(tabContent).addClass('js-tab-hide');
+      $(this).closest(tabContainer).find('.' + $tab).removeClass('js-tab-hide');
 
       // Track active state of the links.
       $(this).parent().siblings().removeClass('js-active');

@@ -9,27 +9,27 @@
   $(function () {
 
     // Set the selectors to target.
-    var accordioncontainer = '.custom-accordion',
-      accordioncontent = '.accordion-content',
-      accordiontrigger = '.accordion-trigger';
+    var accordionContainer = '.custom-accordion';
+    var accordionContent = '.accordion-content';
+    var accordionTrigger = '.accordion-trigger';
 
     // Initialize the accordions.
-    $(accordioncontainer).each(function (i) {
+    $(accordionContainer).each(function (i) {
       $(this).addClass('js-tm-accordion-enabled');
       if (i > 0) {
         $(this).addClass('js-collapsed')
-          .find(accordioncontent)
+          .find(accordionContent)
           .slideUp('fast');
       }
     });
 
     // Initialize onclick behavior.
-    $(accordioncontainer + ' ' + accordiontrigger + ' a').on('click', function (e) {
+    $(accordionContainer + ' ' + accordionTrigger + ' a').on('click', function (e) {
       e.preventDefault();
-      $(this).closest(accordioncontainer)
+      $(this).closest(accordionContainer)
         .toggleClass('js-collapsed');
       $(this).parent()
-        .next(accordioncontent)
+        .next(accordionContent)
         .slideToggle('fast');
     });
 

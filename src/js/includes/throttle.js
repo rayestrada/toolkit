@@ -12,13 +12,13 @@
 
 module.exports = function throttle(fn, threshhold, scope) {
   threshhold || (threshhold = 100);
-  var last,
-    deferTimer;
+  var last;
+  var deferTimer;
   return function () {
     var context = scope || this;
 
-    var now = +new Date,
-      args = arguments;
+    var now = +new Date;
+    var args = arguments;
     if (last && now < last + threshhold) {
       // hold on to it
       clearTimeout(deferTimer);

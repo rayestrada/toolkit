@@ -9,12 +9,12 @@
   $(function () {
 
     // Assign target selectors.
-    var $nav = $('#navigation > ul.menu'),
-      $trig = $('#menu-trigger > a'),
-      $toMainContentLink = $('#top'),
-      $backToTopLink = $('#bottom'),
-      $mobileMenuClass = 'js-show-menu',
-      $kids = $nav.children();
+    var $nav = $('#navigation > ul.menu');
+    var $trig = $('#menu-trigger > a');
+    var $toMainContentLink = $('#top');
+    var $backToTopLink = $('#bottom');
+    var $mobileMenuClass = 'js-show-menu';
+    var $kids = $nav.children();
 
     // Add class for top level menu items.
     $kids.addClass('js-top-level-menu-item');
@@ -41,7 +41,7 @@
 
     // Remove focus from menu when you are clicking outside of it.
     $(document).on('click', outofmenu());
-    $nav.click(function (e) {
+    $nav.on('click', function (e) {
       e.stopPropagation();
     });
 
