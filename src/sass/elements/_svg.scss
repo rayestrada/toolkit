@@ -1,10 +1,17 @@
+/**
+* @file
+* svg styles.
+*
+*/
+
+// import the sprite stylesheet.
 @import '../../svg/build/sass/svg-sprite';
 
+// Example of using sass sprite
 .home-icon {
   @extend .svg-home;
   @extend .svg-home-dims;
   width: 64px;
   height: 64px;
-  -webkit-background-size: 200%;
   background-size: 200%;
 }

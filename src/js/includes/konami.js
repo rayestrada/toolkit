@@ -1,8 +1,8 @@
 (function ($) {
   // Keycode commands
-  $.fn.codeAction = function(code, action) {
+  $.fn.codeAction = function (code, action) {
     var curr = 0;
-    jQuery(this).keydown(function(event) {
+    jQuery(this).keydown(function (event) {
       if (event.keyCode == code[curr]) {
         curr++;
       }
@@ -22,7 +22,7 @@
   $(function () {
 
     // Konami Code U-U-D-D-L-R-L-R-B-A
-    $('body').codeAction([38,38,40,40,37,39,37,39,66,65], function() {
+    $('body').codeAction([38, 38, 40, 40, 37, 39, 37, 39, 66, 65], function () {
       alert('Konami Mode Enabled!');
       var KICKASSVERSION = '2.0';
       var s = document.createElement('script');

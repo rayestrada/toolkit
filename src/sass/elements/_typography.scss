@@ -1,43 +1,44 @@
-// Define baseline lineheight
+/**
+* @file
+* Typographic styles.
+*
+*/
+
+// Define baseline lineheight.
 $lineheight: 1.6em;
 
-// Define a border style
+// Define a border style.
 $border: 1px solid #ccc;
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;
 
-// Rem with pixel fallback
+// Convert a pixel to rem value
 @mixin font-size($sizeValue: 16) {
-  font-size: $sizeValue + px;
   font-size: ($sizeValue / 10) + rem;
-  // @TODO calculate lineheight using font-size, x-height and some type of ratio
-  // x-height and ratio would be variables
-  // provide a way to override or omit
-  // different ratio for headings?
 }
 
-body{
+// Set global styles for the document.
+body {
   @include font-size(18);
-  line-height: $lineheight;
-  font-family: $base-font-family;
   min-width: $min-width;
   color: $gray;
+  font-family: $base-font-family;
+  line-height: $lineheight;
   @include breakpoint($all-devices) {
     &.noscroll {
+      position: fixed;
       overflow: hidden;
       height: 100%;
       width: 100%;
-      position: fixed;
     }
   }
 }
 
-//Define your custom font styles for selectors here
+//Define heading styles.
 h1 {
   font-family: $base-heading-font;
 }
-// Heading style
 h2,
 h3,
 h4,
@@ -45,13 +46,19 @@ h5,
 h6 {
   font-family: $base-heading-font;
 }
+
+// Define a link style.
 a {
   color: $highlight;
   text-decoration: none;
 }
+
+// Define a horizontal rule style.
 hr {
   border-bottom: $border;
 }
+
+// Define a blockquote style.
 blockquote {
   border-left: $border;
   padding-left: $indent-amount;
@@ -65,35 +72,31 @@ cite {
   @include font-size(16);
   display: block;
 }
+
+// Define an intro style.
 .intro {
   font-size: 1.5em;
   line-height: 1.5em;
 }
-// Global button styling
+
+// Global button style.
 .button-link,
 %button {
-  box-sizing: border-box;
   position: relative;
   z-index: 1;
-  border: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  -moz-appearance: none;
   display: inline-block;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 0;
   border-radius: 0;
-  cursor: pointer;
   background-color: $highlight;
   color: #fff;
   font-family: $sans;
   line-height: 40px;
-  height: 40px;
-  padding: 0 20px;
-  @include notouchhover {
+  appearance: none;
+  cursor: pointer;
+  @include hover {
     background-color: lighten($highlight, 10);
   }
-}
-#logo img {
-  max-width: 160px;
 }

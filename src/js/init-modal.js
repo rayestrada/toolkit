@@ -26,6 +26,6 @@ require('fancybox/dist/css/jquery.fancybox.css');
         $(this.element).focus();
       }
     });
-  
+
   });
 })(jQuery);

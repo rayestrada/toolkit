@@ -1,6 +1,3 @@
-// import modernizr
-require('!modernizr!./.modernizrrc');
-
 // import toolkit scripts
 require('./includes/eqheights');
 require('./includes/accordion');
@@ -9,6 +6,7 @@ require('./includes/throttle');
 require('./includes/cookies');
 require('./includes/viewport');
 require('./includes/menu');
+require('./includes/share');
 require('./includes/shorten');
 require('./includes/skip-links');
 require('./includes/form');
