@@ -55,10 +55,10 @@ gulp.task('styles:fabricator', function () {
   gulp.src(config.src.styles.fabricator)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-      .pipe(prefix({
-          browsers: ['last 2 versions'],
-          grid: false
-      }))
+    .pipe(prefix({
+      browsers: ['last 2 versions'],
+      grid: false
+    }))
     .pipe(gulpif(!config.dev, csso()))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest + '/fabricator/css'))
@@ -75,10 +75,10 @@ gulp.task('styles:chief', function () {
         'node_modules/standardize-sass/stylesheet'
       ]
     }).on('error', sass.logError))
-      .pipe(prefix({
-          browsers: ['last 2 versions'],
-          grid: false
-      }))
+    .pipe(prefix({
+      browsers: ['last 2 versions'],
+      grid: false
+    }))
     .pipe(gulpif(!config.dev, csso()))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest + '/css'))
@@ -110,10 +110,9 @@ gulp.task('images', function () {
     .pipe(gulp.dest(config.dest + '/images'));
 });
 
-// create svgs
+// generates an svg stack file
 // for full configuration options see https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
-// This generates a 'build' folder inside the src/svg folder to be used for sass sprites and copied on output
-gulp.task('svg:create', function () {
+gulp.task('svg', function () {
   gulp.src(config.src.svg)
     .pipe(svgSprite({
       dest: '.',
@@ -121,41 +120,17 @@ gulp.task('svg:create', function () {
         dimension: {
           maxWidth: 32, // scale down to 32 if larger
           maxHeight: 32
-        },
-        spacing: {
-          padding: 4  // add padding between items
-        },
-        dest: 'svg/origin' // keep the origin files
+        }
       },
       mode: {
-        css: {
-          dest: 'sass',
-          sprite: '../svg/svg-sprite',  // this is specifically setting the path to the location of the svg as it will be in the output
-          bust: false,
-          render: {
-            scss: {
-              dest: '_svg-sprite.scss'  // location of the sass file relative to the css:dest setting
-            }
-          },
-          mixin: 'svg-sprite'
-        },
-        defs: {
-          dest: 'svg/defs',
-          sprite: 'svg-defs'
+        stack: {
+          dest: 'svg',
+          sprite: 'svg-stack'
         }
       }
     }))
-    .pipe(gulp.dest('./src/svg/build'));
-});
-
-// copy svgs
-gulp.task('svg:copy', function () {
-  gulp.src('./src/svg/build/**/*.svg')
     .pipe(gulp.dest(config.dest));
 });
-
-
-gulp.task('svg', ['svg:create', 'svg:copy']);
 
 // fonts
 gulp.task('fonts', function () {
@@ -201,7 +176,7 @@ gulp.task('serve', function () {
 
     // Uncomment lines below to work from multiple browsers
     // browser: ['google chrome', 'firefox', 'safari'],
-    
+
     logPrefix: 'CHIEF'
   });
 
