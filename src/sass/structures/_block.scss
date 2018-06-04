@@ -10,7 +10,7 @@
 
 %fadein-selector {
   transition: opacity 300ms ease 50ms;
-  &.transparent {
+  &.js-transparent {
     opacity: 0;
   }
 }

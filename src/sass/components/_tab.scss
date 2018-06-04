@@ -6,17 +6,17 @@
 *
 */
 
-.tm-tab-enabled {
-  .tm-tab-label {
+.js-tab-enabled {
+  .js-tab-label {
     display: none;
   }
-  .tm-tab-content {
-    &.tm-tab-hide {
+  .js-tab-content {
+    &.js-tab-hide {
       display: none;
     }
   }
-  .tm-tab-links {
-    .active {
+  .js-tab-links {
+    .js-active {
       font-weight: bold;
     }
   }

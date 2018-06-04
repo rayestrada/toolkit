@@ -1,9 +1,14 @@
-// import toolkit scripts
+/**
+ * @file
+ * Common javascript file for loading scripts.
+ *
+ */
+
+// Import scripts.
 require('./includes/eqheights');
 require('./includes/accordion');
 require('./includes/table');
 require('./includes/throttle');
-require('./includes/cookies');
 require('./includes/viewport');
 require('./includes/menu');
 require('./includes/share');
@@ -12,16 +17,15 @@ require('./includes/skip-links');
 require('./includes/form');
 require('./includes/tabs');
 require('./includes/sticky');
-require('./includes/konami');
-//Lazysizes documentation: https://github.com/aFarkas/lazysizes
+// Lazysizes documentation: https://github.com/aFarkas/lazysizes.
 require('lazysizes');
 
 (function ($) {
   // DOC READY
   $(function () {
-    // Place code here or place in a toolkit script file and require above
+    // Place code here or in a includes script file and require above.
 
-    // Example of using throttle
+    // Example of throttling.
     // $(window).on('resize', throttle(function () {
     //   console.log('resize');
     // }));
@@ -29,11 +33,10 @@ require('lazysizes');
   });
 })(jQuery);
 
-// Example Drupal behavior
-// - Reinitialize something after an AJAX call
-// - using Drupal settings that are sent from php
-// - etc.
-// To understand behaviors, see https://drupal.org/node/756722#behaviors
+// Example Drupal behavior.
+// - Reinitialize something after an AJAX call.
+// - using Drupal settings that are sent from php.
+// To understand behaviors, see https://drupal.org/node/756722#behaviors.
 // (function ($, Drupal) {
 //   Drupal.behaviors.my_custom_behavior = {
 //     attach: function (context, settings) {

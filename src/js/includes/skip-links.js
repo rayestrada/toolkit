@@ -1,11 +1,19 @@
+/**
+ * @file
+ * Loading and Intializing javascript to animate skip links.
+ *
+ * Docs: https://github.com/flesler/jquery.scrollTo
+ */
+
+// Load scrollto library.
 require('jquery.scrollto');
 
-// animated anchor links
 (function ($) {
   // DOC READY
   $(function () {
 
-    $('.skip-links').click(function () {
+    // Initialize on selector.
+    $('.skip-links').on('click', function () {
       var target = $(this).attr('href');
       $.scrollTo(target, 800, {
         onAfter: function () {
