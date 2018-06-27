@@ -42,6 +42,18 @@
       </ul>
     </li>
 
+    {{!-- Animations --}}
+    <li>
+      <a href="animations.html" class="f-menu__heading">Animations</a>
+      <ul>
+        {{#each materials.animations.items}}
+        <li>
+          <a href="animations.html#{{@key}}">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+
     {{!-- Original source printing by alpha
     {{#each materials}}
     <li>
