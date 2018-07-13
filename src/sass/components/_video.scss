@@ -1,0 +1,40 @@
+/**
+* @file
+* Video background css
+*
+* Docs: https://codepen.io/dudleystorey/pen/knqyK;
+*
+*/
+.background-video {
+  position: relative;
+  min-height: 100%;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  div {
+    padding: 2rem;
+    width: 33%;
+    margin:2rem;
+    float: right;
+    background: $white;
+    font-size: 1.2rem;    
+  }
+  button {
+    @include element-invisible;
+  }
+}
+video { 
+  /* position: fixed; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background: url('https://picsum.photos/2200/1400/?gravity=east') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
