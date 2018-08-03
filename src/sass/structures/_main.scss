@@ -1,0 +1,20 @@
+/**
+ * @file
+ * Positioning for a responsive layout.
+ *
+ * Define CSS classes to create a fluid grid layout with optional sidebar.
+ *
+ */
+
+#main {
+  .one-sidebar & {
+    @include breakpoint($desktop) {
+      > #content {
+        @include col(9, 14);
+      }
+      > .sidebar {
+        @include col(4, 14, $offset: 1);
+      }
+    }
+  }
+}

@@ -179,7 +179,6 @@ The toolkit sass structure aligns with these stages to a certain extent:
 * **elements** to atoms
 * **components** to molecules
 * **structures** to organisms
-* **layouts** to templates
 
 
 ### Breakpoints
