@@ -60,9 +60,50 @@
     padding-left: 2.4rem;
     font-weight: 700;
     font-size: 1.4rem;
+    display: inline-block;
 
     &:hover {
       color: color(normal);
     }
   }
+
+  .f-toggle-button {
+    margin-left: -26px;
+    margin-top: 1px;
+    display: inline-block;
+    vertical-align: top;
+    &:after {
+      width: 10px;
+      padding: 0 8px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: #757575;
+    }
+  }
+
+  .f-menu-close {
+    > ul {
+      display: none;
+    }
+
+    .f-toggle-button {
+      &:after {
+        content: '+';
+      }
+    }
+  }
+
+  .f-menu-open {
+    > ul {
+      display: block;
+    }
+
+    .f-toggle-button {
+      &:after {
+        content: '-';
+      }
+    }
+  }
+
 }

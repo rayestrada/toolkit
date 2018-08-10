@@ -303,7 +303,7 @@ fabricator.bindCodeAutoSelect = function () {
   for (var i = codeBlocks.length - 1; i >= 0; i--) {
     codeBlocks[i].addEventListener('click', select.bind(this, codeBlocks[i]));
   }
-
+  return this;
 };
 
 
@@ -346,18 +346,32 @@ fabricator.setInitialMenuState = function () {
  */
 fabricator.menuAccordion = function () {
   // Get all the materials lists length
-  // var x = document.querySelectorAll(".example");
+  var mainMenuItem = document.querySelectorAll('.f-menu > ul > li');
+  var maxNumberOfSubMenuItem = 5;
+  // Foreach material
+  mainMenuItem.forEach(function(item, index){
+    var subMenuItem = item.querySelectorAll('ul > li');
+    // Check if length of sub menu items is >= maxNumberOfSubMenuItem add a class f-menu-close and add toggle button.
+    if (subMenuItem.length >= maxNumberOfSubMenuItem) {
+      item.firstElementChild.insertAdjacentHTML('afterend', '<span class="f-toggle-button"></span>');
+      item.classList.add('f-menu-close');
+    }
+  });
 
-  // foreach material
-  // x.forEach(function(item, index){
-
-  // check if the list is longer than 5 items add a class to collapse
-
-  // });
-
-  // create a click method to toggle the class assigned above
-  // target using the classes inserted above
-
+  // Click method to toggle the class assigned above
+  var menuClosed = document.querySelectorAll('.f-menu-close');
+  menuClosed.forEach(function(item, index){
+    var toggleButton = item.querySelector('.f-toggle-button');
+    // If there is f-active class parent menu will get f-menu-open and will be expended.
+    if (item.querySelector('.f-active')) {
+      item.classList.add('f-menu-open');
+    }
+    // If toggle button is clicked parent menu will get f-menu-open and will be expended.
+    toggleButton.addEventListener('click', function() {
+      item.classList.toggle('f-menu-open');
+    });
+  });
+  return this;
 };
 
 
@@ -374,6 +388,7 @@ fabricator.menuAccordion = function () {
     .singleItemToggle()
     .buildColorChips()
     .setActiveItem()
-    .bindCodeAutoSelect();
+    .bindCodeAutoSelect()
+    .menuAccordion();
 
 }());
