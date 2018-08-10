@@ -7,6 +7,8 @@
  */
 
 #main {
+  // Removing focus outline on main region.
+  outline: none;
   .one-sidebar & {
     @include breakpoint($desktop) {
       > #content {
@@ -17,4 +19,8 @@
       }
     }
   }
+}
+
+.inner-wrapper {
+  @include inner-wrapper();
 }

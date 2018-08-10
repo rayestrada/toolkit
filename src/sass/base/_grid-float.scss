@@ -6,11 +6,6 @@
  *
  */
 
-// Define grid variables.
-$grid-columns: 16;
-$grid-column-gap: 20px;
-$grid-row-gap: $grid-column-gap;
-
 // Convert a number into a negative value.
 @function negative ($number) {
   @if type-of($number) != number {
@@ -84,16 +79,6 @@ $grid-row-gap: $grid-column-gap;
   }
 }
 
-// Generate grid span classes for 12 column grid.
-@include breakpoint($desktop) {
-  .column-wrapper {
-    &.twelve {
-      @include colwrapper(null);
-      @include generate-grid-classes(12);
-    }
-  }
-}
-
 // Generate centering classes based on grid size.
 //
 // $grid: Number of grid center classes to generate.
@@ -103,11 +88,6 @@ $grid-row-gap: $grid-column-gap;
       @include col($i, $grid, 0, ((#{$grid} - #{$i}) / 2), none);
     }
   }
-}
-
-// Generate center classes for 12 column grid.
-@include breakpoint($desktop) {
-  @include generate-center-classes(12);
 }
 
 // Style a uniform grid.
@@ -127,33 +107,5 @@ $grid-row-gap: $grid-column-gap;
     &:nth-child(#{$number}n+1) {
       clear: left;
     }
-  }
-}
-
-// Create generic classes for frequently used grids.
-@include breakpoint($desktop) {
-  .two-column-grid {
-    @include tm-grid(2);
-  }
-  .three-column-grid {
-    @include tm-grid(3);
-  }
-  .four-column-grid {
-    @include tm-grid(4);
-  }
-}
-@include breakpoint($tablet-only) {
-  .two-column-grid,
-  .three-column-grid,
-  .four-column-grid {
-    @include tm-grid(2);
-  }
-}
-
-// Example: breakout column grid item using changecol().
-.example-breakout {
-  background-color: $highlight;
-  @include breakpoint($desktop) {
-    @include changecol(1, -1, -1);
   }
 }

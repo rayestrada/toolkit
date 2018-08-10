@@ -36,7 +36,7 @@
         padding: 10px 16px;
         font-weight: 600;
         &.active {
-          border-bottom: 2px solid $highlight;
+          border-bottom: 2px solid $blue;
         }
         @include hover {
           color: $medgray;

@@ -4,27 +4,16 @@
 *
 */
 
-// Define baseline lineheight.
-$lineheight: 1.6em;
-
 // Define a border style.
 $border: 1px solid #ccc;
-
-// The amount lists, blockquotes and comments are indented.
-$indent-amount: 30px;
-
-// Convert a pixel to rem value
-@mixin font-size($sizeValue: 16) {
-  font-size: ($sizeValue / 10) + rem;
-}
 
 // Set global styles for the document.
 body {
   @include font-size(18);
+  line-height: 1.6;
   min-width: $min-width;
   color: $gray;
   font-family: $base-font-family;
-  line-height: $lineheight;
   @include breakpoint($all-devices) {
     &.noscroll {
       position: fixed;
@@ -49,7 +38,7 @@ h6 {
 
 // Define a link style.
 a {
-  color: $highlight;
+  color: $blue;
   text-decoration: none;
 }
 
@@ -61,7 +50,7 @@ hr {
 // Define a blockquote style.
 blockquote {
   border-left: $border;
-  padding-left: $indent-amount;
+  padding-left: 3rem;
   font-size: 1.5em;
   line-height: 1.25em;
   p {
@@ -90,13 +79,13 @@ cite {
   padding: 0 20px;
   border: 0;
   border-radius: 0;
-  background-color: $highlight;
+  background-color: $blue;
   color: #fff;
   font-family: $sans;
   line-height: 40px;
   appearance: none;
   cursor: pointer;
   @include hover {
-    background-color: lighten($highlight, 10);
+    background-color: lighten($blue, 10);
   }
 }

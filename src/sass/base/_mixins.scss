@@ -1,60 +1,13 @@
 /**
  * @file
- * Sass mixins
- *
- * Define the custom mixins for your project here.
+ * Custom Mixins.
  *
  */
 
-// Clear a container that has nested floated elements.
-@mixin clearfix {
-  &:after {
-    clear: both;
-    display: table;
-    content: "";
-  }
-}
-%clearfix {
-  @include clearfix();
-}
-
-// Define a global box-shadow style.
-@mixin box-shadow {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-}
-%box-shadow {
-  @include box-shadow();
-}
-
-// A global setting that can be used for controlling container widths.
-@mixin inner-wrapper {
-  position: relative;
-  max-width: $screen-tablet - 60px;
-  margin: 0 30px;
-  @include clearfix;
-  @include breakpoint($tablet-only) {
-    margin: 0 auto;
-  }
-  @include breakpoint($desktop) {
-    max-width: $screen-max - 120px;
-    margin: 0 60px;
-  }
-  @include breakpoint($lg-desktop) {
-    margin: 0 auto;
-  }
-}
-.inner-wrapper,
-%inner-wrapper {
-  @include inner-wrapper();
-}
-
-// Define a mixin for declaring hover and focus state together.
-@mixin hover {
-  &:hover,
-  &:focus,
-  &.js-focus {
-    @content;
-  }
+// Use crisp font aliasing
+@mixin crisp() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Reset a list style.
@@ -78,13 +31,14 @@
   }
 }
 
-// Auto scroll with smooth scrolling on touch devices.
-@mixin scroll {
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+// Define a global box-shadow style.
+@mixin box-shadow {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
-%scroll {
-  @include scroll();
+
+// Convert a pixel to rem value
+@mixin font-size($sizeValue: 16) {
+  font-size: ($sizeValue / 10) + rem;
 }
 
 // Trims the margin for top/bottom or left/right.
@@ -106,6 +60,30 @@
   }
 }
 
+// A global setting that can be used for controlling container widths.
+@mixin inner-wrapper {
+  position: relative;
+  max-width: $screen-tablet - 60px;
+  margin: 0 30px;
+  @include clearfix;
+  @include breakpoint($tablet-only) {
+    margin: 0 auto;
+  }
+  @include breakpoint($desktop) {
+    max-width: $screen-max - 120px;
+    margin: 0 60px;
+  }
+  @include breakpoint($lg-desktop) {
+    margin: 0 auto;
+  }
+}
+
+// Auto scroll with smooth scrolling on touch devices.
+@mixin scroll {
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 // Positions the element to 100% the width and height of the relative container.
 @mixin fill {
   position: absolute;
@@ -113,7 +91,4 @@
   bottom: 0;
   left: 0;
   right: 0;
-}
-%fill {
-  @include fill();
 }

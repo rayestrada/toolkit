@@ -10,10 +10,22 @@ $settings: (
         menu-width: 22rem
 );
 
-@import 'partials/variables';
-@import 'partials/code';
-@import 'partials/color-chips';
-@import 'partials/controls';
-@import 'partials/item';
-@import 'partials/layout';
-@import 'partials/menu';
+@media screen {
+  @import 'partials/variables';
+  @import 'partials/code';
+  @import 'partials/color-chips';
+  @import 'partials/controls';
+  @import 'partials/item';
+  @import 'partials/layout';
+  @import 'partials/menu';
+}
+
+@media print {
+  .f-controls,
+  .f-item-controls,
+  .f-control-bar,
+  .f-item-code,
+  .f-item-notes {
+    display: none;
+  }
+}
