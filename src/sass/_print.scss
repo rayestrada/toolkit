@@ -8,35 +8,48 @@
  * aggregated with other stylesheets, for improved front-end performance.
  */
 
+// Set to true to print link URL values.
+$printlinks: true;
+
 @media print {
+  // Change base font size to optimize for print.
+  html {
+    font-size: 6pt;
+  }
+
   a {
     // Underline all links.
     &:link,
     &:visited {
       text-decoration: underline !important;
 
-      // Don't underline site link.
+      // Don't underline site link, buttons or logo.
       &.site-link,
+      &.button-link,
       &#logo {
         text-decoration: none !important;
       }
     }
 
+    // Check if printlinks is true.
     // Alter links within the main content region.
-    #content & {
+    @if $printlinks {
 
-      // Add visible URL after links.
-      &[href]:after {
-        font-weight: normal;
-        font-size: 10px;
-        content: " (" attr(href) ")";
+      #content & {
+        // Add visible URL after links.
+        &[href]:after {
+          font-weight: normal;
+          font-size: 1rem;
+          content: " (" attr(href) ")";
+        }
+
+        // Only display useful links.
+        &[href^="javascript:"]:after,
+        &[href^="#"]:after {
+          content: "";
+        }
       }
 
-      // Only display useful links.
-      &[href^="javascript:"]:after,
-      &[href^="#"]:after {
-        content: "";
-      }
     }
   }
 
@@ -54,11 +67,12 @@
   #content {
     background-color: transparent !important;
     background-image: none !important;
-    color: #000;
+    color: $black;
   }
 
   // Un-float the content.
   #content {
+    display: block !important;
     float: none !important;
     width: 100% !important;
     margin: 0 !important;
@@ -72,27 +86,41 @@
   .sidebars,
   .breadcrumb,
   .pager,
-  .feed-icons {
+  .feed-icons,
+  .f-menu {
     display: none;
     visibility: hidden;
   }
 
-  // Alter the space around a printed page
+  // Alter the space around a printed page.
   @page {
     margin: 80pt;
+
+    // Avoid a paragraph being detached from the heading immediately preceding it.
+    h2,
+    h3,
+    h4 {
+      page-break-after: avoid;
+      break-after: avoid-page;
+    }
+
+    // Prevent ending up with a single line at the end of a page and a single line at the top the next page.
+    li,
+    p {
+      orphans: 2;
+      widows: 2;
+    }
+
+    // Prevent captions from being separated from images.
+    figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
   }
 
-  // Avoid a paragraph being detached from the heading immediately preceding it.
-  h2,
-  h3,
-  h4 {
-    page-break-after: avoid;
-    break-after: avoid-page;
-  }
-
-  // Prevent ending up with a single line at the end of a page and a single line at the top the next page.
-  p {
-    orphans: 2;
-    widows: 2;
+  // Make any transparent element opaque.
+  .js-transparent {
+    opacity: 1 !important;
   }
 }
