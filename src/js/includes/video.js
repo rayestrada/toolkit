@@ -11,34 +11,36 @@
   $(function () {
 
     // Initialize on selector.
-    var vid = $("bgvid");
-    var pauseButton = $("#polina button");
+    var $vid = $("div.background-video video");
+    var $pauseButton = $("button.background-video__pause");
 
     if (window.matchMedia('(prefers-reduced-motion)').matches) {
-        vid.removeAttr("autoplay");
-        vid.pause();
-        pauseButton.innerHTML = "Paused";
+        $vid.removeAttr("autoplay");
+        $vid.get(0).pause();
+        $pauseButton.text('Paused');
     }
 
     function vidFade() {
-      vid.addClass("stopfade");
+      $vid.addClass("stopfade");
     }
 
-    vid.on('ended', function(){
+    $vid.on('ended', function(){
       // only functional if "loop" is removed 
-      vid.pause();
+        $vid.get(0).pause();
+      console.log('that');
       // to capture IE10
       vidFade();
     }); 
 
-    pauseButton.on("click", function() {
-      vid.toggleClass("stopfade");
-      if (vid.paused) {
-        vid.play();
-        pauseButton.innerHTML = "Pause";
+    $pauseButton.on("click", function() {
+      $vid.toggleClass("stopfade");
+      console.log('this');
+      if ($vid.get(0).paused) {
+        $vid.get(0).play();
+        $pauseButton.text('Pause');
       } else {
-        vid.pause();
-        pauseButton.innerHTML = "Paused";
+        $vid.get(0).pause();
+        $pauseButton.text('Paused');
       }
     })
 
