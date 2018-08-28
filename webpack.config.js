@@ -4,6 +4,7 @@ var path = require('path');
 var webpack = require('webpack');
 var jQuery = require('jquery');
 var glob = require('glob');
+var MinifyPlugin = require('babel-minify-webpack-plugin');
 
 var glob_entries = function (globs) {
   var entries = {};
@@ -31,19 +32,30 @@ module.exports = function (gulpConfig) {
       'jquery': 'jQuery'
     },
     module: {
-      loaders: [
+      rules: [
         {
-          // Used for loading css files from modules using js
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              modules: true,
+              presets: ['es2015']
+            }
+          }
+        },
+        {
           test: /\.css$/,
           include: /node_modules/,
-          loader: 'style-loader!css-loader'
+          use: { loader: 'style-loader!css-loader' }
         },
         {
           // required for loading images in css from modules using js
           test: /\.(png|jpg|svg|gif)$/,
           include: /node_modules/,
-          loader: 'url-loader?limit=20000' // (20kb) Any file smaller than limit will use data uri instead
+          use: { loader: 'url-loader?limit=20000' } // (20kb) Any file smaller than limit will use data uri instead
         }
+
       ]
     },
     plugins: [
@@ -53,13 +65,8 @@ module.exports = function (gulpConfig) {
       //   'jQuery':'jquery',
       //   'window.jQuery':'jquery'
       // })
+      new MinifyPlugin()
     ]
-  }
-
-  if (!gulpConfig.dev) {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin()
-    );
   }
 
   return config;
