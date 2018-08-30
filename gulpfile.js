@@ -80,7 +80,7 @@ gulp.task('styles:chief', function () {
       grid: false
     }))
     .pipe(gulpif(!config.dev, csso()))
-    .pipe(sourcemaps.write())
+    .pipe(gulpif(config.dev, sourcemaps.write()))
     .pipe(gulp.dest(config.dest + '/css'))
     .pipe(gulpif(config.dev, reload({stream: true})));
 });
