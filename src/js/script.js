@@ -5,14 +5,10 @@
  */
 
 // Import scripts.
-require('./includes/eqheights');
-require('./includes/accordion');
 require('./includes/table');
 require('./includes/throttle');
 require('./includes/viewport');
 require('./includes/menu');
-require('./includes/share');
-require('./includes/shorten');
 require('./includes/skip-links');
 require('./includes/form');
 require('./includes/tabs');
