@@ -60,6 +60,11 @@ rm .gitignore
 npm run dev
 ```
 
+**Standalone**: Starts a watch of the toolkit files and launches a local server to work on the styleguide directly
+```
+npm run standalone
+```
+
 **Production**: Compiles and minifies files for packaging
 ```
 npm run prod

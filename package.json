@@ -5,9 +5,10 @@
   "license": "ISC",
   "main": "index.html",
   "scripts": {
-    "prod": "gulp",
-    "dev": "NODE_ENV=development gulp",
-    "install": "gulp",
+    "prod": "NODE_ENV=production gulp",
+    "dev": "gulp",
+    "standalone": "NODE_ENV=standalone gulp",
+    "install": "NODE_ENV=production gulp",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "author": "Agency Chief",

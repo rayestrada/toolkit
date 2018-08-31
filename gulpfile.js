@@ -23,14 +23,14 @@ var imagemin = require('gulp-imagemin');
 
 var svgSprite = require('gulp-svg-sprite');
 
-var development = process.env.NODE_ENV === 'development';
+var environment = process.env.NODE_ENV || 'development';
 
 /**
  * CONFIGURATION
  */
 // gulp
 var config = {
-  dev: development,
+  dev: environment !== 'production',
   src: {
     scripts: {
       'js': './src/js/*.js',
@@ -173,23 +173,27 @@ gulp.task('assemble', function (done) {
 gulp.task('watch', function (done) {
   if (config.dev) {
 
-    browserSync({
-      // Add your vhost as the proxy for local development
-      // Avoid using .local address because it's super slow to load
-      // Disable caching from your browser to see the display update
-      // Uncomment line below to work on your site install
-      // proxy: 'toolkit.dev',
-
-      // Uncomment lines below to work on the styleguide directly
-      // server: {
-      //   baseDir: config.dest
-      // },
-
+    var browserSyncOpts = {
       // Uncomment lines below to work from multiple browsers
       // browser: ['google chrome', 'firefox', 'safari'],
 
       logPrefix: 'CHIEF'
-    });
+    };
+
+    if (environment === 'standalone') {
+      // Work directly with the styleguide prototyping engine
+      browserSyncOpts.server = {
+        baseDir: config.dest
+      };
+    } else {
+      // Add your vhost as the proxy for local development
+      // Avoid using .local address because it's super slow to load
+      // Disable caching from your browser to see the display update
+      // Uncomment line below to work on your site install
+      // browserSyncOpts.proxy = 'toolkit.dev';
+    }
+
+    browserSync(browserSyncOpts);
 
     // Because webpackCompiler.watch() isn't being used
     // manually remove the changed file path from the cache
