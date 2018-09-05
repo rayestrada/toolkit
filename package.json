@@ -1,6 +1,6 @@
 {
   "name": "chief_toolkit",
-  "version": "1.1.0",
+  "version": "1.8.0",
   "description": "CHIEF boilerplate with Gulp, Webpack and Jquery Plugins",
   "license": "ISC",
   "main": "index.html",
