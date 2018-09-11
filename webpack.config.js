@@ -4,7 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 var jQuery = require('jquery');
 var glob = require('glob');
-var MinifyPlugin = require('babel-minify-webpack-plugin');
 
 var glob_entries = function (globs) {
   var entries = {};
@@ -22,6 +21,7 @@ var glob_entries = function (globs) {
 
 module.exports = function (gulpConfig) {
   var config = {
+    mode: 'development',
     entry: glob_entries(gulpConfig.src.scripts),
     output: {
       path: path.resolve(__dirname, gulpConfig.dest),
@@ -39,15 +39,17 @@ module.exports = function (gulpConfig) {
           use: {
             loader: 'babel-loader',
             options: {
-              modules: true,
-              presets: ['es2015']
+              presets: [
+                [
+                  '@babel/preset-env'
+                ]
+              ]
             }
           }
         },
         {
           test: /\.css$/,
-          include: /node_modules/,
-          use: { loader: 'style-loader!css-loader' }
+          use: [ 'style-loader', 'css-loader' ]
         },
         {
           // required for loading images in css from modules using js
@@ -65,7 +67,6 @@ module.exports = function (gulpConfig) {
       //   'jQuery':'jquery',
       //   'window.jQuery':'jquery'
       // })
-      new MinifyPlugin()
     ]
   }
 
