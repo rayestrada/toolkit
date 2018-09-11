@@ -6,11 +6,11 @@
  */
 
 // Load shorten library.
-require('jquery-shorten-plus');
+import 'jquery-shorten-plus';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize on selector.
     $('.shorten').shorten();

@@ -6,17 +6,17 @@
  */
 
 // Load scrollto library.
-require('jquery.scrollto');
+import 'jquery.scrollto';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize on selector.
     $('.skip-links').on('click', function () {
-      var target = $(this).attr('href');
+      const target = $(this).attr('href');
       $.scrollTo(target, 800, {
-        onAfter: function () {
+        onAfter: () => {
           $(target).focus();
         }
       });

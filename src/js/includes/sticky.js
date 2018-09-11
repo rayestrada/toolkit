@@ -6,11 +6,11 @@
  */
 
 // Load sticky kit library.
-require('sticky-kit');
+import 'sticky-kit';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize sticky item within a parent.
     $('.make-sticky h2').stick_in_parent({
