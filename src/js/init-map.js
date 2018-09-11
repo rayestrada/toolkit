@@ -6,16 +6,16 @@
  * Docs: https://developers.google.com/maps/documentation/javascript/tutorial
  */
 
-var loadGoogleMapsApi = require('load-google-maps-api-2');
+import gmap from './includes/gmap';
+import gmapCluster from './includes/gmap-cluster';
+import loadGoogleMapsApi from 'load-google-maps-api-2';
 loadGoogleMapsApi.key = 'AIzaSyDMF8bus_g_m9frZBqEWwI6cNEmfXVK4qM';
 
-(function () {
-  loadGoogleMapsApi().then(function (googleMaps) {
+(() => {
+  loadGoogleMapsApi().then(googleMaps => {
 
-    require('./includes/gmap');
-    require('./includes/gmap-cluster');
+    gmap();
+    gmapCluster();
 
-  }).catch(function (err) {
-    console.error(err);
-  });
+  }).catch(err => console.error(err));
 })();

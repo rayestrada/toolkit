@@ -4,15 +4,15 @@
  *
  */
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize on selector.
     $('table.data').each(function () {
-      var headerText = [];
-      var headers = $(this).find('thead th');
-      var tableRows = $(this).find('tbody tr');
+      const headerText = [];
+      const headers = $(this).find('thead th');
+      const tableRows = $(this).find('tbody tr');
 
       if (headers.length) {
         // Grab headers and put them into array.
