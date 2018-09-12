@@ -5,46 +5,33 @@
 * Docs: https://codepen.io/dudleystorey/pen/knqyK;
 *
 */
+
 .background-video {
   position: relative;
-  min-height: 100%;
-  display: block;
+  min-height: 500px;
   overflow: hidden;
-  width: 100%;
-  z-index: 100;
-  background: url('https://picsum.photos/2200/1400/?gravity=east') 0 0/100% no-repeat;
-  div {
-    padding: 2rem;
-    margin: 16rem 2rem 2rem 2rem;
-    background: $white;
-    font-size: 1.2rem;        
-    @include breakpoint($desktop) {
-      margin:2rem;
-      width: 33%;
-      float: right;
-    }
-  }
-
-  button {
-    @include element-invisible;
-/*    display: block;
-*/  }
-  video { 
+  z-index: 0;
+  background: url('https://picsum.photos/2200/1400/?gravity=east') center center no-repeat;
+  background-size: cover;
+  video {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 100.5%; // .5 added to remove the visible 1 pixel line of the background image behind the video due to rounding
+    min-height: 100.5%;
     width: auto;
     height: auto;
-    z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background: url('https://picsum.photos/2200/1400/?gravity=east') 0 0/100% no-repeat;
-    background-size: cover;
     display: none;
     @include breakpoint($desktop) {
       display: block;
     }
   }
-
+  > div {
+    position: relative;
+    padding: 2rem;
+    margin: 12rem auto;
+    background: $white;
+    width: 80%;
+  }
 }
