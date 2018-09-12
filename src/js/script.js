@@ -11,9 +11,6 @@ require('./includes/viewport');
 require('./includes/menu');
 require('./includes/skip-links');
 require('./includes/form');
-require('./includes/tabs');
-require('./includes/video');
-require('./includes/sticky');
 require('./includes/loading-button');
 // Lazysizes documentation: https://github.com/aFarkas/lazysizes.
 require('lazysizes');
