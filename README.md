@@ -27,9 +27,8 @@
 <a name="requirements"/>
 
 ## Global Requirements
-- Node
-- npm
-- gulp
+- Node 6+
+- npm 5+
 
 <a name="quickstart"/>
 
@@ -58,12 +57,17 @@ rm .gitignore
 
 **Development**: Starts a watch of the toolkit files and initializes Browser Sync 
 ```
-npm start
+npm run dev
+```
+
+**Standalone**: Starts a watch of the toolkit files and launches a local server to work on the styleguide directly
+```
+npm run standalone
 ```
 
 **Production**: Compiles and minifies files for packaging
 ```
-gulp
+npm run prod
 ```
 
 <a name="javascript"/>

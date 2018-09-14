@@ -1,9 +1,10 @@
 'use strict';
 
-// modules
+/**
+ * MODULES
+ */
 var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var gutil = require('gulp-util');
+var log = require('fancy-log');
 var del = require('del');
 var gulpif = require('gulp-if');
 var webpack = require('webpack');
@@ -22,9 +23,14 @@ var imagemin = require('gulp-imagemin');
 
 var svgSprite = require('gulp-svg-sprite');
 
-// configuration
+var environment = process.env.NODE_ENV || 'development';
+
+/**
+ * CONFIGURATION
+ */
+// gulp
 var config = {
-  dev: gutil.env.dev,
+  dev: environment !== 'production',
   src: {
     scripts: {
       'js': './src/js/*.js',
@@ -45,6 +51,10 @@ var config = {
 var webpackConfig = require('./webpack.config')(config);
 var webpackCompiler = webpack(webpackConfig);
 
+
+/**
+ * TASKS
+ */
 // clean
 gulp.task('clean', function () {
   return del([config.dest]);
@@ -52,7 +62,7 @@ gulp.task('clean', function () {
 
 // styles
 gulp.task('styles:fabricator', function () {
-  gulp.src(config.src.styles.fabricator)
+  return gulp.src(config.src.styles.fabricator)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(prefix({
@@ -67,7 +77,7 @@ gulp.task('styles:fabricator', function () {
 
 // Compile sass
 gulp.task('styles:chief', function () {
-  gulp.src(config.src.styles.chief)
+  return gulp.src(config.src.styles.chief)
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: [
@@ -85,18 +95,18 @@ gulp.task('styles:chief', function () {
     .pipe(gulpif(config.dev, reload({stream: true})));
 });
 
-gulp.task('styles', ['styles:fabricator', 'styles:chief']);
+gulp.task('styles', gulp.parallel(['styles:fabricator', 'styles:chief']));
 
 // scripts
 gulp.task('scripts', function (done) {
   webpackCompiler.run(function (error, result) {
     if (error) {
-      gutil.log(gutil.colors.red(error));
+      log.error(error);
     }
     result = result.toJson();
     if (result.errors.length) {
       result.errors.forEach(function (error) {
-        gutil.log(gutil.colors.red(error));
+        log.error(error);
       });
     }
     done();
@@ -105,7 +115,7 @@ gulp.task('scripts', function (done) {
 
 // images
 gulp.task('images', function () {
-  gulp.src(config.src.images)
+  return gulp.src(config.src.images)
     .pipe(imagemin())
     .pipe(gulp.dest(config.dest + '/images'));
 });
@@ -113,7 +123,7 @@ gulp.task('images', function () {
 // generates an svg stack file
 // for full configuration options see https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md
 gulp.task('svg', function () {
-  gulp.src(config.src.svg)
+  return gulp.src(config.src.svg)
     .pipe(svgSprite({
       dest: '.',
       shape: {
@@ -134,7 +144,7 @@ gulp.task('svg', function () {
 
 // fonts
 gulp.task('fonts', function () {
-  gulp.src(config.src.fonts)
+  return gulp.src(config.src.fonts)
     .pipe(gulp.dest(config.dest + '/fonts'));
 });
 
@@ -160,84 +170,72 @@ gulp.task('assemble', function (done) {
 });
 
 // server
-gulp.task('serve', function () {
+gulp.task('watch', function (done) {
+  if (config.dev) {
 
-  browserSync({
-    // Add your vhost as the proxy for local development
-    // Avoid using .local address because it's super slow to load
-    // Disable caching from your browser to see the display update
-    // Uncomment line below to work on your site install
-    // proxy: 'toolkit.dev',
+    var browserSyncOpts = {
+      // Uncomment lines below to work from multiple browsers
+      // browser: ['google chrome', 'firefox', 'safari'],
 
-    // Uncomment lines below to work on the styleguide directly
-    // server: {
-    //   baseDir: config.dest
-    // },
+      logPrefix: 'CHIEF'
+    };
 
-    // Uncomment lines below to work from multiple browsers
-    // browser: ['google chrome', 'firefox', 'safari'],
+    if (environment === 'standalone') {
+      // Work directly with the styleguide prototyping engine
+      browserSyncOpts.server = {
+        baseDir: config.dest
+      };
+    } else {
+      // Add your vhost as the proxy for local development
+      // Avoid using .local address because it's super slow to load
+      // Disable caching from your browser to see the display update
+      // Uncomment line below to work on your site install
+      // browserSyncOpts.proxy = 'toolkit.dev';
+    }
 
-    logPrefix: 'CHIEF'
-  });
+    browserSync(browserSyncOpts);
 
-  /**
-   * Because webpackCompiler.watch() isn't being used
-   * manually remove the changed file path from the cache
-   */
-  function webpackCache(e) {
-    var keys = Object.keys(webpackConfig.cache);
-    var key, matchedKey;
-    for (var keyIndex = 0; keyIndex < keys.length; keyIndex++) {
-      key = keys[keyIndex];
-      if (key.indexOf(e.path) !== -1) {
-        matchedKey = key;
-        break;
+    // Because webpackCompiler.watch() isn't being used
+    // manually remove the changed file path from the cache
+    function webpackCache(e) {
+      var keys = Object.keys(webpackConfig.cache);
+      var key, matchedKey;
+      for (var keyIndex = 0; keyIndex < keys.length; keyIndex++) {
+        key = keys[keyIndex];
+        if (key.indexOf(e.path) !== -1) {
+          matchedKey = key;
+          break;
+        }
+      }
+      if (matchedKey) {
+        delete webpackConfig.cache[matchedKey];
       }
     }
-    if (matchedKey) {
-      delete webpackConfig.cache[matchedKey];
-    }
+
+    // watch commands
+    gulp.watch('src/styleguide/**/*.{html,md,json,yml}', gulp.parallel('assemble')).on('change', reload);
+    gulp.watch('src/styleguide/fabricator/styles/**/*.scss', gulp.parallel('styles:fabricator'));
+    gulp.watch('src/sass/**/*.scss', gulp.parallel('styles:chief'));
+    gulp.watch('./src/styleguide/fabricator/scripts/**/*.js', gulp.parallel('scripts')).on('change', webpackCache);
+    gulp.watch('./src/js/**/*.js', gulp.parallel('scripts')).on('change', webpackCache);
+    gulp.watch(config.src.images, gulp.parallel('images')).on('change', reload);
+    gulp.watch(config.src.fonts, gulp.parallel('fonts')).on('change', reload);
+
   }
 
-  gulp.task('assemble:watch', ['assemble'], reload);
-  gulp.watch('src/styleguide/**/*.{html,md,json,yml}', ['assemble:watch']);
-
-  gulp.task('styles:fabricator:watch', ['styles:fabricator']);
-  gulp.watch('src/styleguide/fabricator/styles/**/*.scss', ['styles:fabricator:watch']);
-
-  gulp.task('styles:chief:watch', ['styles:chief']);
-  gulp.watch('src/sass/**/*.scss', ['styles:chief:watch']);
-
-  gulp.task('scripts:watch', ['scripts'], reload);
-  gulp.watch('src/styleguide/fabricator/scripts/**/*.js', ['scripts:watch']).on('change', webpackCache);
-  gulp.watch('src/js/**/*.js', ['scripts:watch']).on('change', webpackCache);
-
-  gulp.task('images:watch', ['images'], reload);
-  gulp.watch(config.src.images, ['images:watch']);
-
-  gulp.task('fonts:watch', ['fonts'], reload);
-  gulp.watch(config.src.fonts, ['fonts:watch']);
+  done();
 });
 
+// define build tasks
+var tasks = [
+  'svg',
+  'styles',
+  'scripts',
+  'images',
+  'fonts',
+  'assemble',
+  'watch'
+];
 
 // default build task
-gulp.task('default', ['clean'], function () {
-
-  // define build tasks
-  var tasks = [
-    'svg',
-    'styles',
-    'scripts',
-    'images',
-    'fonts',
-    'assemble'
-  ];
-
-  // run build
-  runSequence(tasks, function () {
-    if (config.dev) {
-      gulp.start('serve');
-    }
-  });
-
-});
+gulp.task('default', gulp.series('clean', gulp.series(tasks)));
