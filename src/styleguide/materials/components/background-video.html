@@ -1,0 +1,20 @@
+---
+notes: |
+  Required: JQuery
+---
+<div class="background-video">
+  <video playsinline autoplay muted loop>
+  <!-- 
+	- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+	WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+    <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
+    <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
+  </video>
+  <div >
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu lectus condimentum, feugiat diam at, sollicitudin sem. Phasellus vitae pulvinar purus. Morbi luctus tortor quis ipsum mollis, id blandit eros cursus.</p>
+    <button type="button" class="element-focusable background-video__pause" alt="pause">Pause</button>
+  </div >
+</div >
+
+<!-- Required script for video -->
+<script src="js/video.js"></script>

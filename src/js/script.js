@@ -5,18 +5,12 @@
  */
 
 // Import scripts.
-import './includes/eqheights';
-import './includes/accordion';
 import './includes/table';
-import throttle from './includes/throttle';
+import './includes/throttle';
 import './includes/viewport';
 import './includes/menu';
-import './includes/share';
-import './includes/shorten';
 import './includes/skip-links';
 import './includes/form';
-import './includes/tabs';
-import './includes/sticky';
 import './includes/loading-button';
 // Lazysizes documentation: https://github.com/aFarkas/lazysizes.
 import 'lazysizes';

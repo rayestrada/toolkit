@@ -27,9 +27,8 @@
 <a name="requirements"/>
 
 ## Global Requirements
-- Node
-- npm
-- gulp
+- Node 6+
+- npm 5+
 
 <a name="quickstart"/>
 
@@ -58,12 +57,17 @@ rm .gitignore
 
 **Development**: Starts a watch of the toolkit files and initializes Browser Sync 
 ```
-npm start
+npm run dev
+```
+
+**Standalone**: Starts a watch of the toolkit files and launches a local server to work on the styleguide directly
+```
+npm run standalone
 ```
 
 **Production**: Compiles and minifies files for packaging
 ```
-gulp
+npm run prod
 ```
 
 <a name="javascript"/>
@@ -74,23 +78,23 @@ gulp
 
 The toolkit utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Webpack allows us to create a modular JavaScript project. 
 
-All js files that are added to the main js folder will be output as a standalone file in the output folder. All js files in subdirectories will not be output as standalone files. The toolkit comes packaged with 4 example standalone JavaScript files: init-carousel.js, init-map.js, init-modal.js, and init-script.js.  
+All js files that are added to the main js folder will be output as a standalone file in the output folder. All js files in subdirectories will not be output as standalone files.  
 
-init-script.js is the main js file and is an example which includes component JS files from a subdirectory `includes`. Require functions can be removed or commented out safely if you are not using these components functionality.
+script.js is a standalone js file and is an example which includes component JS files from a subdirectory `includes`. Require functions can be removed or commented out safely if you are not using these components functionality.
 
 ### Adding a new module  
 
 #### From NPM 
 1. Follow steps outlined in **Node** section below.
 2. Add a new JavaScript file to src/js/includes, declare your node_module dependency, and add any custom code.
-3. Add your new file as a dependency in init-script.js:
+3. Add your new file as a dependency in script.js:
     ```
     require('./includes/my_new_file')
     ```
   
 #### Custom Library 
 1. Add a new JavaScript file to src/js/includes, and add any custom code.
-2. Add your new file as a dependency in init-script.js:
+2. Add your new file as a dependency in script.js:
     ```
     require('./includes/my_new_file')
     ```
@@ -101,7 +105,7 @@ init-script.js is the main js file and is an example which includes component JS
 
 If you want to add additional folders to output standalone JavaScript files you can modify the `config.src.scripts` settings in the `gulpfile.js` using this pattern
 ```
-'output_folder_name' : 'path_to_the_file',
+'output_directory_name' : 'path_to_the_file',
 ```
 
 ### jQuery  
