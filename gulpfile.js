@@ -3,33 +3,58 @@
 /**
  * MODULES
  */
-var gulp = require('gulp');
-var log = require('fancy-log');
-var del = require('del');
-var gulpif = require('gulp-if');
-var webpack = require('webpack');
+const gulp = require('gulp');
+const log = require('fancy-log');
+const del = require('del');
+const gulpif = require('gulp-if');
+const path = require('path');
+const glob = require('glob');
+const merge = require('merge-stream');
+const webpack = require('webpack');
 
-var assemble = require('fabricator-assemble');
+const assemble = require('fabricator-assemble');
 
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+const browserSync = require('browser-sync');
+const reload = browserSync.reload;
 
-var csso = require('gulp-csso');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var prefix = require('gulp-autoprefixer');
+const csso = require('gulp-csso');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const prefix = require('gulp-autoprefixer');
 
-var imagemin = require('gulp-imagemin');
+const imagemin = require('gulp-imagemin');
 
-var svgSprite = require('gulp-svg-sprite');
+const svgSprite = require('gulp-svg-sprite');
 
-var environment = process.env.NODE_ENV || 'development';
+const environment = process.env.NODE_ENV || 'development';
+
+const nopack = process.argv.indexOf('--nopack') > -1;
+
+
+/**
+ * A function to glob entry points to achieve separate output files
+ * @param globs
+ * @returns {{}}
+ */
+const glob_entries = function (globs) {
+  const entries = {};
+  Object.keys(globs).forEach(function (key) {
+    const globPath = globs[key];
+    const files = glob.sync(globPath);
+
+    for (let i = 0; i < files.length; i++) {
+      const entry = files[i];
+      entries[key + '/' + path.basename(entry, path.extname(entry))] = entry;
+    }
+  });
+  return entries;
+};
 
 /**
  * CONFIGURATION
  */
 // gulp
-var config = {
+const config = {
   dev: environment !== 'production',
   src: {
     scripts: {
@@ -47,16 +72,18 @@ var config = {
   dest: 'dist'
 };
 
+config.src.scripts_webpack = glob_entries(config.src.scripts);
+
 // webpack
-var webpackConfig = require('./webpack.config')(config);
-var webpackCompiler = webpack(webpackConfig);
+const webpackConfig = require('./webpack.config')(config);
+const webpackCompiler = webpack(webpackConfig);
 
 // Because webpackCompiler.watch() isn't being used
 // manually remove the changed file path from the cache
 function webpackCache(e) {
-  var keys = Object.keys(webpackConfig.cache);
-  var key, matchedKey;
-  for (var keyIndex = 0; keyIndex < keys.length; keyIndex++) {
+  const keys = Object.keys(webpackConfig.cache);
+  let key, matchedKey;
+  for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
     key = keys[keyIndex];
     if (key.indexOf(e.path) !== -1) {
       matchedKey = key;
@@ -115,18 +142,35 @@ gulp.task('styles', gulp.parallel(['styles:fabricator', 'styles:chief']));
 
 // scripts
 gulp.task('scripts', function (done) {
-  webpackCompiler.run(function (error, result) {
-    if (error) {
-      log.error(error);
+
+  console.log('NOPACK IS:' + (nopack ? 'true' : 'false'));
+  if (nopack) {
+    const pipes = [];
+    const dests = Object.keys(config.src.scripts);
+    for (let i = 0; i < dests.length; i++) {
+      const dest = dests[i];
+      // We want to copy every file in the event that a specific file requires another
+      // in the same directory. So we replace the single file with **/*.js in order to copy
+      // ALL files AND directories
+      const entry = config.src.scripts[dest].replace(/\/[^\/]*\.js$/g, '/**/*.js');
+      const pipe = gulp.src(entry).pipe(gulp.dest(config.dest + '/' + dest));
+      pipes.push(pipe);
     }
-    result = result.toJson();
-    if (result.errors.length) {
-      result.errors.forEach(function (error) {
+    return merge(pipes);
+  } else {
+    webpackCompiler.run(function (error, result) {
+      if (error) {
         log.error(error);
-      });
-    }
-    done();
-  });
+      }
+      result = result.toJson();
+      if (result.errors.length) {
+        result.errors.forEach(function (error) {
+          log.error(error);
+        });
+      }
+      done();
+    });
+  }
 });
 
 // images
@@ -189,7 +233,7 @@ gulp.task('assemble', function (done) {
 gulp.task('watch', function (done) {
   if (config.dev) {
 
-    var browserSyncOpts = {
+    const browserSyncOpts = {
       // Uncomment lines below to work from multiple browsers
       // browser: ['google chrome', 'firefox', 'safari'],
 
@@ -226,7 +270,7 @@ gulp.task('watch', function (done) {
 });
 
 // define build tasks
-var tasks = [
+const tasks = [
   'svg',
   'styles',
   'scripts',
