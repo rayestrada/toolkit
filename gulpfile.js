@@ -10,6 +10,7 @@ const gulpif = require('gulp-if');
 const path = require('path');
 const glob = require('glob');
 const merge = require('merge-stream');
+const minify = require('gulp-minify');
 const webpack = require('webpack');
 
 const assemble = require('fabricator-assemble');
@@ -142,8 +143,6 @@ gulp.task('styles', gulp.parallel(['styles:fabricator', 'styles:chief']));
 
 // scripts
 gulp.task('scripts', function (done) {
-
-  console.log('NOPACK IS:' + (nopack ? 'true' : 'false'));
   if (nopack) {
     const pipes = [];
     const dests = Object.keys(config.src.scripts);
@@ -153,7 +152,9 @@ gulp.task('scripts', function (done) {
       // in the same directory. So we replace the single file with **/*.js in order to copy
       // ALL files AND directories
       const entry = config.src.scripts[dest].replace(/\/[^\/]*\.js$/g, '/**/*.js');
-      const pipe = gulp.src(entry).pipe(gulp.dest(config.dest + '/' + dest));
+      const pipe = gulp.src(entry)
+        .pipe(minify({ noSource: true }))
+        .pipe(gulp.dest(config.dest + '/' + dest));
       pipes.push(pipe);
     }
     return merge(pipes);
