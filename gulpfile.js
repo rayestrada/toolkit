@@ -12,6 +12,7 @@ const glob = require('glob');
 const merge = require('merge-stream');
 const minify = require('gulp-minify');
 const webpack = require('webpack');
+const babel = require('gulp-babel');
 
 const assemble = require('fabricator-assemble');
 
@@ -153,7 +154,13 @@ gulp.task('scripts', function (done) {
       // ALL files AND directories
       const entry = config.src.scripts[dest].replace(/\/[^\/]*\.js$/g, '/**/*.js');
       const pipe = gulp.src(entry)
-        .pipe(minify({ noSource: true }))
+        .pipe(babel({ "presets": ["@babel/preset-env"] }))
+        .pipe(gulpif(!config.dev, minify({
+          ext: {
+            min: '.js'
+          },
+          noSource: true
+        })))
         .pipe(gulp.dest(config.dest + '/' + dest));
       pipes.push(pipe);
     }
