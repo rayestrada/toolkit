@@ -9,6 +9,7 @@ import './includes/table';
 import './includes/throttle';
 import './includes/viewport';
 import './includes/menu';
+import './includes/jarallax';
 import './includes/skip-links';
 import './includes/form';
 import './includes/loading-button';

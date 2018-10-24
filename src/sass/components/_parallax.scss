@@ -1,0 +1,31 @@
+/**
+* @file
+* Parallax basic styles.
+*
+* Define some global jarallax styles.
+*
+*/
+
+// Parallax styles.
+.jarallax {
+  display: table;
+  min-height: 600px;
+  width: 100%;
+  &-content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+  &-img {
+    position: absolute;
+    object-fit: cover;
+    /* support for plugin https://github.com/bfred-it/object-fit-images */
+    font-family: 'object-fit: cover;';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
