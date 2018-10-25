@@ -76,7 +76,7 @@ npm run prod
 
 **Files location:** src/js
 
-The toolkit utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Webpack allows us to create a modular JavaScript project. 
+The toolkit, by default, utilizes [Webpack](https://webpack.github.io/docs/) for JavaScript management. Read [this](#nopack) to learn how to disable webpack processing. Webpack allows us to create a modular JavaScript project. 
 
 All js files that are added to the main js folder will be output as a standalone file in the output folder. All js files in subdirectories will not be output as standalone files.  
 
@@ -106,6 +106,16 @@ script.js is a standalone js file and is an example which includes component JS 
 If you want to add additional folders to output standalone JavaScript files you can modify the `config.src.scripts` settings in the `gulpfile.js` using this pattern
 ```
 'output_directory_name' : 'path_to_the_file',
+```
+<a name="nopack"/>
+
+### Disable webpack processing
+The toolkit uses webpack by default to process the js files in the src/js directory, however this processing can be disabled by appending `:nopack` to the compiling command. 
+```
+# Examples
+npm run dev:nopack  
+npm run prod:nopack  
+npm run standalone:nopack
 ```
 
 ### jQuery  
