@@ -6,15 +6,15 @@
  */
 
 // Load the viewport library.
-require('jquery.viewport');
-var throttle = require('./throttle');
+import 'jquery.viewport';
+import throttle from './throttle'; 
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Revealing content on load in viewport.
-    $(window).on('load', function () {
+    $(window).on('load', () => {
       // Hide blocks by default.
       $('.f-item-group').addClass('js-transparent');
 
@@ -25,7 +25,7 @@ var throttle = require('./throttle');
     });
 
     // Revealing content on scroll/review viewport.
-    $(window).on('scroll resize', throttle(function () {
+    $(window).on('scroll resize', throttle(() => {
       $('.js-transparent:in-viewport').each(function (i) {
         // Show content in staggered fashion setting a delay for each one.
         $(this).delay(100 * i).queue(function () {

@@ -4,9 +4,9 @@
  *
  */
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Update Checkbox/Radios format: input nested in the label.
     $('label > input').each(function () {

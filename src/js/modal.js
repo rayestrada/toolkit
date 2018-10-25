@@ -7,12 +7,12 @@
  */
 
 // Load fancybox library.
-require('fancybox')(jQuery);
-require('fancybox/dist/css/jquery.fancybox.css');
+import fancybox from 'fancybox'; fancybox(jQuery);
+import 'fancybox/dist/css/jquery.fancybox.css';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize fancybox on a selector.
     $('.fancybox').fancybox({

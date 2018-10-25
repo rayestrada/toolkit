@@ -7,15 +7,15 @@
  */
 
 // Load owl carousel library.
-require('owl.carousel');
-require('owl.carousel/dist/assets/owl.carousel.min.css');
+import 'owl.carousel';
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize owl carousel on a selector.
-    var $owl = $('.owl-carousel');
+    const $owl = $('.owl-carousel');
     $owl.owlCarousel({
       items: 1,
       loop: true,
@@ -29,17 +29,15 @@ require('owl.carousel/dist/assets/owl.carousel.min.css');
     }).after('<div class="owl-autoplay-controls"><a href="#" class="owl-start pd">Start</a><a href="#" class="owl-stop pd">Stop</a></div>');
 
     // Prevent default link interaction on carousel controls.
-    $('a.pd').on('click', function(e) {
-      e.preventDefault();
-    });
+    $('a.pd').on('click', e => e.preventDefault());
 
     // Trigger start.
-    $('.owl-start').on('click', function () {
+    $('.owl-start').on('click', () => {
       $owl.trigger('play.owl.autoplay', [1000])
     });
 
     // Trigger stop.
-    $('.owl-stop').on('click', function () {
+    $('.owl-stop').on('click', () => {
       $owl.trigger('stop.owl.autoplay')
     });
   });

@@ -5,19 +5,19 @@
  */
 
 // Import scripts.
-require('./includes/table');
-require('./includes/throttle');
-require('./includes/viewport');
-require('./includes/menu');
-require('./includes/skip-links');
-require('./includes/form');
-require('./includes/loading-button');
+import './includes/table';
+import './includes/throttle';
+import './includes/viewport';
+import './includes/menu';
+import './includes/skip-links';
+import './includes/form';
+import './includes/loading-button';
 // Lazysizes documentation: https://github.com/aFarkas/lazysizes.
-require('lazysizes');
+import 'lazysizes';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
     // Place code here or in a includes script file and require above.
 
     // Example of throttling.

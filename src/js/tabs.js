@@ -4,14 +4,14 @@
  *
  */
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Assign target selectors.
-    var tabContainer = '.tm-tabs';
-    var tabContent = '.tab-content';
-    var tabLabel = '.tab-label';
+    const tabContainer = '.tm-tabs';
+    const tabContent = '.tab-content';
+    const tabLabel = '.tab-label';
 
     // Prepare the tabs for interaction.
     $(tabContainer).each(function () {
@@ -21,11 +21,11 @@
       $(this).find(tabLabel).addClass('js-tab-label');
 
       // Empty string to append tab links.
-      var tabLinks = '';
+      let tabLinks = '';
 
       // Loop through tab content.
       $(this).find(tabContent).each(function (i) {
-        var tabLink = '<a href="#" data-tab="js-tab-number-' + i + '">' + $(this).find(tabLabel).text() + '</a>';
+        tabLink = '<a href="#" data-tab="js-tab-number-' + i + '">' + $(this).find(tabLabel).text() + '</a>';
 
         if (i > 0) {
           // Hide the tab content that is not the first one.
@@ -51,7 +51,7 @@
     // Trigger click events on the tabs we created.
     $('.js-tab-links a').on('click', function (e) {
       e.preventDefault();
-      var $tab = $(this).data('tab');
+      const $tab = $(this).data('tab');
 
       // Track active state of the tabContent.
       $(this).closest(tabContainer).find(tabContent).addClass('js-tab-hide');

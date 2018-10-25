@@ -4,14 +4,14 @@
  *
  */
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Set the selectors to target.
-    var accordionContainer = '.custom-accordion';
-    var accordionContent = '.accordion-content';
-    var accordionTrigger = '.accordion-trigger';
+    const accordionContainer = '.custom-accordion';
+    const accordionContent = '.accordion-content';
+    const accordionTrigger = '.accordion-trigger';
 
     // Initialize the accordions.
     $(accordionContainer).each(function (i) {

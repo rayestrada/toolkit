@@ -6,11 +6,11 @@
  */
 
 // Load equal heights library.
-require('jquery-match-height');
+import 'jquery-match-height';
 
-(function ($) {
+($ => {
   // DOC READY
-  $(function () {
+  $(() => {
 
     // Initialize equal heights on a selector.
     $('.eqheight').matchHeight();
