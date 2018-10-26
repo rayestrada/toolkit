@@ -12,12 +12,10 @@ require('jarallax/dist/jarallax.min.js');
   // DOC READY
   $(function () {
 
-    // object-fit polyfill run
-    // objectFitImages();
-
-    /* init Jarallax */
+    // init Jarallax
     $('.jarallax').jarallax({
-        speed: 0.2
+        speed: 0.2,
+        disableParallax: '/iPad|iPhone|iPod|Android/'
     });
 
   });
