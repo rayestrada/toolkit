@@ -12,11 +12,17 @@ require('jarallax/dist/jarallax.min.js');
   // DOC READY
   $(function () {
 
-    // init Jarallax
-    $('.jarallax').jarallax({
+    var $desktop = $(window).width() > 1020;
+
+    if ($desktop) {
+
+      // init Jarallax
+      $('.parallax').jarallax({
         speed: 0.2,
         disableParallax: '/iPad|iPhone|iPod|Android/'
-    });
+      });
+      
+    }
 
   });
 })(jQuery);
