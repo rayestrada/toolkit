@@ -1,0 +1,16 @@
+/**
+* @file
+* Parallax basic styles.
+*
+* Define some global jarallax styles.
+*
+*/
+
+// Parallax styles.
+.parallax {
+  min-height: 600px;
+  background: url(https://picsum.photos/2200/1400?image=767) center center no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
