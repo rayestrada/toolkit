@@ -16,7 +16,8 @@
       text-decoration: underline !important;
 
       // Don't underline site link.
-      &.site-link {
+      &.site-link,
+      &#logo {
         text-decoration: none !important;
       }
     }
@@ -78,7 +79,7 @@
 
   // Alter the space around a printed page
   @page {
-    margin: 60px;
+    margin: 80pt;
   }
 
   // Avoid a paragraph being detached from the heading immediately preceding it.

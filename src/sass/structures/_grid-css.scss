@@ -1,0 +1,24 @@
+/**
+ * @file
+ * Grid CSS styles.
+ *
+ */
+
+// Example: enlarge grid item using gridcss-item-span().
+.example-larger {
+  @include gridcss-item-span(2, 3);
+}
+
+// Example: reposition and enlarge grid item using gridcss-item-placement().
+.example-position {
+  @include gridcss-item-placement(1, '1/3');
+  background-color: $blue !important;
+}
+
+// Example: create a uniform grid using tm-gridcss().
+.four-column-gridcss {
+  @include tm-gridcss(4, $flow: dense);
+  > * {
+    background: #eee;
+  }
+}

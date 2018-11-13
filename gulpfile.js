@@ -65,7 +65,7 @@ const config = {
     },
     styles: {
       fabricator: './src/styleguide/fabricator/styles/fabricator.scss',
-      chief: './src/sass/styles.scss'
+      chief: './src/sass/**/*.scss'
     },
     images: './src/images/**/*',
     svg: './src/svg/*.svg',

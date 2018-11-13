@@ -54,7 +54,7 @@ textarea {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  @extend %element-invisible;
+  @include element-invisible;
   + label {
     position: relative;
     display: inline;
@@ -68,7 +68,7 @@ input[type="radio"] {
       margin-bottom: -2px;
       margin-right: 8px;
       overflow: hidden;
-      border: 1px solid $highlight;
+      border: 1px solid $blue;
       content: '';
     }
     &.js-focus:before {
@@ -77,7 +77,7 @@ input[type="radio"] {
   }
   &:checked + label {
     &:before {
-      background-color: $highlight;
+      background-color: $blue;
     }
   }
 }

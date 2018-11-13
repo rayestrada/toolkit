@@ -1,0 +1,48 @@
+/**
+ * @file
+ * Grid Float styles.
+ *
+ */
+
+// Generate grid span classes for 12 column grid.
+@include breakpoint($desktop) {
+  .column-wrapper {
+    &.twelve {
+      @include colwrapper(null);
+      @include generate-grid-classes(12);
+    }
+  }
+}
+
+// Generate center classes for 12 column grid.
+@include breakpoint($desktop) {
+  @include generate-center-classes(12);
+}
+
+// Create generic classes for frequently used grids.
+@include breakpoint($desktop) {
+  .two-column-grid {
+    @include tm-grid(2);
+  }
+  .three-column-grid {
+    @include tm-grid(3);
+  }
+  .four-column-grid {
+    @include tm-grid(4);
+  }
+}
+@include breakpoint($tablet-only) {
+  .two-column-grid,
+  .three-column-grid,
+  .four-column-grid {
+    @include tm-grid(2);
+  }
+}
+
+// Example: breakout column grid item using changecol().
+.example-breakout {
+  background-color: $blue;
+  @include breakpoint($desktop) {
+    @include changecol(1, -1, -1);
+  }
+}
