@@ -185,7 +185,7 @@ Atomic Design outlines 5 stages:
 * **Atoms:** UI elements that can’t be broken down any further and serve as the elemental building blocks of an interface  
 * **Molecules:** Collections of atoms that form relatively simple UI components  
 * **Organisms:** Complex components that form discrete sections of an interface  
-* **Templates:** Components within a layout and demonstrate the design’s underlying content structure  
+* **Templates:** Components within a layout and demonstrate the design’s underlying content structure 
 * **Pages:** Articulate variations to demonstrate the final UI and test the resilience of the design system.  
 
 The toolkit sass structure aligns with these stages to a certain extent:
@@ -193,6 +193,8 @@ The toolkit sass structure aligns with these stages to a certain extent:
 * **elements** to atoms
 * **components** to molecules
 * **structures** to organisms
+
+We've also included an **animations** directory which will house reusable microinteraction css animations.
 
 
 ### Breakpoints
@@ -216,7 +218,7 @@ $desktop
 $desktop-only  
 $lg-desktop
 
-Check src/sass/base/_breakpoint.scss for values
+Check src/sass/base/_variables.scss for values
 
 ### Including a third party library
 
