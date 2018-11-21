@@ -262,10 +262,7 @@ gulp.task('watch', function (done) {
 
     gulp.src(Object.values(config.src.scripts))
       .pipe(webpackStream(
-        {
-          watch: true,
-          ...webpackConfig
-        },
+        Object.assign({ watch: true }, webpackConfig),
         webpack,
         function (error, stats) {
           if (error) log.error(error);
