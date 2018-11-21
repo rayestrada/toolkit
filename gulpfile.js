@@ -79,16 +79,6 @@ config.src.scripts_webpack = glob_entries(config.src.scripts);
 
 // webpack
 const webpackConfig = require('./webpack.config')(config);
-const webpackStats = {
-  entrypoints: false,
-  assets: false,
-  chunks: false,
-  chunkModules: false,
-  colors: true,
-  hash: false,
-  timings: false,
-  version: false
-};
 
 /**
  * TASKS
@@ -163,9 +153,8 @@ gulp.task('scripts', function (done) {
       .pipe(webpackStream(
         webpackConfig,
         webpack,
-        function (error, stats) {
+        function (error) {
           if (error) log.error(error);
-          console.log(stats.toString(webpackStats));
           done();
         }
       ))
@@ -264,9 +253,8 @@ gulp.task('watch', function (done) {
       .pipe(webpackStream(
         Object.assign({ watch: true }, webpackConfig),
         webpack,
-        function (error, stats) {
+        function (error) {
           if (error) log.error(error);
-          console.log(stats.toString(webpackStats));
           reload();
         }
       ))
