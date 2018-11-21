@@ -267,9 +267,11 @@ gulp.task('watch', function (done) {
         function (error, stats) {
           if (error) log.error(error);
           console.log(stats.toString(webpackStats));
+          reload();
         }
       ))
       .pipe(gulp.dest(config.dest));
+
     gulp.watch(config.src.images, gulp.parallel('images')).on('change', reload);
     gulp.watch(config.src.fonts, gulp.parallel('fonts')).on('change', reload);
 
