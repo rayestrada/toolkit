@@ -11,8 +11,9 @@ const path = require('path');
 const glob = require('glob');
 const merge = require('merge-stream');
 const minify = require('gulp-minify');
-const webpack = require('webpack');
 const babel = require('gulp-babel');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
 
 const assemble = require('fabricator-assemble');
 
@@ -78,24 +79,16 @@ config.src.scripts_webpack = glob_entries(config.src.scripts);
 
 // webpack
 const webpackConfig = require('./webpack.config')(config);
-const webpackCompiler = webpack(webpackConfig);
-
-// Because webpackCompiler.watch() isn't being used
-// manually remove the changed file path from the cache
-function webpackCache(e) {
-  const keys = Object.keys(webpackConfig.cache);
-  let key, matchedKey;
-  for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
-    key = keys[keyIndex];
-    if (key.indexOf(e.path) !== -1) {
-      matchedKey = key;
-      break;
-    }
-  }
-  if (matchedKey) {
-    delete webpackConfig.cache[matchedKey];
-  }
-}
+const webpackStats = {
+  entrypoints: false,
+  assets: false,
+  chunks: false,
+  chunkModules: false,
+  colors: true,
+  hash: false,
+  timings: false,
+  version: false
+};
 
 /**
  * TASKS
@@ -166,18 +159,17 @@ gulp.task('scripts', function (done) {
     }
     return merge(pipes);
   } else {
-    webpackCompiler.run(function (error, result) {
-      if (error) {
-        log.error(error);
-      }
-      result = result.toJson();
-      if (result.errors.length) {
-        result.errors.forEach(function (error) {
-          log.error(error);
-        });
-      }
-      done();
-    });
+    gulp.src(Object.values(config.src.scripts))
+      .pipe(webpackStream(
+        webpackConfig,
+        webpack,
+        function (error, stats) {
+          if (error) log.error(error);
+          console.log(stats.toString(webpackStats));
+          done();
+        }
+      ))
+      .pipe(gulp.dest(config.dest));
   }
 });
 
@@ -267,8 +259,20 @@ gulp.task('watch', function (done) {
     gulp.watch('src/styleguide/**/*.{html,md,json,yml}', gulp.parallel('assemble')).on('change', reload);
     gulp.watch('src/styleguide/fabricator/styles/**/*.scss', gulp.parallel('styles:fabricator'));
     gulp.watch('src/sass/**/*.scss', gulp.parallel('styles:chief'));
-    gulp.watch('./src/styleguide/fabricator/scripts/**/*.js', gulp.parallel('scripts')).on('change', webpackCache);
-    gulp.watch('./src/js/**/*.js', gulp.parallel('scripts')).on('change', webpackCache);
+
+    gulp.src(Object.values(config.src.scripts))
+      .pipe(webpackStream(
+        {
+          watch: true,
+          ...webpackConfig
+        },
+        webpack,
+        function (error, stats) {
+          if (error) log.error(error);
+          console.log(stats.toString(webpackStats));
+        }
+      ))
+      .pipe(gulp.dest(config.dest));
     gulp.watch(config.src.images, gulp.parallel('images')).on('change', reload);
     gulp.watch(config.src.fonts, gulp.parallel('fonts')).on('change', reload);
 
