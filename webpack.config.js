@@ -32,13 +32,13 @@ module.exports = function (gulpConfig) {
         },
         {
           test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ]
+          use: ['style-loader', 'css-loader']
         },
         {
           // required for loading images in css from modules using js
           test: /\.(png|jpg|svg|gif)$/,
           include: /node_modules/,
-          use: { loader: 'url-loader?limit=20000' } // (20kb) Any file smaller than limit will use data uri instead
+          use: {loader: 'url-loader?limit=20000'} // (20kb) Any file smaller than limit will use data uri instead
         }
       ]
     }
