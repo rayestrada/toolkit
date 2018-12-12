@@ -33,6 +33,7 @@ const environment = process.env.NODE_ENV || 'development';
 
 const nopack = process.argv.indexOf('--nopack') > -1;
 
+console.log( 'nopack ', nopack );
 
 /**
  * A function to glob entry points to achieve separate output files
@@ -249,20 +250,24 @@ gulp.task('watch', function (done) {
     gulp.watch('src/styleguide/fabricator/styles/**/*.scss', gulp.parallel('styles:fabricator'));
     gulp.watch('src/sass/**/*.scss', gulp.parallel('styles:chief'));
 
-    gulp.src(Object.values(config.src.scripts))
-      .pipe(webpackStream(
-        Object.assign({ watch: true }, webpackConfig),
-        webpack,
-        function (error) {
-          if (error) log.error(error);
-          reload();
-        }
-      ))
-      .pipe(gulp.dest(config.dest));
+    if (nopack) {
+      gulp.watch('src/styleguide/fabricator/scripts/**/*.js', gulp.parallel('scripts')).on('change', reload);
+      gulp.watch('src/js/**/*.js', gulp.parallel('scripts')).on('change', reload);
+    } else {
+      gulp.src(Object.values(config.src.scripts))
+        .pipe(webpackStream(
+          Object.assign({watch: true}, webpackConfig),
+          webpack,
+          function (error) {
+            if (error) log.error(error);
+            reload();
+          }
+        ))
+        .pipe(gulp.dest(config.dest));
+    }
 
     gulp.watch(config.src.images, gulp.parallel('images')).on('change', reload);
     gulp.watch(config.src.fonts, gulp.parallel('fonts')).on('change', reload);
-
   }
 
   done();
