@@ -11,6 +11,10 @@
 // Set to true to print link URL values.
 $printlinks: true;
 
+// Set domain for relative links
+// Example: https://www.yourdomain.com
+$domain: '';
+
 @media print {
   // Change base font size to optimize for print.
   html {
@@ -35,18 +39,25 @@ $printlinks: true;
     // Alter links within the main content region.
     @if $printlinks {
 
-      #content & {
+      #main & {
         // Add visible URL after links.
         &[href]:after {
+          content: " (" attr(href) ")" !important;
           font-weight: normal;
           font-size: 1rem;
-          content: " (" attr(href) ")";
+        }
+
+        // Add visible URL and prepend domain after relative links
+        &[href^="/"]:not([href^="//"]):after {
+          content: " (#{$domain}" attr(href) ")" !important;
         }
 
         // Only display useful links.
+        &[href=""]:after,
+        &[href^="file:"]:after,
         &[href^="javascript:"]:after,
         &[href^="#"]:after {
-          content: "";
+          content: "" !important;
         }
       }
 
@@ -88,8 +99,8 @@ $printlinks: true;
   .pager,
   .feed-icons,
   .f-menu {
-    display: none;
-    visibility: hidden;
+    display: none !important;
+    visibility: hidden !important;
   }
 
   // Alter the space around a printed page.
